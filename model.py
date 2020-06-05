@@ -1,5 +1,4 @@
 """Models for recipes web application."""
-
 from flask_sqlalchemy import SQLAlchemy 
 from datetime import datetime
 
@@ -23,7 +22,7 @@ class User(db.Model):
 
     def __repr__(self):
         return f'''<User user_id={self.user_id} username={self.username} email={self.email}
-        password = {self.password} location_of_user = {self.location_of_user} created_at = {self.created_at}>'''
+        password = {self.password} location of user = {self.location_of_user} created at = {self.created_at}>'''
 
 class SavedRecipe(db.Model):
 
@@ -102,7 +101,7 @@ class Ingredient(db.Model):
         return f'''<ingredient id ={self.ingredient_id} ingredient name = {self.ingredient_name}
         food group = {self.food_group} sweet or savory = {self.sweet_or_savory}>''' 
     
-def connect_to_db(flask_app, db_uri='postgresql:///ratings', echo=False):
+def connect_to_db(flask_app, db_uri='postgresql:///recipe', echo=False):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     flask_app.config['SQLALCHEMY_ECHO'] = echo
     flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
