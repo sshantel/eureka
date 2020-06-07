@@ -16,6 +16,11 @@ def homepage():
     """View homepage."""
     return render_template('homepage.html')
 
+@app.route('/get-ingredient')
+def get_ingredient():
+    pass
+
+
 @app.route('/recipes')
 def all_recipes():
     pass

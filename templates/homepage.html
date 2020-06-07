@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
+
 {% block title %}Welcome to Recipspeeds{% endblock %}
 
 {% block body %}
+
   <h1>Welcome!</h1>
 
   <h2>Navigation</h2>
   <ul>
-    <li><a href="/recipes">View all recipes</a></li>
+    <form action ="/get-ingredient" method="GET"> What ingredient would you like to cook with today? <input type="text" name="ingredient" required=True>
+    <input type="submit">
+    <br>
+    <form action ="/get-time" method="GET"> How much time(max) would you like to spend? <input type="text" name="time" required=True>
+    <input type="submit">
   </ul>
+
 {% endblock %}
