@@ -30,24 +30,6 @@ def create_saved_recipe(recipe_id, user_id, saved_at, recipe, user):
 
     return create_saved_recipe
 
-def create_recipe(recipe_name, recipe_course, prep_time, cook_time, total_recipe_time,
-    recipe_description, servings, image, reviews):
-
-    create_recipe = Recipe(recipe_name = recipe_name,
-                            recipe_course = recipe_course,
-                            prep_time = prep_time,
-                            cook_time = cook_time,
-                            total_recipe_time = total_recipe_time,
-                            recipe_description = recipe_description,
-                            servings = servings,
-                            image = image,
-                            reviews = reviews)
-
-    db.session.add(create_recipe)
-    db.session.commit()
-
-    return create_recipe
-
 def recipe_ingredient(measurements):
 
     measurements = RecipeIngredient(measurements = measurements)
@@ -55,7 +37,14 @@ def recipe_ingredient(measurements):
 
 def ingredient(ingredient_name, food_group, sweet_or_savory):
 
+    ingredient = Ingredient(ingredient_name = ingredient_name,
+                food_group = food_group,
+                sweet_or_savory = sweet_or_savory)
+
     
+
+
+
 
 
 

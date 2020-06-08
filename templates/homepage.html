@@ -7,12 +7,42 @@
   <h1>Welcome!</h1>
 
   <h2>Navigation</h2>
+
   <ul>
-    <form action ="/get-ingredient" method="GET"> What ingredient would you like to cook with today? <input type="text" name="ingredient" required=True>
-    <input type="submit">
+
+    <form action ="/get-ingredient-and-time" method="POST">
+      <div class="form-group">
+        <label for="search-ingredient"> Ingredient </label>
+        <br>
+        <small class="form-text text-muted">
+          What ingredient(s) would you like to cook with today?
+        
+
+        <input 
+        id="search-ingredient"
+        class="form-control"
+        type="text"
+        name="ingredient"
+        >
+    </div>
+
     <br>
-    <form action ="/get-time" method="GET"> How much time(max) would you like to spend? <input type="text" name="time" required=True>
-    <input type="submit">
+
+    <div class="form-group">
+      <label for="search-time">Time</label>
+      <br>
+      <small class="form-text text-muted">
+      How much time(max) in minutes would you like to spend? 
+
+        <input 
+        id="search-time"
+        class="form-control"
+        type="text"
+        name="time"
+        >
+    
+      <input type="submit">
+
   </ul>
 
 {% endblock %}
