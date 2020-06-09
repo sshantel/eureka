@@ -6,7 +6,6 @@ from model import connect_to_db
 
 from jinja2 import StrictUndefined
 
-import api
 import os
 import requests
 
@@ -24,25 +23,20 @@ def homepage():
     """View homepage."""
     return render_template('homepage.html')
 
-@app.route('/get-ingredient-and-time', methods=['POST']) #POST 
-#(inside here, take the information
-#user is providing and make the API call#)
-def get_ingredient_and_time(ingredient):
+@app.route('/get-ingredient-and-time', methods=['POST']) 
+def get_ingredient_and_time():
     input_ingredient = request.form.get('ingredient')
-    time = request.form.get('time')
-    print(ingredient)
-    print(time)
-    # results = api.get_recipes(ingredient)
-    data = request.json
-    return jsonify(data)
-    print(results)
+    input_time = request.form.get('time')
+    print(input_ingredient)
+    print(input_time)
 
     url = 'https://api.spoonacular.com/recipes/search'
 
-    payload = {'query': ingredient,
+    payload = {'query': input_ingredient,
+                'readyInMinutes': input_time,
                 'number': 100,
                 'apiKey': API_KEY}
-                
+
     response = requests.get(url, params=payload)
 
     data = response.json()
@@ -54,10 +48,9 @@ def get_ingredient_and_time(ingredient):
         ready_in_minutes = result['readyInMinutes']
         print(f' Recipe: {recipe_title}. Total cooking time = {ready_in_minutes}')
 
-    return render_template('search-results.html')
-
-    # return render_template('search-results.html')
-#access api into a function and get response and return response into recipe template
+    return render_template('search-results.html',
+                            pformat=pformat,
+                            data=data)
 
 @app.route('/recipes')
 def all_recipes():

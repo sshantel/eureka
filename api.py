@@ -1,4 +1,6 @@
 import requests
+import os
+API_KEY = os.environ["SPOONACULAR_KEY"]
 
 def get_recipes(ingredient):
 
@@ -16,7 +18,6 @@ def get_recipes(ingredient):
         recipe_title = result['title']
         ready_in_minutes = result['readyInMinutes']
         print(f' Recipe: {recipe_title}. Total cooking time = {ready_in_minutes}')
-
     return recipe_results
 
 # payload2 = {'ingredients': 'cucumber',

@@ -1,21 +1,20 @@
 {% extends 'base.html' %}
 
-{% block title %}Welcome to Recipspeeds{% endblock %}
+{% block title %}{% endblock %}
 
-{% block body %}
+{% block content %}
 
   <h1>Welcome!</h1>
 
-  <h2>Navigation</h2>
-
   <ul>
 
-    <form action ="/get-ingredient-and-time" method="POST">
+    <form method="POST"/ action="get-ingredient-and-time">
       <div class="form-group">
         <label for="search-ingredient"> Ingredient </label>
         <br>
         <small class="form-text text-muted">
           What ingredient(s) would you like to cook with today?
+        </small>
         
 
         <input 
@@ -33,6 +32,7 @@
       <br>
       <small class="form-text text-muted">
       How much time(max) in minutes would you like to spend? 
+      </small>
 
         <input 
         id="search-time"
@@ -41,7 +41,7 @@
         name="time"
         >
     
-      <input type="submit">
+      <input type="submit" value="Look for recipes!">
 
   </ul>
 
