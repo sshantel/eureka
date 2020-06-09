@@ -3,11 +3,24 @@
 {% block title %} YAY RECIPES!! {% endblock %}
 
 {% block content %}
-
+<ul>
+  
+  <pre>{{ pformat(data) }}</pre>
+    
     <div class="row">
       <div class="col">
         <div id="results-as-json"> 
-          <pre>{{ pformat(data) }}</pre>
-        </div>
+{% for result in recipe_results %}
+      {{ result['title'] }} 
+      {{ result['sourceUrl'] }}
 
+    <br> LINE BREAK </br>
+
+{% endfor %}  
+
+        </div> 
+      </div>
+    </div>
+
+</ul>
 {% endblock %}
