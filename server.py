@@ -25,9 +25,9 @@ def homepage():
 
 @app.route('/get-ingredient-and-time', methods=['GET']) 
 def get_ingredient_and_time():
-    input_ingredient = request.form.get('ingredient')
-    input_time = request.form.get('time')
+    input_ingredient = request.args.get('ingredient')
     print(input_ingredient)
+    input_time = request.args.get('time') 
     print(input_time)
 
     url = 'https://api.spoonacular.com/recipes/search'
