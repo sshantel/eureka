@@ -23,7 +23,7 @@ def homepage():
     """View homepage."""
     return render_template('homepage.html')
 
-@app.route('/get-ingredient-and-time', methods=['POST']) 
+@app.route('/get-ingredient-and-time', methods=['GET']) 
 def get_ingredient_and_time():
     input_ingredient = request.form.get('ingredient')
     input_time = request.form.get('time')
