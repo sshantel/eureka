@@ -1,0 +1,15 @@
+[
+    {
+        "username": "chantelyip",
+        "email": "chantelyip422@gmail.com",
+        "password": "password",
+        "location_of_user":"San Francisco, CA"
+    },
+
+    {
+        "username": "larrypage",
+        "email": "larrypage@gmail.com",
+        "password": "password",
+        "location_of_user":"Minnesota, MN"
+    }
+]

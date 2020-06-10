@@ -1,4 +1,7 @@
 """Server for recipe website."""
+
+#json for users
+#json for savedrecipes
 from flask import (Flask, render_template, request, flash, session, redirect) 
 
 from model import connect_to_db
@@ -55,7 +58,7 @@ def get_ingredient_and_time():
         recipe_id = result['id'] 
         print(recipe_id)
         print(type(ready_in_minutes))
-        print(type(int_input_time))
+        print(type(int_input_time)) 
         print(f' Recipe: {recipe_title}. Total cooking time = {ready_in_minutes}')
 
     # recipe = crud.get_recipe_by_id(recipe_id)

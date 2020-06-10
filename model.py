@@ -32,6 +32,7 @@ class Recipe(db.Model):
     recipe_id = db.Column(db.Integer, 
                         primary_key=True, 
                         unique=True)
+    api_recipe_id = db.Column(db.Integer)
     recipe_name = db.Column(db.String)
     recipe_course = db.Column(db.String)
     prep_time = db.Column(db.Integer)
@@ -48,7 +49,7 @@ class Recipe(db.Model):
         cook time = {self.cook_time} total recipe time = {self.total_recipe_time}
         recipe description = {self.recipe_description} servings = {self.servings}
         image = {self.image} reviews = {self.reviews}>'''
-        
+
 class SavedRecipe(db.Model):
 
     __tablename__ = 'savedrecipes'
@@ -59,7 +60,7 @@ class SavedRecipe(db.Model):
                         db.ForeignKey('recipes.recipe_id'))
     user_id = db.Column(db.Integer, 
                         db.ForeignKey('users.user_id'))
-    saved_at = db.Column(db.String)
+    saved_at = db.Column(db.DateTime, default = datetime.utcnow)
 
     recipe = db.relationship('Recipe', backref = 'savedrecipes')
     user = db.relationship('User', backref = 'savedrecipes')
@@ -73,7 +74,6 @@ class SavedRecipe(db.Model):
 class RecipeIngredient(db.Model):
 
     __tablename__ = 'recipeingredients'
-
 
     recipe_ingredients = db.Column(db.String,
                          primary_key=True)

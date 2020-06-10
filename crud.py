@@ -2,15 +2,13 @@
 
 from model import db, User, SavedRecipe, RecipeIngredient, Ingredient, connect_to_db
 
-def create_user(username, email, password, location_of_user, created_at):
+def create_user(username, email, password, location_of_user):
     """ Create and return a new user """
 
     user =  User(username = username,
                  email = email,
                  password = password,
-                 location_of_user = location_of_user,
-                 created_at = created_at) 
-
+                 location_of_user = location_of_user)
 
     db.session.add(user)
     db.session.commit()
