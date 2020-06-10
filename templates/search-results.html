@@ -3,18 +3,26 @@
 {% block title %} YAY RECIPES!! {% endblock %}
 
 {% block content %}
-<ul>
-  
+
+
   <pre>{{ pformat(data) }}</pre>
     
     <div class="row">
       <div class="col">
         <div id="results-as-json"> 
+<b> so you'd like to cook with {{ input_ingredient }} in under {{ int_input_time}} minutes </b>
 {% for result in recipe_results %}
+      <br>
       {{ result['title'] }} 
-      {{ result['sourceUrl'] }}
+      <button> save recipe </button>
+      <button> text recipe to phone </button>
+      <br>
 
-    <br> LINE BREAK </br>
+    <a href="https://spoonacular.com/recipeImages/{{ result['id'] }}-636x393.jpg"> image: {{ result['id'] }} </a>
+    <br>
+<a href="{{ result.sourceUrl }}"> {{ result.sourceUrl }}</a>
+
+      <br>
 
 {% endfor %}  
 
@@ -22,5 +30,4 @@
       </div>
     </div>
 
-</ul>
 {% endblock %}
