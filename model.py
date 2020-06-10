@@ -1,5 +1,6 @@
 """Models for recipes web application."""
 from flask_sqlalchemy import SQLAlchemy 
+
 from datetime import datetime
 
 db = SQLAlchemy()
@@ -24,25 +25,6 @@ class User(db.Model):
         return f'''<User user_id={self.user_id} username={self.username} email={self.email}
         password = {self.password} location of user = {self.location_of_user} created at = {self.created_at}>'''
 
-class SavedRecipe(db.Model):
-
-    __tablename__ = 'savedrecipes'
-
-    saved_recipe_id = db.Column(db.Integer, 
-                        primary_key=True)
-    recipe_id = db.Column(db.Integer, 
-                        db.ForeignKey('recipes.recipe_id'))
-    user_id = db.Column(db.Integer, 
-                        db.ForeignKey('users.user_id'))
-    saved_at = db.Column(db.String)
-
-    recipe = db.relationship('Recipe', backref = 'savedrecipes')
-    user = db.relationship('User', backref = 'savedrecipes')
-
-    def __repr__(self):
-        return f'''<saved recipe id={self.saved_recipe_id} recipe_id={self.recipe_id}
-        user id={self.user_id} saved at={self.saved_at}>'''
-
 class Recipe(db.Model):
 
     __tablename__ = 'recipes'
@@ -66,6 +48,27 @@ class Recipe(db.Model):
         cook time = {self.cook_time} total recipe time = {self.total_recipe_time}
         recipe description = {self.recipe_description} servings = {self.servings}
         image = {self.image} reviews = {self.reviews}>'''
+        
+class SavedRecipe(db.Model):
+
+    __tablename__ = 'savedrecipes'
+
+    saved_recipe_id = db.Column(db.Integer, 
+                        primary_key=True)
+    recipe_id = db.Column(db.Integer, 
+                        db.ForeignKey('recipes.recipe_id'))
+    user_id = db.Column(db.Integer, 
+                        db.ForeignKey('users.user_id'))
+    saved_at = db.Column(db.String)
+
+    recipe = db.relationship('Recipe', backref = 'savedrecipes')
+    user = db.relationship('User', backref = 'savedrecipes')
+
+    def __repr__(self):
+        return f'''<saved recipe id={self.saved_recipe_id} recipe_id={self.recipe_id}
+        user id={self.user_id} saved at={self.saved_at}>'''
+
+
 
 class RecipeIngredient(db.Model):
 
