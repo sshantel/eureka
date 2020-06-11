@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<h1> Welcome, please login! </h1>
+
+    <form method="POST"/ action="/search">
+      <div class="form-group">
+        <label for="login-form"> Login </label>
+        <br>
+        <small class="form-text text-info">
+          Username
+        </small>
+         <input 
+        id="username"
+        class="form-control"
+        type="text"
+        name="username"
+        >
+        <small class="form-text text-info">
+          Email
+        </small>
+        <input 
+        id="email"
+        class="form-control"
+        type="text"
+        name="email"
+        ><small class="form-text text-info">
+          Password
+        </small>
+          <input 
+        id="password"
+        class="form-control"
+        type="text"
+        name="password"
+        >
+        <input type="submit" value="Login">
+
+
+{% endblock %}

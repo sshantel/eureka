@@ -7,9 +7,16 @@
     },
 
     {
-        "username": "larrypage",
+        "username" : "larrypage",
         "email": "larrypage@gmail.com",
         "password": "password",
         "location_of_user":"Minnesota, MN"
+    },
+
+    {
+        "username" : "timexwatch",
+        "email": "timex@gmail.com",
+        "password": "password",
+        "location_of_user":"San Diego, CA"
     }
 ]

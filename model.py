@@ -19,13 +19,13 @@ class User(db.Model):
                     unique=True)
     password = db.Column(db.String)
     location_of_user = db.Column(db.String)
-    created_at = db.Column(db.DateTime, default = datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
         return f'''<User user_id={self.user_id} username={self.username} email={self.email}
         password = {self.password} location of user = {self.location_of_user} created at = {self.created_at}>'''
 
-class Recipe(db.Model):
+class CreateRecipe(db.Model):
 
     __tablename__ = 'recipes'
 
@@ -33,7 +33,6 @@ class Recipe(db.Model):
                         primary_key=True, 
                         unique=True)
     api_recipe_id = db.Column(db.Integer)
-    recipe_name = db.Column(db.String)
     recipe_course = db.Column(db.String)
     prep_time = db.Column(db.Integer)
     cook_time = db.Column(db.Integer)
@@ -42,13 +41,15 @@ class Recipe(db.Model):
     servings = db.Column(db.Integer)
     image = db.Column(db.String)
     reviews = db.Column(db.String)
+    recipe_title = db.Column(db.String)
+    url = db.Column(db.String)
 
     def __repr__(self):
-        return f'''<recipe id={self.recipe_id} recipe_name={self.recipe_name}
+        return f'''<recipe api id={self.api_recipe_id} recipe_title={self.recipe_title}
         recipe course={self.recipe_course} prep time ={self.prep_time}
         cook time = {self.cook_time} total recipe time = {self.total_recipe_time}
         recipe description = {self.recipe_description} servings = {self.servings}
-        image = {self.image} reviews = {self.reviews}>'''
+        image = {self.image} reviews = {self.reviews} url = {self.url}>'''
 
 class SavedRecipe(db.Model):
 
@@ -62,7 +63,7 @@ class SavedRecipe(db.Model):
                         db.ForeignKey('users.user_id'))
     saved_at = db.Column(db.DateTime, default = datetime.utcnow)
 
-    recipe = db.relationship('Recipe', backref = 'savedrecipes')
+    recipe = db.relationship('CreateRecipe', backref = 'savedrecipes')
     user = db.relationship('User', backref = 'savedrecipes')
 
     def __repr__(self):
@@ -84,7 +85,7 @@ class RecipeIngredient(db.Model):
     measurements = db.Column(db.Integer)
 
     ingredient = db.relationship('Ingredient', backref = 'recipeingredients')
-    recipe = db.relationship('Recipe', backref = 'recipeingredients')
+    recipe = db.relationship('CreateRecipe', backref = 'recipeingredients')
 
     def __repr__(self):
         return f'''<recipe ingredients ={self.recipe_ingredients} ingredient id = {self.ingredient_id}

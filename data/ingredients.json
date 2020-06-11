@@ -1,6 +1,7 @@
 [
     {
-        "recipe_id": 1,
-        "user_id": 1,
+        "ingredient_name": "cucumber",
+        "food_group": "appetizer",
+        "sweet_or_savory": "savory"
     }
 ]

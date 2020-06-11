@@ -1,19 +1,39 @@
 """ CRUD operations """
 
-from model import db, User, SavedRecipe, RecipeIngredient, Ingredient, connect_to_db
+from model import db, User, CreateRecipe, SavedRecipe, RecipeIngredient, Ingredient, connect_to_db
 
-def create_user(username, email, password, location_of_user):
+def create_user(username, email):
     """ Create and return a new user """
 
     user =  User(username = username,
                  email = email,
-                 password = password,
-                 location_of_user = location_of_user)
+                 password=password,
+                 location_of_user=location_of_user)
 
     db.session.add(user)
     db.session.commit()
 
     return user 
+
+def create_recipe(api_recipe_id, recipe_course, prep_time, cook_time, total_recipe_time,
+    recipe_description, servings, image, reviews, recipe_title):
+
+    create_recipe = CreateRecipe(api_recipe_id=api_recipe_id,
+                    recipe_course=recipe_course,
+                    prep_time=prep_time,
+                    cook_time=cook_time,
+                    total_recipe_time=total_recipe_time,
+                    recipe_description=recipe_description,
+                    servings=servings,
+                    image=image,
+                    reviews=reviews,
+                    recipe_title=recipe_title)
+
+
+    db.session.add(create_recipe)
+    db.session.commit()
+
+    return create_recipe
 
 def create_saved_recipe(recipe_id, user_id, saved_at, recipe, user):
 
@@ -49,7 +69,7 @@ def get_user_by_email(email):
 
 def get_recipes():
     """Return all recipes"""
-    return Recipe.query.all()
+    return CreateRecipe.query.all()
 
 def get_recipe_by_id(recipe_id):
     """Return a user by primary key."""

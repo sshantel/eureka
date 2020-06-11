@@ -1,9 +1,15 @@
 [{"results": 
-              {"id": 22788,
-              "image": "cucumber-tapas-2-22788.jpg",
-              "openLicense": 0,
+              {
+              "api_recipe_id": 0,
+              "recipe_course": "None",
+              "prep_time": 0,
+              "cook_time": 0,
               "readyInMinutes": 45,
+              "recipe_description" : "None",
               "servings": 4,
+              "image": "cucumber-tapas-2-22788.jpg",
+              "reviews": "None",
+              "id": 22788,
               "sourceUrl": "http://www.marthastewart.com/331783/cucumber-tapas",
               "title": "Cucumber Tapas"
           }
