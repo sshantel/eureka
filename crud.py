@@ -1,8 +1,8 @@
 """ CRUD operations """
 
-from model import db, User, CreateRecipe, SavedRecipe, RecipeIngredient, Ingredient, connect_to_db
+from model import connect_to_db, db, User, CreateRecipe, SavedRecipe, RecipeIngredient, Ingredient
 
-def create_user(username, email):
+def create_user(username, email,password, location_of_user):
     """ Create and return a new user """
 
     user =  User(username = username,

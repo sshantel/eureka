@@ -1,7 +1,5 @@
 """Server for recipe website."""
 
-#json for users
-#json for savedrecipes
 from flask import (Flask, render_template, request, flash, session, redirect) 
 
 from model import connect_to_db
@@ -16,8 +14,6 @@ import crud
 from pprint import pformat
 
 
-
-
 app = Flask(__name__)
 
 app.secret_key = "dev"
@@ -25,23 +21,39 @@ app.jinja_env.undefined = StrictUndefined
 
 API_KEY = os.environ["SPOONACULAR_KEY"]
 
-@app.route('/',methods = ['GET', 'POST'])
-def login():
+@app.route('/')
+def homepage():
     """View homepage and login."""
-    email = request.form.get('email')
-    password = request.form.get('password')
-    user = crud.get_user_by_email(email)
+    return render_template('login.html')
 
+@app.route('/search', methods=['POST'])
+def search():
+    """User searches for ingredient and amount of time they 
+    want to spend"""
+    username = request.form.get('username')
+    print(username)
+
+    email = request.form.get('email')
+    print(email)
+
+    password = request.form.get('password')
+    print(password)
+
+    location = request.form.get('location')
+    print(location)
+
+    user = crud.get_user_by_email(email)
+    print(user)
     if user:
         flash('Cannot create an account with that email. Try again.')
     else:
-        crud.create_user(email, password)
+        crud.create_user(username, email, password, location)
         flash('Account created! Please log in.')
 
     return render_template('homepage.html')
 
 @app.route('/search-results', methods=['GET']) 
-def get_ingredient_and_time():
+def search_results():
     input_ingredient = request.args.get('ingredient')
     print(input_ingredient)
     input_time = request.args.get('time')
@@ -78,14 +90,22 @@ def get_ingredient_and_time():
         print(type(int_input_time)) 
         print(f' Recipe: {recipe_title}.')
 
-    payload2 = {'id' : {id}, 
+    payload2 = {'id' : {recipe_id}, 
                 'apiKey': API_KEY}
 
-    response2 = requests.get(url + '{id}/information', params=payload2)
+    response2 = requests.get(url + '/{recipe_id}/information', params=payload2)
+
+    data2= response2.json()
+
+    # id_search_results = data2["results"]
+
+    # for id_search_result in id_search_results:
+    #     print(id_search_result)
 
     return render_template('search-results.html',
                             pformat=pformat,
                             data1=data1,
+                            data2=data2,
                             recipe_title=recipe_title,
                             recipe_id=recipe_id,
                             image=image,
@@ -132,4 +152,5 @@ def recipe_id(recipe_id):
     # return render_template('recipe_details.html')
 
 if __name__ == '__main__':
+    connect_to_db(app)
     app.run(host='0.0.0.0', debug=True)

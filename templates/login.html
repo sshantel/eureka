@@ -17,6 +17,7 @@
         class="form-control"
         type="text"
         name="username"
+        required=True
         >
         <small class="form-text text-info">
           Email
@@ -26,16 +27,28 @@
         class="form-control"
         type="text"
         name="email"
+        required=True
         ><small class="form-text text-info">
           Password
         </small>
           <input 
         id="password"
         class="form-control"
-        type="text"
+        type="password"
         name="password"
+        required=True
         >
-        <input type="submit" value="Login">
+        <small class="form-text text-info">
+          Location
+        </small>
+          <input 
+        id="location"
+        class="form-control"
+        type="text"
+        name="location"
+        required=True
+        >
+        <input type="submit">
 
 
 {% endblock %}
