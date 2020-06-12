@@ -1,8 +1,8 @@
 """ CRUD operations """
 
-from model import connect_to_db, db, User, CreateRecipe, SavedRecipe, RecipeIngredient, Ingredient
+from model import connect_to_db, db, User, CreateRecipe, SavedRecipe
 
-def create_user(username, email,password, location_of_user):
+def create_user(username, email, password, location_of_user):
     """ Create and return a new user """
 
     user =  User(username = username,
@@ -47,17 +47,6 @@ def create_saved_recipe(recipe_id, user_id, saved_at, recipe, user):
     db.session.commit()
 
     return create_saved_recipe
-
-def recipe_ingredient(measurements):
-
-    measurements = RecipeIngredient(measurements = measurements)
-
-
-def ingredient(ingredient_name, food_group, sweet_or_savory):
-
-    ingredient = Ingredient(ingredient_name = ingredient_name,
-                food_group = food_group,
-                sweet_or_savory = sweet_or_savory)
 
 def get_user_by_id(user_id):
     """Return a user by primary key."""

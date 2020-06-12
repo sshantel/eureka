@@ -1,6 +1,6 @@
 """Server for recipe website."""
 
-from flask import (Flask, render_template, request, flash, session, redirect) 
+from flask import (Flask, render_template, request, flash, session, redirect, url_for) 
 
 from model import connect_to_db
 
@@ -13,6 +13,8 @@ import crud
 
 from pprint import pformat
 
+import geocoder
+
 
 app = Flask(__name__)
 
@@ -24,12 +26,48 @@ API_KEY = os.environ["SPOONACULAR_KEY"]
 @app.route('/')
 def homepage():
     """View homepage and login."""
-    return render_template('login.html')
+    error=None
 
-@app.route('/search', methods=['POST'])
+    return render_template('login.html', error=error)
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+    """User login."""
+
+    email = request.form.get('email')
+    password = request.form.get('password')
+  
+    user = crud.get_user_by_email(email)
+
+    if user == None:
+        flash('account does not exist, sorry')
+        print(user)
+        return redirect('/')
+
+    elif password == user.password:
+        session['user'] = email
+        flash(f'successfully logged in with the {email}')
+        return redirect('/search-results')
+
+    else:
+        flash('wrong password!')
+        return redirect('/')
+
+
+@app.route('/create', methods=['GET'])
+#register
+def create():
+    """View homepage and login."""
+    return render_template('create.html')
+
+@app.route('/register', methods=['POST'])
 def search():
     """User searches for ingredient and amount of time they 
     want to spend"""
+    g = geocoder.ip('me')
+    print(g.latlng)
+
+    
     username = request.form.get('username')
     print(username)
 
@@ -57,8 +95,6 @@ def search_results():
     input_ingredient = request.args.get('ingredient')
     print(input_ingredient)
     input_time = request.args.get('time')
-    int_input_time = int(input_time)
-    print(int_input_time)
 
     url = 'https://api.spoonacular.com/recipes'
 
@@ -69,7 +105,7 @@ def search_results():
     #             'apiKey': API_KEY}
 
     payload1 = {'query': input_ingredient,
-                'maxReadyTime': int_input_time,
+                'maxReadyTime': input_time,
                 'number': 10,
                 'apiKey': API_KEY}
 
@@ -79,6 +115,8 @@ def search_results():
 
     complex_search_results = data1["results"]
 
+    list_of_recipe_ids = []
+
     for complex_result in complex_search_results:
         print(complex_result)
         recipe_title = complex_result['title'] 
@@ -86,14 +124,14 @@ def search_results():
         image = complex_result['image'] 
         print(image)
         recipe_id = complex_result['id'] 
-        print(recipe_id)
-        print(type(int_input_time)) 
+        list_of_recipe_ids.append(str(recipe_id))
+        print(recipe_id) 
         print(f' Recipe: {recipe_title}.')
 
-    payload2 = {'id' : {recipe_id}, 
+    payload2 = {'ids' : ','.join(list_of_recipe_ids),
                 'apiKey': API_KEY}
 
-    response2 = requests.get(url + '/{recipe_id}/information', params=payload2)
+    response2 = requests.get(url + '/informationBulk', params=payload2)
 
     data2= response2.json()
 
@@ -110,7 +148,7 @@ def search_results():
                             recipe_id=recipe_id,
                             image=image,
                             input_ingredient=input_ingredient,
-                            int_input_time=int_input_time,
+                            input_time=input_time,
                             complex_search_results=complex_search_results)
 
     # data = response.json()
@@ -145,11 +183,20 @@ def search_results():
 #Search Recipes Complex
 #Get Recipe Information 
 
+@app.route('/logout')
+def logout():
+    if "user" in session:
+        user = session['user']
+        flash(f'you have been logged out, {username}')
+    session.pop('user', None)
+    return redirect(url_for('login'))
+
 @app.route('/recipes/<recipe_id>')
 def recipe_id(recipe_id):
     """Show details on a particular recipe."""
     pass
     # return render_template('recipe_details.html')
+
 
 if __name__ == '__main__':
     connect_to_db(app)

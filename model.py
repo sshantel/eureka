@@ -26,7 +26,7 @@ class User(db.Model):
         password = {self.password} location of user = {self.location_of_user} created at = {self.created_at}>'''
 
 class CreateRecipe(db.Model):
-
+#update to Recipe
     __tablename__ = 'recipes'
 
     recipe_id = db.Column(db.Integer, 
@@ -43,6 +43,9 @@ class CreateRecipe(db.Model):
     reviews = db.Column(db.String)
     recipe_title = db.Column(db.String)
     url = db.Column(db.String)
+
+    users  = db.relationship('User', backref = 'recipes', secondary = 'savedrecipes')
+    
 
     def __repr__(self):
         return f'''<recipe api id={self.api_recipe_id} recipe_title={self.recipe_title}
@@ -70,40 +73,6 @@ class SavedRecipe(db.Model):
         return f'''<saved recipe id={self.saved_recipe_id} recipe_id={self.recipe_id}
         user id={self.user_id} saved at={self.saved_at}>'''
 
-
-
-class RecipeIngredient(db.Model):
-
-    __tablename__ = 'recipeingredients'
-
-    recipe_ingredients = db.Column(db.String,
-                         primary_key=True)
-    ingredient_id = db.Column(db.Integer, 
-                        db.ForeignKey('ingredients.ingredient_id'))
-    recipe_id = db.Column(db.Integer, 
-                        db.ForeignKey('recipes.recipe_id'))
-    measurements = db.Column(db.Integer)
-
-    ingredient = db.relationship('Ingredient', backref = 'recipeingredients')
-    recipe = db.relationship('CreateRecipe', backref = 'recipeingredients')
-
-    def __repr__(self):
-        return f'''<recipe ingredients ={self.recipe_ingredients} ingredient id = {self.ingredient_id}
-        recipe id = {self.recipe_id} measurements = {self.measurements}>''' 
-
-class Ingredient(db.Model):
-
-    __tablename__ = 'ingredients'     
-
-    ingredient_id = db.Column(db.Integer, 
-                        primary_key=True)
-    ingredient_name = db.Column(db.String)
-    food_group = db.Column(db.String)
-    sweet_or_savory = db.Column(db.String)
-
-    def __repr__(self):
-        return f'''<ingredient id ={self.ingredient_id} ingredient name = {self.ingredient_name}
-        food group = {self.food_group} sweet or savory = {self.sweet_or_savory}>''' 
     
 def connect_to_db(flask_app, db_uri='postgresql:///recipe', echo=False):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
