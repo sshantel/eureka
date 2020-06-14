@@ -3,32 +3,20 @@
 {% block title %}{% endblock %}
 
 {% block content %}
+
 <h1> Welcome, please login! </h1>
+
 {% if error %}
 <p class=error><strong>Error:</strong> {{ error }}
 {% endif %}
-<form method="POST" action="/login">
-        <small class="form-text text-info">
-          Email
-        </small>
-        <input 
-        id="email"
-        class="form-control"
-        type="text"
-        name="email"
-        required=True
-        ><small class="form-text text-info">
-          Password
-        </small>
-          <input 
-        id="password"
-        class="form-control"
-        type="password"
-        name="password"
-        required=True
-        >
 
-         <input type="submit">
+<form method="POST" action="/share_or_learn">
+        <small class="form-text text-info"> Email </small>
+        <input id="email" class="form-control" type="text" name="email" required=True>
+        <small class="form-text text-info"> Password </small>
+        <input id="password" class="form-control" type="password" name="password"required=True>
+    <input type="submit">
+</form>
 
 <h3> Don't have an account yet? Please register <a href="{{ url_for('create') }}">here. </a></h3>
 
