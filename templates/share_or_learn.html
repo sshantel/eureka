@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+  <h1>Hello there! What would you like to do today?</h1>
+  <li> <a href="/logout">Log Out </a></li>
+
+  <ul>
+    <form method="POST"/ action="/search">
+      <div class="form-group">
+        <label for="learn"> </label>
+        <br>
+        <small class="form-text text-success">
+         <b> Learn. </b> I want to find a recipe!   </small>
+         <input type="input" value = "learn" name="learn">
+         <input type=submit>
+    </div>
+    <br>
+
+    <form method="POST"/ action="/share">
+    <div class="form-group">
+      <label for="share"></label>
+      <br>
+      <small class="form-text text-success">
+     <b>Share. </b>I'd love to share a recipe! </small>
+      <input type="input" value="share" name="share">
+      <input type=submit>
+    </form>
+  </ul>
+
+{% endblock %}

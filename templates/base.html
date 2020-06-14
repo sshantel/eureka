@@ -10,24 +10,20 @@
 
 <li> <a href="#">My Account </a></li>
 
-
-
     <title>    </title>
-  {% with messages = get_flashed_messages() %}
+{% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
-    <ul class=flashes><div class="alert alert-danger" role="alert">
-    {% for message in messages %}
-      <p>{{ message }}</p>
+    <ul class=flashes>
+    {% for error, message in messages %}
+    <li class="alert alert-{{ error }}" role="alert"> {{ message }} </li>
     {% endfor %}
     </ul>
-  {% endif %} 
-  {% endwith %}
+  {% endif %}
+{% endwith %}
       {% block title %}{% endblock %}
   </head>
-
-  <body>
-
-<br>
+  <body> 
+  <br>
 
     {% block content %}{% endblock %}
  

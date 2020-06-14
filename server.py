@@ -28,43 +28,40 @@ def homepage():
 
     return render_template('login.html', error=error)
 
+@app.route('/share_or_learn', methods =['GET'])
+def share_or_learn():
+    return render_template('share_or_learn.html')
+
 @app.route('/login', methods=['POST'])
 def login():
 
     """User login."""
-
     email = request.form.get('email')
     password = request.form.get('password')
     user = crud.get_user_by_email(email)
 
     if user == None:
-        flash('Account does not exist, sorry. Please sign up with an account.')
+        flash('Account does not exist, sorry. Please sign up with an account.', 'danger')
+
         print(user)
         return redirect('/')
 
     elif password == user.password:
         session['user'] = email
-        flash(f'Successfully logged in with the email {email}!')
-        return render_template('share_or_learn.html')
+        flash(f'Successfully logged in with the email {email}!','success')
+        return redirect(url_for('share_or_learn'))
+        # return redirect('/share_or_learn')
 
     else:
-        flash('Wrong password! Please try again.')
+        flash('Wrong password! Please try again.','danger')
         return redirect('/')
-
-    if request.method == 'POST':
-        return render_template('share_or_learn.html')
-
-@app.route('/share_or_learn', methods =['POST'])
-def share_or_learn():
-    return render_template('share_or_learn.html')
 
 #@app.route('/share', methods=['GET'])
     #pass
 
-@app.route('/create', methods=['GET'])
-#register
-def create(): 
-    return render_template('create.html')
+@app.route('/signup', methods=['GET'])
+def signup(): 
+    return render_template('signup.html')
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -79,23 +76,21 @@ def register():
 
     print(user)
     if user:
-        flash('Cannot create an account with that email. Try again.')
+        flash('Cannot create an account with that email. Try again.', 'danger')
     else:
         crud.create_user(username, email, password, location)
-        flash('Account created! Please log in.')
+        flash('Account created! Please log in.', 'success')
 
-    return render_template('homepage.html')
+    return render_template('search.html')
 
-@app.route('/search', methods=['POST'])
+@app.route('/search')
 def search():
-    learn = request.form.get('learn')
-    return render_template('homepage.html')
+    return render_template('search.html')
     
     # share = request.form.get('share')
     #return render_template share
     #would i just use request.method = post vs get to render two diff
     #templates depending on what the user chooses?
-
 
 @app.route('/search_results', methods=['GET']) 
 def search_results():
@@ -164,9 +159,6 @@ def search_results():
                             input_ingredient=input_ingredient,
                             input_time=input_time,
                             complex_search_results=complex_search_results)
-
-#Search Recipes Complex
-#Get Recipe Information 
 
 @app.route('/logout')
 def logout():

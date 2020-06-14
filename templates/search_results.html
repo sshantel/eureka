@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %} YAY RECIPES!! {% endblock %}
+
+{% block content %}
+
+  <pre>{{ pformat(data1) }}</pre>
+  <pre>{{ pformat(data2) }}</pre>
+    <div class="row">
+      <div class="col">
+        <div id="results-as-json"> 
+
+<b> so you'd like to cook with {{ input_ingredient }} in under {{ input_time }} minutes </b>
+
+{% for complex_result in complex_search_results %}
+      <br>
+      <a href="{{ url }}">{{ complex_result.title}}
+{#     <a href="{{ complex_result.sourceUrl }}"> {{ complex_result.title }}</a>  #}
+      <br>
+    <a href="https://spoonacular.com/recipeImages/{{ complex_result['id'] }}-636x393.jpg"> image: {{ complex_result['id'] }} 
+      <br>
+      <button> save recipe </button>
+      <br>
+      <button> text recipe to phone </button>
+    </a>
+    <br>
+    </a>
+    <br>
+      <br>
+{% endfor %}  
+
+        </div> 
+      </div>
+    </div>
+
+{% endblock %}
+
+
+
+{# {% extends 'base.html' %}
+
+{% block title %} YAY RECIPES!! {% endblock %}
+
+{% block content %}
+
+  <pre>{{ pformat(data) }}</pre>
+    
+    <div class="row">
+      <div class="col">
+        <div id="results-as-json"> 
+
+<b> so you'd like to cook with {{ input_ingredient }} in under {{ int_input_time}} minutes </b>
+
+{% for result in recipe_results %}
+      <br>
+    <a href="{{ result.sourceUrl }}"> {{ result.title }}</a> 
+      <button> save recipe </button>
+      <button> text recipe to phone </button>
+      <br>
+    <a href="https://spoonacular.com/recipeImages/{{ result['id'] }}-636x393.jpg"> image: {{ result['id'] }} </a>
+    <br>
+      <br>
+{% endfor %}  
+
+        </div> 
+      </div>
+    </div>
+
+{% endblock %}
+ #}

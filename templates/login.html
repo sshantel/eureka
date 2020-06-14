@@ -10,7 +10,7 @@
 <p class=error><strong>Error:</strong> {{ error }}
 {% endif %}
 
-<form method="POST" action="/share_or_learn">
+<form method="POST" action="/login">
         <small class="form-text text-info"> Email </small>
         <input id="email" class="form-control" type="text" name="email" required=True>
         <small class="form-text text-info"> Password </small>
@@ -18,6 +18,6 @@
     <input type="submit">
 </form>
 
-<h3> Don't have an account yet? Please register <a href="{{ url_for('create') }}">here. </a></h3>
+<h3> Don't have an account yet? Please register <a href="{{ url_for('signup') }}">here. </a></h3>
 
 {% endblock %}
