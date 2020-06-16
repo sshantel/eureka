@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %} YAY RECIPES!! {% endblock %}
+{% block title %} {% endblock %}
 
 {% block content %}
+
+<li> <a href="#">My Account </a></li>
+<li> <a href="/favorites">Favorites</a></li>
+<li> <a href="/logout">Log Out </a></li>
 
   <pre>{{ pformat(data1) }}</pre>
   <pre>{{ pformat(data2) }}</pre>
@@ -22,6 +26,7 @@
     <div class="vegetarian"> <b> Vegetarian: </b> {{ vegetarian }} </div>
     <div class="servings"> <b> Servings: </b> {{ servings }} </div>
     <div class="recipe-summary"> <b> Recipe Summary: </b>{{ recipe_summary }} </div>
+    <div id="favorite-status">TEST </div>
     <button id="favorite-recipe" method="POST" name="{{ complex_recipe_name }}" value="{{ complex_recipe_id }}"> favorite recipe</button>
 </form>
       <br>

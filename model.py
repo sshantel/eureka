@@ -40,14 +40,14 @@ class Recipe(db.Model):
     servings = db.Column(db.Integer)
     image = db.Column(db.String)
     reviews = db.Column(db.String)
-    recipe_title = db.Column(db.String)
+    recipe_name = db.Column(db.String)
     url = db.Column(db.String)
 
     users  = db.relationship('User', backref = 'recipes', secondary = 'savedrecipes')
     
 
     def __repr__(self):
-        return f'''<recipe api id={self.api_recipe_id} recipe_title={self.recipe_title}
+        return f'''<recipe api id={self.api_recipe_id} recipe_name={self.recipe_name}
         recipe course={self.recipe_course} prep time ={self.prep_time}
         cook time = {self.cook_time} total recipe time = {self.total_recipe_time}
         recipe description = {self.recipe_description} servings = {self.servings}
@@ -59,6 +59,7 @@ class SavedRecipe(db.Model):
 
     saved_recipe_id = db.Column(db.Integer, 
                         primary_key=True)
+    recipe_name = db.Column(db.String, db.ForeignKey('recipes.recipe_name'))
     recipe_id = db.Column(db.Integer, 
                         db.ForeignKey('recipes.recipe_id'))
     user_id = db.Column(db.Integer, 

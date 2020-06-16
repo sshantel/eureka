@@ -35,15 +35,14 @@ def create_recipe(api_recipe_id, recipe_course, prep_time, cook_time, total_reci
 
     return create_recipe
 
-def create_saved_recipe(recipe_id, user_id, saved_at, recipe, user):
+def create_saved_recipe(recipe_id, user_id, recipe_name, user):
 
 
     create_saved_recipe = SavedRecipe(user_id = user_id,
-                                    saved_at = saved_at,
-                                    recipe = recipe,
+                                    recipe_name = recipe_name,
                                     user = user)
 
-    db.session.add(recipe)
+    db.session.add(create_saved_recipe)
     db.session.commit()
 
     return create_saved_recipe

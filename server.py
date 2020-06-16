@@ -113,8 +113,7 @@ def search_results():
 
     data1 = response1.json()
 
-
-    complex_search_results = data1["results"]
+    complex_search_results = data1['results']
 
     list_of_recipe_ids = []
 
@@ -131,7 +130,6 @@ def search_results():
     response2 = requests.get(url + '/informationBulk', params=payload2)
 
     data2= response2.json()
-
 
     information_bulk_results = data2
 
@@ -159,6 +157,7 @@ def search_results():
                             input_ingredient=input_ingredient,
                             vegetarian=vegetarian,
                             input_time=input_time,
+                            complex_result=complex_result,
                             complex_search_results=complex_search_results,
                             complex_recipe_name=complex_recipe_name)
 
@@ -173,15 +172,26 @@ def logout():
 
 @app.route('/favorite', methods=['POST'])
 def favorite():
-    favorite = request.args.get('favoriteName')
-    print('*********favorite')
-    print(favorite)
-    recipe_id = request.args.get('recipeId')
-    print('*********recipe_id')
+
+    STATUS = {'favorite' : 'favorited',
+              'unfavorite' :'unfavorited'}
+
+    recipe_name = request.form.get('favoriteName')
+    recipe_id = request.form.get('recipeId')
+    print(recipe_name)
     print(recipe_id)
+    email = 'chantelyip422@gmail.com'
+    user = crud.get_user_by_email(email)
+    user_id = crud.get_user_by_id(1)
+
+    crud.create_saved_recipe(recipe_id, user_id, recipe_name, user)
     #dictionary of key value pairs of statuses
 
     return "This recipe has been favorited!"
+
+@app.route('/favorites')
+def favorites():
+    return render_template('favorites.html')
 
 @app.route('/recipes/<recipe_id>')
 def recipe_id(recipe_id):
