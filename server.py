@@ -174,13 +174,13 @@ def logout():
     flash('You have been logged out!', 'info') 
     return render_template('login.html', error=error)
 
-@app.route('/favorite', methods=['POST'])
-def favorite():
+@app.route('/saved_recipes', methods=['POST'])
+def saved_recipes():
 
     STATUS = {'favorite' : 'favorited',
               'unfavorite' :'unfavorited'}
 
-    recipe_name = request.form.get('favoriteName')
+    recipe_name = request.form.get('savedRecipe')
     recipe_id = request.form.get('recipeId')
     print(recipe_name)
     print(recipe_id)

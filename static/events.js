@@ -1,22 +1,22 @@
 "use strict";
 
-document.querySelector('#favorite-recipe').addEventListener('click', (evt) => {
+document.querySelector('#saved-recipes').addEventListener('click', (evt) => {
   const btn = evt.target;
 
-  const favoriteRecipes = {
+  const savedRecipes = {
     'recipeId': btn.value,
-    'favoriteName': btn.name
+    'savedRecipe': btn.name
   };
         console.log(btn.value)
         console.log(btn.name)
 
-if (btn.textContent === 'favorite recipe') {
-    $.post('/favorite', favoriteRecipes, (response) => {
+if (btn.textContent === 'save recipe') {
+    $.post('/saved_recipes', savedRecipes, (response) => {
         console.log(response)
-        btn.textContent = 'unfavorite recipe';
+        btn.textContent = 'unsave recipe';
     });
   } else {
-    btn.textContent = 'favorite recipe';
+    btn.textContent = 'save recipe';
   }
 });
 

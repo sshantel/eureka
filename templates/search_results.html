@@ -25,7 +25,7 @@
     <div id="dish-type" name="dish-type"> <b> Dish Types: </b> {{ dish_types }} </div>
     <div class="servings"> <b> Servings: </b> {{ servings }} </div>
     <div class="recipe-summary"> <b> Recipe Summary: </b>{{ recipe_summary }} </div>
-    <button id="favorite-recipe" method="POST" name="{{ complex_recipe_name }}" value="{{ complex_recipe_id }}"> favorite recipe</button>
+    <button id="saved-recipes" method="POST" name="{{ complex_recipe_name }}" value="{{ complex_recipe_id }}"> favorite recipe</button>
     <div id="dish-type" name="dish-type"> 
 </form> 
     <button> text recipe to phone </button>
@@ -39,36 +39,3 @@
 
 {% endblock %}
 
-
-
-{# {% extends 'base.html' %}
-
-{% block title %} YAY RECIPES!! {% endblock %}
-
-{% block content %}
-
-  <pre>{{ pformat(data) }}</pre>
-    
-    <div class="row">
-      <div class="col">
-        <div id="results-as-json"> 
-
-<b> so you'd like to cook with {{ input_ingredient }} in under {{ int_input_time}} minutes </b>
-
-{% for result in recipe_results %}
-      <br>
-    <a href="{{ result.sourceUrl }}"> {{ result.title }}</a> 
-      <button> save recipe </button>
-      <button> text recipe to phone </button>
-      <br>
-    <a href="https://spoonacular.com/recipeImages/{{ result['id'] }}-636x393.jpg"> image: {{ result['id'] }} </a>
-    <br>
-      <br>
-{% endfor %}  
-
-        </div> 
-      </div>
-    </div>
-
-{% endblock %}
- #}
