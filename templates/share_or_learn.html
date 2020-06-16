@@ -5,7 +5,14 @@
 {% block content %}
 
   <h1>Hello there! What would you like to do today?</h1>
-  <li> <a href="/logout">Log Out </a></li>
+
+{#   {% if user %}
+ <font>   Welcome {{ user }}</font>
+{% else %}
+    <a href="{{ url_for('signup') }}"> Sign Up</a></li>
+{% endif %} #}
+
+   <a href="/logout">Log Out </a>
 
   <ul>
     <form method="POST"/ action="/search">

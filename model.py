@@ -25,8 +25,7 @@ class User(db.Model):
         return f'''<User user_id={self.user_id} username={self.username} email={self.email}
         password = {self.password} location of user = {self.location_of_user} created at = {self.created_at}>'''
 
-class CreateRecipe(db.Model):
-#update to Recipe
+class Recipe(db.Model):
     __tablename__ = 'recipes'
 
     recipe_id = db.Column(db.Integer, 
@@ -66,7 +65,7 @@ class SavedRecipe(db.Model):
                         db.ForeignKey('users.user_id'))
     saved_at = db.Column(db.DateTime, default = datetime.utcnow)
 
-    recipe = db.relationship('CreateRecipe', backref = 'savedrecipes')
+    recipe = db.relationship('Recipe', backref = 'savedrecipes')
     user = db.relationship('User', backref = 'savedrecipes')
 
     def __repr__(self):

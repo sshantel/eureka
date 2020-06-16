@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+<li> <a href="#">My Account </a></li>
+<li> <a href="#">Favorites</a></li>
+<li> <a href="/logout">Log Out </a></li>
+
+
+  <h1>Let's get cooking!</h1>
+
+  <ul>
+    <form method="GET"/ action="/search_results">
+      <div class="form-group">
+        <label for="search-ingredient"> Ingredient </label>
+        <br>
+        <small class="form-text text-success">
+          What ingredient(s) would you like to cook with today? </small>
+         <input id="search-ingredient" class="form-control" type="text" name="ingredient">
+    </div>
+    <br>
+
+    <div class="form-group">
+      <label for="search-time">Time</label>
+      <br>
+      <small class="form-text text-success">
+      How much time(max) in minutes would you like to spend? </small>
+      <input id="search-time" class="form-control" type="text" name="time">
+      <input type="submit" value="Look for recipes!">
+    </form>
+  </ul>
+
+{% endblock %}

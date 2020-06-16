@@ -29,7 +29,7 @@ def homepage():
     return render_template('login.html', error=error)
 
 @app.route('/share_or_learn', methods =['GET'])
-def share_or_learn():
+def share_or_learn(): 
     return render_template('share_or_learn.html')
 
 @app.route('/login', methods=['POST'])
@@ -48,8 +48,9 @@ def login():
 
     elif password == user.password:
         session['user'] = email
+        user = crud.get_user_by_email(email) 
         flash(f'Successfully logged in with the email {email}!','success')
-        return redirect(url_for('share_or_learn'))
+        return redirect(url_for('share_or_learn', user=user, email=email))
         # return redirect('/share_or_learn')
 
     else:
@@ -83,7 +84,7 @@ def register():
 
     return render_template('search.html')
 
-@app.route('/search')
+@app.route('/search', methods= ['POST'])
 def search():
     return render_template('search.html')
     
@@ -98,7 +99,6 @@ def search_results():
     want to spend"""
 
     input_ingredient = request.args.get('ingredient')
-    print(input_ingredient)
     input_time = request.args.get('time')
 
     url = 'https://api.spoonacular.com/recipes'
@@ -112,23 +112,17 @@ def search_results():
     response1 = requests.get(url + '/complexSearch', params=payload1)
 
     data1 = response1.json()
-    print(data1)
-    print(type(data1))
+
 
     complex_search_results = data1["results"]
-    print(f'this is complex search{complex_search_results}')
 
     list_of_recipe_ids = []
 
     for complex_result in complex_search_results:
-        print(complex_result)
         recipe_title = complex_result['title'] 
-        print(recipe_title)
         image = complex_result['image'] 
-        print(image)
         recipe_id = complex_result['id'] 
         list_of_recipe_ids.append(str(recipe_id))
-        print(recipe_id) 
         print(f' Recipe: {recipe_title}.')
 
     payload2 = {'ids' : ','.join(list_of_recipe_ids),
@@ -137,28 +131,36 @@ def search_results():
     response2 = requests.get(url + '/informationBulk', params=payload2)
 
     data2= response2.json()
-    print(data2)
-    print(type(data2))
+
 
     information_bulk_results = data2
 
     for information_bulk_result in information_bulk_results:
         print(information_bulk_result)
+        recipe_summary = information_bulk_result['summary']
         url = information_bulk_result['sourceUrl']
+        servings = information_bulk_result['servings']
+        vegetarian = information_bulk_result['vegetarian']
+        complex_recipe_id = information_bulk_result['id']
+        complex_recipe_name = information_bulk_result['title']
         print(url)
-   
 
     return render_template('search_results.html',
                             pformat=pformat,
+                            servings=servings,
                             url=url,
                             data1=data1,
                             data2=data2,
+                            recipe_summary=recipe_summary,
                             recipe_title=recipe_title,
                             recipe_id=recipe_id,
+                            complex_recipe_id=complex_recipe_id,
                             image=image,
                             input_ingredient=input_ingredient,
+                            vegetarian=vegetarian,
                             input_time=input_time,
-                            complex_search_results=complex_search_results)
+                            complex_search_results=complex_search_results,
+                            complex_recipe_name=complex_recipe_name)
 
 @app.route('/logout')
 def logout():
@@ -166,8 +168,20 @@ def logout():
     if "user" in session:
         user = session['user']
     session.pop("user", None)
-    flash('You have been logged out!', 'info') #info=category for message
-    return render_template('login.html', error= error)
+    flash('You have been logged out!', 'info') 
+    return render_template('login.html', error=error)
+
+@app.route('/favorite', methods=['POST'])
+def favorite():
+    favorite = request.args.get('favoriteName')
+    print('*********favorite')
+    print(favorite)
+    recipe_id = request.args.get('recipeId')
+    print('*********recipe_id')
+    print(recipe_id)
+    #dictionary of key value pairs of statuses
+
+    return "This recipe has been favorited!"
 
 @app.route('/recipes/<recipe_id>')
 def recipe_id(recipe_id):
