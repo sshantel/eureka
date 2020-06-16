@@ -18,18 +18,16 @@
 
 {% for complex_result in complex_search_results %}
       <br>
-  <a href="{{ url }}">{{ complex_result.title}}</a>
-      <br>
-  <a href="https://spoonacular.com/recipeImages/{{ complex_result['id'] }}-636x393.jpg"> image </a>
-      <br>
+  <div class="recipe-name"> <b>Recipe name:</b> <a href="{{ url }}">{{ complex_result.title}}</a></div>
+  <div class="recipe-image"><b> Recipe image: <a href="https://spoonacular.com/recipeImages/{{ complex_result['id'] }}-636x393.jpg"> image </a> </div>
     <div class="recipe-id"><b> Recipe ID:</b> {{recipe_id}} </div>
     <div class="vegetarian"> <b> Vegetarian: </b> {{ vegetarian }} </div>
+    <div id="dish-type" name="dish-type"> <b> Dish Types: </b> {{ dish_types }} </div>
     <div class="servings"> <b> Servings: </b> {{ servings }} </div>
     <div class="recipe-summary"> <b> Recipe Summary: </b>{{ recipe_summary }} </div>
-    <div id="favorite-status">TEST </div>
     <button id="favorite-recipe" method="POST" name="{{ complex_recipe_name }}" value="{{ complex_recipe_id }}"> favorite recipe</button>
-</form>
-      <br>
+    <div id="dish-type" name="dish-type"> 
+</form> 
     <button> text recipe to phone </button>
       <br>
       {{ complex_recipe_id }}

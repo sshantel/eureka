@@ -38,9 +38,10 @@ def create_recipe(api_recipe_id, recipe_course, prep_time, cook_time, total_reci
 def create_saved_recipe(recipe_id, user_id, recipe_name, user):
 
 
-    create_saved_recipe = SavedRecipe(user_id = user_id,
-                                    recipe_name = recipe_name,
-                                    user = user)
+    create_saved_recipe = SavedRecipe(recipe_name = recipe_name,
+                                      recipe_id=recipe_id,
+                                      user_id=user_id,
+                                      user = user)
 
     db.session.add(create_saved_recipe)
     db.session.commit()
@@ -62,6 +63,11 @@ def get_recipes():
 def get_recipe_by_id(recipe_id):
     """Return a user by primary key."""
     return User.query.get(recipe_id)
+
+def get_all_saved_recipes(user_id):
+    """Return a user's saved recipes"""
+    return SavedRecipe.query.get(user_id)
+
 
 
 if __name__ == '__main__':

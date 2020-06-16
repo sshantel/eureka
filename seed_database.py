@@ -22,33 +22,35 @@ def seed_users():
         email = user['email']
         password = user['password']
         location_of_user = user['location_of_user']
+        crud.create_user(username, email, password, location_of_user)
 
-    crud.create_user(username, email, password, location_of_user)
-
+    
 seed_users()
 
-def seed_recipes():
+model.db.session.commit()
 
-    with open('data/recipes.json') as f:
-        recipe_data = json.loads(f.read())
+# def seed_recipes():
 
-    for recipe in recipe_data:
-        api_recipe_id = recipe['results']['api_recipe_id']
-        recipe_course = recipe['results']['recipe_course']
-        prep_time = recipe['results']['prep_time']
-        cook_time = recipe['results']['cook_time']
-        total_recipe_time = recipe['results']['readyInMinutes']
-        recipe_description = recipe['results']['recipe_description']
-        servings = recipe['results']['servings']
-        image = recipe['results']['image']
-        url = recipe['results']['sourceUrl']
-        reviews = recipe['results']['reviews']
-        recipe_title = recipe['results']['title']
+#     with open('data/recipes.json') as f:
+#         recipe_data = json.loads(f.read())
 
-    crud.create_recipe(api_recipe_id, recipe_course, prep_time, cook_time, total_recipe_time,
-    recipe_description, servings, image, reviews, recipe_title)
+#     for recipe in recipe_data:
+#         api_recipe_id = recipe['results']['api_recipe_id']
+#         recipe_course = recipe['results']['recipe_course']
+#         prep_time = recipe['results']['prep_time']
+#         cook_time = recipe['results']['cook_time']
+#         total_recipe_time = recipe['results']['readyInMinutes']
+#         recipe_description = recipe['results']['recipe_description']
+#         servings = recipe['results']['servings']
+#         image = recipe['results']['image']
+#         url = recipe['results']['sourceUrl']
+#         reviews = recipe['results']['reviews']
+#         recipe_title = recipe['results']['title']
 
-seed_recipes()
+#     crud.create_recipe(api_recipe_id, recipe_course, prep_time, cook_time, total_recipe_time,
+#     recipe_description, servings, image, reviews, recipe_title)
+
+# seed_recipes()
 
 def seed_recipe_ingredients():
 

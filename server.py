@@ -141,12 +141,16 @@ def search_results():
         vegetarian = information_bulk_result['vegetarian']
         complex_recipe_id = information_bulk_result['id']
         complex_recipe_name = information_bulk_result['title']
+        dish_types2 = information_bulk_result['dishTypes']
+        print(dish_types2)
+        dish_types =', '.join(dish_types2)
         print(url)
 
     return render_template('search_results.html',
                             pformat=pformat,
                             servings=servings,
                             url=url,
+                            dish_types=dish_types,
                             data1=data1,
                             data2=data2,
                             recipe_summary=recipe_summary,
@@ -180,10 +184,12 @@ def favorite():
     recipe_id = request.form.get('recipeId')
     print(recipe_name)
     print(recipe_id)
-    email = 'chantelyip422@gmail.com'
-    user = crud.get_user_by_email(email)
-    user_id = crud.get_user_by_id(1)
-
+    email = session['user'] 
+    print(f' EMAIL* {email}.')
+    user = crud.get_user_by_email(email) 
+    print(user)
+    user_id = user.user_id
+    print(user_id)
     crud.create_saved_recipe(recipe_id, user_id, recipe_name, user)
     #dictionary of key value pairs of statuses
 
@@ -191,6 +197,7 @@ def favorite():
 
 @app.route('/favorites')
 def favorites():
+    get_all_saved_recipes(user_id)
     return render_template('favorites.html')
 
 @app.route('/recipes/<recipe_id>')
