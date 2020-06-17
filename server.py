@@ -88,10 +88,6 @@ def register():
 def search():
     return render_template('search.html')
     
-    # share = request.form.get('share')
-    #return render_template share
-    #would i just use request.method = post vs get to render two diff
-    #templates depending on what the user chooses?
 
 @app.route('/search_results', methods=['GET']) 
 def search_results():
@@ -177,34 +173,36 @@ def logout():
 @app.route('/saved_recipes', methods=['POST'])
 def saved_recipes():
 
-    STATUS = {'favorite' : 'favorited',
-              'unfavorite' :'unfavorited'}
+    # STATUS = {'favorite' : 'favorited',
+    #           'unfavorite' :'unfavorited'}
 
-    recipe_name = request.form.get('savedRecipe')
-    recipe_id = request.form.get('recipeId')
-    print(recipe_name)
-    print(recipe_id)
+    link_to_recipe = request.form.get('link_to_recipe')
+    print('link to recipe', link_to_recipe)
+    recipe_id = request.form.get('recipe_id') 
     email = session['user'] 
     print(f' EMAIL* {email}.')
     user = crud.get_user_by_email(email) 
-    print(user)
+    print('user', user)
     user_id = user.user_id
-    print(user_id)
-    crud.create_saved_recipe(recipe_id, user_id, recipe_name, user)
-    #dictionary of key value pairs of statuses
-
+    print('user id', user_id) 
+    # recipe_name = crud.get_recipe_name_by_recipe_id
+    # recipe_id = crud.get_recipe_ids_a_user_has_favorited(user_id)
+    print('recipe id', recipe_id)
+    # link_to_recipe = crud.get_link_by_recipe_id(recipe_id)
+    crud.create_saved_recipe(recipe_id, user_id, user, link_to_recipe)
     return "This recipe has been favorited!"
+        #dictionary of key value pairs of statuses
+    #ADD URL
 
-@app.route('/favorites')
-def favorites():
-    get_all_saved_recipes(user_id)
-    return render_template('favorites.html')
-
-@app.route('/recipes/<recipe_id>')
-def recipe_id(recipe_id):
-    """Show details on a particular recipe."""
-    pass
-    # return render_template('recipe_details.html')
+@app.route('/user_saved_recipes')
+def user_saved_recipes():
+    email = session['user']  
+    user = crud.get_user_by_email(email) 
+    user_id = user.user_id 
+    recipe_id = crud.get_recipe_ids_a_user_has_favorited(user_id)
+    print(recipe_id)
+    saved_recipes = crud.get_all_saved_recipes(user_id)
+    return render_template('saved_recipes.html', user=user, saved_recipes=saved_recipes, recipe_id=recipe_id)
 
 
 if __name__ == '__main__':

@@ -4,22 +4,23 @@ document.querySelector('#saved-recipes').addEventListener('click', (evt) => {
   const btn = evt.target;
 
   const savedRecipes = {
-    'recipeId': btn.value,
-    'savedRecipe': btn.name
+    'link_to_recipe': btn.value,
+    'recipe_id': btn.name, 
   };
         console.log(btn.value)
-        console.log(btn.name)
+        console.log(btn.name)   
 
-if (btn.textContent === 'save recipe') {
+if (btn.innerHTML === 'save recipe') {
     $.post('/saved_recipes', savedRecipes, (response) => {
         console.log(response)
-        btn.textContent = 'unsave recipe';
+        btn.innerHTML = 'unsave recipe';
     });
   } else {
-    btn.textContent = 'save recipe';
+    btn.innerHTML = 'save recipe';
   }
 });
 
 
  
 
+ 

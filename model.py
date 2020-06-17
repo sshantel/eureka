@@ -60,7 +60,9 @@ class SavedRecipe(db.Model):
                         primary_key=True,
                         autoincrement=True)
     recipe_name = db.Column(db.String)
-    recipe_id = db.Column(db.Integer)
+    recipe_id = db.Column(db.Integer,
+                         unique = True)
+    link_to_recipe = db.Column(db.String) 
     user_id = db.Column(db.Integer, 
                         db.ForeignKey('users.user_id'))
     saved_at = db.Column(db.DateTime, default = datetime.utcnow)

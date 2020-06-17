@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
 
-{% block title %}Favorites{% endblock %}
+{% block title %}Welcome to your saved recipes{% endblock %}
 
 {% block content %}
-<li> favorited recipe
-<div> </div>
+<div>  
 
-</li>
+{% for recipe in saved_recipes %}
+<ul> 
+<li> <img src="https://spoonacular.com/recipeImages/{{ recipe.recipe_id }}-636x393.jpg"> <a href="{{ recipe.link_to_recipe }}"> {{ recipe.recipe_name }} </a>
+
+</div>
+
+</ul>
+{% endfor %}
 {% endblock %}

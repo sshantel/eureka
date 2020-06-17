@@ -5,7 +5,7 @@
 {% block content %}
 
 <li> <a href="#">My Account </a></li>
-<li> <a href="/favorites">Favorites</a></li>
+<li> <a href="/user_saved_recipes">Saved Recipes</a></li>
 <li> <a href="/logout">Log Out </a></li>
 
   <pre>{{ pformat(data1) }}</pre>
@@ -19,13 +19,13 @@
 {% for complex_result in complex_search_results %}
       <br>
   <div class="recipe-name"> <b>Recipe name:</b> <a href="{{ url }}">{{ complex_result.title}}</a></div>
-  <div class="recipe-image"><b> Recipe image: <a href="https://spoonacular.com/recipeImages/{{ complex_result['id'] }}-636x393.jpg"> image </a> </div>
+  <div class="recipe-image"><b> <img src ="https://spoonacular.com/recipeImages/{{ complex_result['id'] }}-636x393.jpg"> </a> </div>
     <div class="recipe-id"><b> Recipe ID:</b> {{recipe_id}} </div>
     <div class="vegetarian"> <b> Vegetarian: </b> {{ vegetarian }} </div>
     <div id="dish-type" name="dish-type"> <b> Dish Types: </b> {{ dish_types }} </div>
     <div class="servings"> <b> Servings: </b> {{ servings }} </div>
-    <div class="recipe-summary"> <b> Recipe Summary: </b>{{ recipe_summary }} </div>
-    <button id="saved-recipes" method="POST" name="{{ complex_recipe_name }}" value="{{ complex_recipe_id }}"> favorite recipe</button>
+    <div class="recipe-summary"> {{ recipe_summary }} </div>
+    <button id="saved-recipes" method="POST" name="{{ complex_recipe_id }}" value="{{ url }}" >save recipe</button>
     <div id="dish-type" name="dish-type"> 
 </form> 
     <button> text recipe to phone </button>
@@ -37,5 +37,8 @@
       </div>
     </div>
 
-{% endblock %}
+{# {{ complex_recipe_name }}
+ #}{% endblock %}{# 
+
+{{ complex_recipe_id }} #}
 
