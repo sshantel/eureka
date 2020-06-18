@@ -3,42 +3,44 @@
 {% block title %} {% endblock %}
 
 {% block content %}
+ 
 
 <li> <a href="#">My Account </a></li>
 <li> <a href="/user_saved_recipes">Saved Recipes</a></li>
 <li> <a href="/logout">Log Out </a></li>
 
   <pre>{{ pformat(data1) }}</pre>
-  <pre>{{ pformat(data2) }}</pre>
-    <div class="row">
-      <div class="col">
-        <div id="results-as-json"> 
+  <pre>{{ pformat(br) }}</pre>
 
 <i> so you'd like to cook with {{ input_ingredient }} in under {{ input_time }} minutes </i>
 
-{% for complex_result in complex_search_results %}
-      <br>
-  <div class="recipe-name"> <b>Recipe name:</b> <a href="{{ url }}">{{ complex_result.title}}</a></div>
-  <div class="recipe-image"><b> <img src ="https://spoonacular.com/recipeImages/{{ complex_result['id'] }}-636x393.jpg"> </a> </div>
-    <div class="recipe-id"><b> Recipe ID:</b> {{recipe_id}} </div>
-    <div class="vegetarian"> <b> Vegetarian: </b> {{ vegetarian }} </div>
-    <div id="dish-type" name="dish-type"> <b> Dish Types: </b> {{ dish_types }} </div>
-    <div class="servings"> <b> Servings: </b> {{ servings }} </div>
-    <div class="recipe-summary"> {{ recipe_summary }} </div>
-    <button id="saved-recipes" method="POST" name="{{ complex_recipe_id }}" value="{{ url }}" >save recipe</button>
-    <div id="dish-type" name="dish-type"> 
-</form> 
+{# {% for complex_result in complex_search_results %}
+
+  <div class="recipe-name"> <b>Recipe name:</b> <a href="{{ url }}">{{ complex_result.title }}</a></div>
+
+  <div class="recipe-image"><b> <img src ="https://spoonacular.com/recipeImages/{{ complex_result.id }}-636x393.jpg"> </a> </div>
+
+  <br>
+
+  <div class="recipe-id"><b> Recipe ID:</b> {{ complex_result.id }} </div>
+
+{% endfor %}   #}
+
+{% for result in br %} 
+<div class="{{ result['id'] }}">
+  <div class="recipe-name"> <b>Recipe name:</b> <a href="{{ result['sourceUrl'] }}" class="title">{{ result['title'] }}</a></div>
+  <div class="recipe-image"> <img src="https://spoonacular.com/recipeImages/{{ result['id'] }}-636x393.jpg"> </a> </div>
+  <br>
+    <div class="vegetarian"> <b> Vegetarian: </b> {{  result['vegetarian'] }} </div>
+    <div id="dish-type" name="dish-type"> <b> Dish Types: </b> {{ result['dishTypes'] }} </div>
+    <div class="servings"> <b> Servings: </b> {{ result['servings'] }} </div>
+    <div class="recipe-summary"> {{ result['summary'] }} </div>
+    <div class="ready-in-minutes">{{ result['readyInMinutes'] }} </div>
+    <button class="save-recipe"id="{{ result['id'] }}">save recipe</button>  
     <button> text recipe to phone </button>
       <br>
-      {{ complex_recipe_id }}
-{% endfor %}  
-
-        </div> 
-      </div>
-    </div>
-
-{# {{ complex_recipe_name }}
- #}{% endblock %}{# 
-
-{{ complex_recipe_id }} #}
-
+ </div>
+{% endfor %}
+{% endblock %}
+<script>
+</script>

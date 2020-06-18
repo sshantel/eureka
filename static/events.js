@@ -1,14 +1,17 @@
 "use strict";
 
-document.querySelector('#saved-recipes').addEventListener('click', (evt) => {
+document.querySelector('.save-recipe').addEventListener('click', (evt) => {
   const btn = evt.target;
 
   const savedRecipes = {
-    'link_to_recipe': btn.value,
-    'recipe_id': btn.name, 
-  };
-        console.log(btn.value)
-        console.log(btn.name)   
+    'link_to_recipe': $(`.${evt.target.id} .title`)[0].href,
+    'recipe_name': $(`.${evt.target.id} .title`).html(),
+    'recipe_id': btn.id
+  };  
+        console.log(evt.srcElement.parentNode)
+        console.log(evt)
+        console.log(evt.target) 
+        console.log(evt.target.id) 
 
 if (btn.innerHTML === 'save recipe') {
     $.post('/saved_recipes', savedRecipes, (response) => {
@@ -19,6 +22,8 @@ if (btn.innerHTML === 'save recipe') {
     btn.innerHTML = 'save recipe';
   }
 });
+
+
 
 
  

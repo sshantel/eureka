@@ -73,9 +73,6 @@ def get_recipe_ids_a_user_has_favorited(user_id):
     """Return recipe ids that a user has favorited"""
     return SavedRecipe.query.filter(User.user_id == user_id).all()
 
-def get_link_by_recipe_id(link_to_recipe):
-    """Return the recipe URL by recipe id"""
-    return SavedRecipe.query.get(link_to_recipe)
 
 if __name__ == '__main__':
     from server import app
