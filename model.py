@@ -28,10 +28,11 @@ class User(db.Model):
 class Recipe(db.Model):
     __tablename__ = 'recipes'
 
-    recipe_id = db.Column(db.Integer, 
-                        primary_key=True, 
-                        unique=True)
-    api_recipe_id = db.Column(db.Integer)
+    cy_recipe_id = db.Column(db.Integer, 
+                        primary_key=True,
+                        autoincrement=True, 
+                        unique=True) 
+    cy_recipe_name = db.Column(db.String) 
     recipe_course = db.Column(db.String)
     prep_time = db.Column(db.Integer)
     cook_time = db.Column(db.Integer)
@@ -39,18 +40,16 @@ class Recipe(db.Model):
     recipe_description = db.Column(db.String)
     servings = db.Column(db.Integer)
     image = db.Column(db.String)
-    reviews = db.Column(db.String)
-    recipe_name = db.Column(db.String)
-    url = db.Column(db.String)
+    reviews = db.Column(db.String) 
 
     # users  = db.relationship('User', backref = 'recipes', secondary = 'savedrecipes')
     
     def __repr__(self):
-        return f'''<recipe api id={self.api_recipe_id} recipe_name={self.recipe_name}
+        return f'''<recipe api id={self.cy_recipe_id} recipe_name={self.cy_recipe_name}
         recipe course={self.recipe_course} prep time ={self.prep_time}
         cook time = {self.cook_time} total recipe time = {self.total_recipe_time}
         recipe description = {self.recipe_description} servings = {self.servings}
-        image = {self.image} reviews = {self.reviews} url = {self.url}>'''
+        image = {self.image} reviews = {self.reviews} >'''
 
 class SavedRecipe(db.Model):
 
@@ -60,9 +59,9 @@ class SavedRecipe(db.Model):
                         primary_key=True,
                         autoincrement=True)
     recipe_name = db.Column(db.String)
+    link_to_recipe= db.Column(db.String)
     recipe_id = db.Column(db.Integer,
                          unique = True)
-    link_to_recipe = db.Column(db.String) 
     user_id = db.Column(db.Integer, 
                         db.ForeignKey('users.user_id'))
     saved_at = db.Column(db.DateTime, default = datetime.utcnow)
@@ -71,8 +70,8 @@ class SavedRecipe(db.Model):
     user = db.relationship('User', backref = 'savedrecipes')
 
     def __repr__(self):
-        return f'''<saved recipe id={self.saved_recipe_id} recipe_id={self.recipe_id}
-        user id={self.user_id} saved at={self.saved_at}>'''
+        return f'''<saved recipe id={self.saved_recipe_id} recipe_id={self.recipe_id} recipe_name = {self.recipe_name}
+        user id={self.user_id} saved at={self.saved_at} url = {self.link_to_recipe}>'''
 
     
 def connect_to_db(flask_app, db_uri='postgresql:///recipe', echo=False):

@@ -35,10 +35,11 @@ def create_recipe(api_recipe_id, recipe_course, prep_time, cook_time, total_reci
 
     return create_recipe
 
-def create_saved_recipe(recipe_id, user_id, user, link_to_recipe):
+def create_saved_recipe(recipe_name, recipe_id, user_id, user, link_to_recipe):
 
 
-    create_saved_recipe = SavedRecipe(recipe_id=recipe_id,
+    create_saved_recipe = SavedRecipe(recipe_name=recipe_name,
+                                      recipe_id=recipe_id,
                                       user_id=user_id,
                                       user = user,
                                       link_to_recipe=link_to_recipe)
@@ -72,6 +73,7 @@ def get_users_who_favorited_by_recipe_id(recipe_id):
 def get_recipe_ids_a_user_has_favorited(user_id):
     """Return recipe ids that a user has favorited"""
     return SavedRecipe.query.filter(User.user_id == user_id).all()
+
 
 
 if __name__ == '__main__':

@@ -28,7 +28,7 @@ def homepage():
 
     return render_template('login.html', error=error)
 
-@app.route('/share_or_learn', methods =['GET'])
+@app.route('/share_or_learn', methods=['GET'])
 def share_or_learn(): 
     return render_template('share_or_learn.html')
 
@@ -42,7 +42,6 @@ def login():
 
     if user == None:
         flash('Account does not exist, sorry. Please sign up with an account.', 'danger')
-
         print(user)
         return redirect('/')
 
@@ -51,14 +50,10 @@ def login():
         user = crud.get_user_by_email(email) 
         flash(f'Successfully logged in with the email {email}!','success')
         return redirect(url_for('share_or_learn', user=user, email=email))
-        # return redirect('/share_or_learn')
 
     else:
         flash('Wrong password! Please try again.','danger')
         return redirect('/')
-
-#@app.route('/share', methods=['GET'])
-    #pass
 
 @app.route('/signup', methods=['GET'])
 def signup(): 
@@ -85,9 +80,12 @@ def register():
     return render_template('search.html')
 
 @app.route('/search', methods= ['POST'])
-def search():
+def search(): 
     return render_template('search.html')
-    
+
+@app.route('/share', methods=['POST'])
+def share():
+    return render_template('share.html')
 
 @app.route('/search_results', methods=['GET']) 
 def search_results():
@@ -197,11 +195,10 @@ def saved_recipes():
     print('user', user)
     user_id = user.user_id
     print('user id', user_id) 
-    # recipe_name = crud.get_recipe_name_by_recipe_id
-    # recipe_id = crud.get_recipe_ids_a_user_has_favorited(user_id)
+    recipe_name = request.form.get('recipe_name')
+    print('recipename', recipe_name)
     print('recipe id', recipe_id)
-    # link_to_recipe = crud.get_link_by_recipe_id(recipe_id)
-    crud.create_saved_recipe(recipe_id, user_id, user, link_to_recipe)
+    crud.create_saved_recipe(recipe_name, recipe_id, user_id, user, link_to_recipe)
     return "This recipe has been favorited!"
         #dictionary of key value pairs of statuses
     #ADD URL
@@ -212,7 +209,7 @@ def user_saved_recipes():
     user = crud.get_user_by_email(email) 
     user_id = user.user_id 
     recipe_id = crud.get_recipe_ids_a_user_has_favorited(user_id)
-    print(recipe_id)
+    print(recipe_id) 
     saved_recipes = crud.get_all_saved_recipes(user_id)
     return render_template('saved_recipes.html', user=user, saved_recipes=saved_recipes, recipe_id=recipe_id)
 
