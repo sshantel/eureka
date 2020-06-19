@@ -29,6 +29,22 @@ seed_users()
 
 model.db.session.commit()
 
+def seed_saved_recipes():
+    with open('data/saved_recipes.json') as f:
+        saved_recipes = json.loads(f.read())
+
+    for saved_recipe in saved_recipes:
+        recipe_name = saved_recipe['recipe_name']
+        recipe_id = saved_recipe['recipe_id']
+        user_id = saved_recipe['user_id']
+        user = saved_recipe['user']
+        link_to_recipe = saved_recipe['link_to_recipe']
+        crud.create_saved_recipe(recipe_name, recipe_id, user_id, user, link_to_recipe)
+
+seed_saved_recipes()
+
+model.db.session.commit()
+
 # def seed_recipes():
 
 #     with open('data/recipes.json') as f:

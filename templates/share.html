@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %} Share recipe {% endblock %}
+
+{% block content %}
+
+<li> <a href="#">My Account </a></li>
+<li> <a href="/user_saved_recipes">Saved Recipes</a></li>
+<li> <a href="/logout">Log Out </a></li>
+
+
+  <h1>Thanks for your interest in sharing a recipe! </h1>
+
+  <ul>
+        <label for="title-of-recipe"> Title of Recipe </label>
+        <br>
+        <small class="form-text text-success"> What you'd call your recipe </small>
+         <input id="title-of-recipe" class="form-control" type="text" name="title-of-recipe">
+    <br>
+      <label for="recipe-course">Recipe Course </label>
+      <br>
+      <small class="form-text text-success"> Appetizer? Lunch? Dinner? 
+      </small>
+      <input id="recipe-course" class="form-control" type="text" name="recipe-course">
+
+      <label for="total-cook-time"> Estimated total cook time  </label>
+      <br>
+      <small class="form-text text-success">  Preparion + Cook time
+      </small>
+      <input id="total-cook-time" class="form-control" type="text" name="time">
+
+
+      <label for="recipe-description"> Recipe Description  </label>
+      <br>
+      <small class="form-text text-success">  Share a line or two about the recipe! 
+      </small>
+      <input id="recipe-description" class="form-control" type="text" name="recipe-description">
+
+        <label for="servings">  Serving Size </label>
+      <br>
+      <small class="form-text text-success">  Serving size
+      </small>
+      <input id="servings" class="form-control" type="text" name="servings">
+
+      <label for="image">  image </label>
+      <br>
+      <small class="form-text text-success">  Upload a photo of your recipe!
+      </small>
+      <input id="image" class="form-control" type="text" name="image">
+
+
+
+
+
+
+
+
+      <input type="submit" id="upload-recipe" value="upload-recipe">
+    </form>
+  </ul>
+
+{% endblock %}

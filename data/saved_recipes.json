@@ -1,6 +1,9 @@
 [
     {
+        "recipe_name": "wonton soup",
         "recipe_id": 1,
-        "user_id": 1,
+        "user_id": 1, 
+        "user": 1,
+        "link_to_recipe": "google.com"
     }
 ]

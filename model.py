@@ -59,11 +59,11 @@ class SavedRecipe(db.Model):
                         primary_key=True,
                         autoincrement=True)
     recipe_name = db.Column(db.String)
-    link_to_recipe= db.Column(db.String)
     recipe_id = db.Column(db.Integer,
                          unique = True)
     user_id = db.Column(db.Integer, 
                         db.ForeignKey('users.user_id'))
+    link_to_recipe= db.Column(db.String)
     saved_at = db.Column(db.DateTime, default = datetime.utcnow)
 
     # recipe = db.relationship('Recipe', backref = 'savedrecipes')

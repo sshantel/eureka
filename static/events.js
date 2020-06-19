@@ -1,6 +1,8 @@
 "use strict";
 
-document.querySelector('.save-recipe').addEventListener('click', (evt) => {
+const buttons = document.querySelectorAll('.save-recipe')
+
+buttons.forEach((button)=> {button.addEventListener('click', (evt) => {
   const btn = evt.target;
 
   const savedRecipes = {
@@ -17,15 +19,20 @@ if (btn.innerHTML === 'save recipe') {
     $.post('/saved_recipes', savedRecipes, (response) => {
         console.log(response)
         btn.innerHTML = 'unsave recipe';
+    $.post('/unsave-recipe', savedRecipes, (response)=> {
+        console.log(response)
+    })
     });
   } else {
     btn.innerHTML = 'save recipe';
   }
-});
+}); });
 
 // "use strict";
 
-// document.querySelector('.save-recipe').addEventListener('click', (evt) => {
+// const buttons = document.querySelectorAll('.save-recipe')
+
+// buttons.forEach((button)=> {button.addEventListener('click', (evt) => {
 //   const btn = evt.target;
 
 //   const savedRecipes = {
@@ -33,10 +40,10 @@ if (btn.innerHTML === 'save recipe') {
 //     'recipe_name': $(`.${evt.target.id} .title`).html(),
 //     'recipe_id': btn.id
 //   };  
-//         // console.log(evt.srcElement.parentNode)
-//         // console.log(evt)
-//         // console.log(evt.target) 
-//         // console.log(evt.target.id) 
+//         console.log(evt.srcElement.parentNode)
+//         console.log(evt)
+//         console.log(evt.target) 
+//         console.log(evt.target.id) 
 
 // if (btn.innerHTML === 'save recipe') {
 //     $.post('/saved_recipes', savedRecipes, (response) => {
@@ -46,7 +53,8 @@ if (btn.innerHTML === 'save recipe') {
 //   } else {
 //     btn.innerHTML = 'save recipe';
 //   }
-// });
+// }); });
+
 
 
 

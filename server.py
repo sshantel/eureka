@@ -13,6 +13,13 @@ import crud
 
 from pprint import pformat
 
+from werkzeug.utils import secure_filename
+
+UPLOAD_FOLDER = '/path/to/the/uploads'
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+
+app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 app = Flask(__name__)
 app.secret_key = "dev"
@@ -25,16 +32,14 @@ API_KEY = os.environ["SPOONACULAR_KEY"]
 def homepage():
     """View homepage and login."""
     error=None
-
     return render_template('login.html', error=error)
 
-@app.route('/share_or_learn', methods=['GET'])
+@app.route('/share_or_learn')
 def share_or_learn(): 
     return render_template('share_or_learn.html')
 
 @app.route('/login', methods=['POST'])
 def login():
-
     """User login."""
     email = request.form.get('email')
     password = request.form.get('password')
@@ -49,7 +54,7 @@ def login():
         session['user'] = email
         user = crud.get_user_by_email(email) 
         flash(f'Successfully logged in with the email {email}!','success')
-        return redirect(url_for('share_or_learn', user=user, email=email))
+        return redirect(url_for('share_or_learn'))
 
     else:
         flash('Wrong password! Please try again.','danger')
@@ -79,19 +84,22 @@ def register():
 
     return render_template('search.html')
 
-@app.route('/search', methods= ['POST'])
+@app.route('/search')
 def search(): 
     return render_template('search.html')
 
 @app.route('/share', methods=['POST'])
 def share():
+    return redirect('/share')
+
+@app.route('/share')
+def show_share_page():
     return render_template('share.html')
 
 @app.route('/search_results', methods=['GET']) 
 def search_results():
     """User searches for ingredient and amount of time they 
     want to spend"""
-
     input_ingredient = request.args.get('ingredient')
     input_time = request.args.get('time')
 
@@ -100,7 +108,7 @@ def search_results():
 
     payload1 = {'query': input_ingredient,
                 'maxReadyTime': input_time,
-                'number': 5,
+                'number': 20,
                 'apiKey': API_KEY}
 
     response1 = requests.get(url1 + '/complexSearch', params=payload1)
@@ -183,9 +191,6 @@ def logout():
 @app.route('/saved_recipes', methods=['POST'])
 def saved_recipes():
 
-    # STATUS = {'favorite' : 'favorited',
-    #           'unfavorite' :'unfavorited'}
-
     link_to_recipe = request.form.get('link_to_recipe')
     print('link to recipe', link_to_recipe)
     recipe_id = request.form.get('recipe_id') 
@@ -199,9 +204,15 @@ def saved_recipes():
     print('recipename', recipe_name)
     print('recipe id', recipe_id)
     crud.create_saved_recipe(recipe_name, recipe_id, user_id, user, link_to_recipe)
-    return "This recipe has been favorited!"
-        #dictionary of key value pairs of statuses
-    #ADD URL
+    return "This recipe has been saved!!"
+
+@app.route('/unsave_recipe', methods=['POST'])
+def unsave_recipe():
+    recipe_id = request.form.get('recipe_id')
+    print('recipe_id for unsave', recipe_id)
+    unsave_recipe = crud.unsave_recipe(recipe_id)
+    print(unsave_recipe)
+    return('this recipe has been unsaved!')
 
 @app.route('/user_saved_recipes')
 def user_saved_recipes():
@@ -212,7 +223,6 @@ def user_saved_recipes():
     print(recipe_id) 
     saved_recipes = crud.get_all_saved_recipes(user_id)
     return render_template('saved_recipes.html', user=user, saved_recipes=saved_recipes, recipe_id=recipe_id)
-
 
 if __name__ == '__main__':
     connect_to_db(app)
