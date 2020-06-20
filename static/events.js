@@ -18,15 +18,16 @@ buttons.forEach((button)=> {button.addEventListener('click', (evt) => {
 if (btn.innerHTML === 'save recipe') {
     $.post('/saved_recipes', savedRecipes, (response) => {
         console.log(response)
-        btn.innerHTML = 'unsave recipe';
-    $.post('/unsave-recipe', savedRecipes, (response)=> {
+    (btn.innerHTML === 'unsave recipe') {
+    $.post('/unsave_recipe', savedRecipes, (response)=> {
         console.log(response)
-    })
+    })}
     });
   } else {
-    btn.innerHTML = 'save recipe';
+    btn.innerHTML === 'save recipe';
   }
-}); });
+}); 
+});
 
 // "use strict";
 

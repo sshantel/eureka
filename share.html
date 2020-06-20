@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %} Share recipe {% endblock %}
+
+{% block content %}
+
+<li> <a href="#">My Account </a></li>
+<li> <a href="/user_saved_recipes">Saved Recipes</a></li>
+<li> <a href="/logout">Log Out </a></li>
+
+
+  <h1>Thanks for your interest in sharing a recipe! </h1>
+
+  <ul>
+    <form method="GET"/>
+      <div class="form-for-">
+        <label for="title-of-recipe"> Title of Recipe </label>
+        <br>
+        <small class="form-text text-success"> </small>
+         <input id="title-of-recipe" class="form-control" type="text" name="title-of-recipe">
+    </div>
+    <br>
+
+    <div class="form-group">
+      <label for="search-time">Time</label>
+      <br>
+      <small class="form-text text-success">
+      How much time(max) in minutes would you like to spend? </small>
+      <input id="search-time" class="form-control" type="text" name="time">
+      <input type="submit" value="Look for recipes!">
+    </form>
+  </ul>
+
+{% endblock %}

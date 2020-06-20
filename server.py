@@ -136,49 +136,13 @@ def search_results():
 
     information_bulk_results = br
 
-    # bulk_results_list = []
-
-    # for information_bulk_result in information_bulk_results:
-    #     # print(information_bulk_result)
-    #     recipe_summary = information_bulk_result['summary']
-    #     # print(recipe_summary)
-    #     url = information_bulk_result['sourceUrl']
-    #     print(url)
-    #     image2 = information_bulk_result['image']
-    #     servings = information_bulk_result['servings']
-    #     vegetarian = information_bulk_result['vegetarian']
-    #     complex_recipe_id = information_bulk_result['id']
-    #     complex_recipe_name = information_bulk_result['title']
-    #     dish_types2 = information_bulk_result['dishTypes']
-    #     # print(dish_types2)
-    #     dish_types =', '.join(dish_types2)
-    #     # print(url)
-
     return render_template('search_results.html',
                           pformat=pformat,
                           input_ingredient=input_ingredient,
                           input_time=input_time,
                           data1=data1,
                           br=br)
-                            # pformat=pformat,
-                            # servings=servings,
-                            # url=url,
-                            # dish_types=dish_types,
-                            # data1=data1,
-                            # image2=image2,
-                            # information_bulk_result=information_bulk_result,
-                            # information_bulk_results=information_bulk_results,
-                            # data2=data2,
-                            # recipe_summary=recipe_summary,
-                            # recipe_title=recipe_title,
-                            # recipe_id=recipe_id,
-                            # complex_recipe_id=complex_recipe_id,
-                            # image=image,                            # vegetarian=vegetarian,
-                            # input_time=input_time,
-                            # complex_result=complex_result,
-                            # complex_search_results=complex_search_results,
-                            # complex_recipe_name=complex_recipe_name)
-
+    
 @app.route('/logout')
 def logout():
     error=None
@@ -223,6 +187,11 @@ def user_saved_recipes():
     print(recipe_id) 
     saved_recipes = crud.get_all_saved_recipes(user_id)
     return render_template('saved_recipes.html', user=user, saved_recipes=saved_recipes, recipe_id=recipe_id)
+
+@app.route('/recipe_submitted')
+def recipe_submitted():
+
+    return render_template('recipe_submitted.html')
 
 if __name__ == '__main__':
     connect_to_db(app)
