@@ -49,19 +49,14 @@ def create_saved_recipe(recipe_name, recipe_id, user_id, user, link_to_recipe):
 
     return create_saved_recipe
 
-# def unsave_recipe(recipe_name, recipe_id, user_id, user, link_to_recipe):
-
-#     unsave_recipe = UnsaveRecipe(recipe_name=recipe_name,
-#                                  recipe_id=recipe_id, 
-#                                  user_id=user_id, 
-#                                  user=user, 
-#                                  link_to_recipe=link_to_recipe)
-
-#     db.session.delete(unsave_recipe)
-#     db.session.commit()
-
 def unsave_recipe(recipe_id):
-    return SavedRecipe.query.filter_by(SavedRecipe.recipe_id ==recipe_id).delete()
+    print(SavedRecipe.recipe_id)
+    print(recipe_id)    
+    print(SavedRecipe)
+    recipe = SavedRecipe.query.filter(SavedRecipe.recipe_id == recipe_id).first()
+    print('recipe',recipe)
+    db.session.delete(recipe)
+    db.session.commit()
 
 def get_user_by_id(user_id):
     """Return a user by primary key."""

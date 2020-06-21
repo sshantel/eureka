@@ -172,6 +172,7 @@ def saved_recipes():
 
 @app.route('/unsave_recipe', methods=['POST'])
 def unsave_recipe():
+    print('starting to unsave')
     recipe_id = request.form.get('recipe_id')
     print('recipe_id for unsave', recipe_id)
     unsave_recipe = crud.unsave_recipe(recipe_id)
