@@ -12,11 +12,11 @@
   <h1>Thanks for your interest in sharing a recipe! </h1>
 
   <ul>
-      <form method="GET"/ action="/recipe_submitted">
-        <label for="title-of-recipe"> Title of Recipe </label>
+      <form method="POST"/ action="/recipe_submitted">
+        <label for="create_recipe_name"> Title of Recipe </label>
         <br>
         <small class="form-text text-success"> What you'd call your recipe </small>
-         <input id="title-of-recipe" class="form-control" type="text" name="title-of-recipe">
+         <input id="create_recipe_name" class="form-control" type="text" name="create_recipe_name">
     <br>
       <label for="recipe-course">Recipe Course </label>
       <br>
@@ -24,11 +24,23 @@
       </small>
       <input id="recipe-course" class="form-control" type="text" name="recipe-course">
 
+      <label for="prep-time"> Estimated prep time </label>
+      <br>
+      <small class="form-text text-success">  Prep time
+      </small>
+      <input id="prep-time" class="form-control" type="text" name="prep-time">
+
+      <label for="cook-time"> Estimated prep time </label>
+      <br>
+      <small class="form-text text-success">  Cook time
+      </small>
+      <input id="cook-time" class="form-control" type="text" name="cook-time">
+
       <label for="total-cook-time"> Estimated total cook time  </label>
       <br>
       <small class="form-text text-success">  Preparion + Cook time
       </small>
-      <input id="total-cook-time" class="form-control" type="text" name="time">
+      <input id="total-cook-time" class="form-control" type="text" name="total-cook-time">
 
 
       <label for="recipe-description"> Recipe Description  </label>
@@ -47,8 +59,48 @@
       <br>
       <small class="form-text text-success">  Upload a photo of your recipe!
       </small>
-      <input id="image" class="form-control" type="text" name="image">
+      <input id="image" class="form-control" type=file name="image">
+      
+       <script type="text/javascript">  
+ <button id="upload_widget" class="cloudinary-button">Upload photos</button>
+
+<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>  
+
+<script type="text/javascript">  
+var myWidget = cloudinary.createUploadWidget({
+  cloudName: 'school-project-1234', 
+  uploadPreset: 'my_preset'}, (error, result) => { 
+    if (!error && result && result.event === "success") { 
+      console.log('Done! Here is the image info: ', result.info); 
+    }
+  }
+)
+
+document.getElementById("upload_widget").addEventListener("click", function(){
+    myWidget.open();
+  }, false);
+</script>
+          
       <input type="submit" id="upload-recipe" value="upload-recipe">
+     
+
+
+
+      <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript">  
+      </script>
+      <script type="text/javascript">  
+  $('#upload_widget_opener').cloudinary_upload_widget({ 
+    cloudName: school-project-1234, 
+    apiKey: 754584667974818,
+    cropping: true, 
+    uploadSignature: generateSignature}, (error, result) => { });
+</script>
+
+<button id="upload_widget" class="cloudinary-button">Upload files</button>
+
+<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>  
+
+
     </form>
   </ul>
 

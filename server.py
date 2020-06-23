@@ -13,14 +13,6 @@ import crud
 
 from pprint import pformat
 
-from werkzeug.utils import secure_filename
-
-UPLOAD_FOLDER = '/path/to/the/uploads'
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
-
-app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
 app = Flask(__name__)
 app.secret_key = "dev"
 
@@ -187,12 +179,37 @@ def user_saved_recipes():
     recipe_id = crud.get_recipe_ids_a_user_has_favorited(user_id)
     print(recipe_id) 
     saved_recipes = crud.get_all_saved_recipes(user_id)
+    print('saved recipes', saved_recipes)
     return render_template('saved_recipes.html', user=user, saved_recipes=saved_recipes, recipe_id=recipe_id)
 
-@app.route('/recipe_submitted')
+@app.route('/recipe_submitted', methods=['POST'])
 def recipe_submitted():
+    create_recipe_name = request.form.get('create_recipe_name')
+    print(create_recipe_name)
+    recipe_course = request.form.get('recipe-course')
+    print(recipe_course)
+    prep_time = request.form.get('prep-time')
+    print(prep_time)
+    cook_time = request.form.get('cook-time')
+    print(cook_time)
+    total_recipe_time = request.form.get('total-cook-time')
+    print(total_recipe_time)
+    recipe_description = request.form.get('recipe-description')
+    print(recipe_description)
+    servings = request.form.get('servings')
+    print(servings)
+    image = request.form.get('image')
+    print(image)
+    email = session['user']
+    print(email)
+    user = crud.get_user_by_email(email) 
+    user_id = user.user_id 
+    print('user-id', user_id)
+    creating_recipe = crud.create_recipe(create_recipe_name, recipe_course, prep_time, cook_time, total_recipe_time,
+    recipe_description, servings, image)
+    print('creating recipe',creating_recipe)
 
-    return render_template('recipe_submitted.html')
+    return render_template('recipe_submitted.html', creating_recipe=creating_recipe)
 
 if __name__ == '__main__':
     connect_to_db(app)

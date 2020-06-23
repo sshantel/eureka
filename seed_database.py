@@ -29,50 +29,24 @@ seed_users()
 
 model.db.session.commit()
 
-def seed_saved_recipes():
-    with open('data/saved_recipes.json') as f:
-        saved_recipes = json.loads(f.read())
+def seed_create_recipes():
+    with open('data/recipes.json') as f:
+        create_recipes = json.loads(f.read())
 
-    for saved_recipe in saved_recipes:
-        recipe_name = saved_recipe['recipe_name']
-        recipe_id = saved_recipe['recipe_id']
-        user_id = saved_recipe['user_id']
-        user = saved_recipe['user']
-        link_to_recipe = saved_recipe['link_to_recipe']
-        crud.create_saved_recipe(recipe_name, recipe_id, user_id, user, link_to_recipe)
+    for recipe in create_recipes:
+        create_recipe_name = recipe['create_recipe_name']
+        recipe_course = recipe['recipe_course']
+        prep_time = recipe['prep_time']
+        cook_time = recipe['cook_time']
+        total_recipe_time = recipe['total_recipe_time']
+        recipe_description = recipe['recipe_description']
+        servings = recipe['servings']
+        image = recipe['image']
+        crud.create_recipe(create_recipe_name, recipe_course, prep_time, cook_time, total_recipe_time,
+        recipe_description, servings, image)
 
-seed_saved_recipes()
+seed_create_recipes()
 
 model.db.session.commit()
 
-# def seed_recipes():
 
-#     with open('data/recipes.json') as f:
-#         recipe_data = json.loads(f.read())
-
-#     for recipe in recipe_data:
-#         api_recipe_id = recipe['results']['api_recipe_id']
-#         recipe_course = recipe['results']['recipe_course']
-#         prep_time = recipe['results']['prep_time']
-#         cook_time = recipe['results']['cook_time']
-#         total_recipe_time = recipe['results']['readyInMinutes']
-#         recipe_description = recipe['results']['recipe_description']
-#         servings = recipe['results']['servings']
-#         image = recipe['results']['image']
-#         url = recipe['results']['sourceUrl']
-#         reviews = recipe['results']['reviews']
-#         recipe_title = recipe['results']['title']
-
-#     crud.create_recipe(api_recipe_id, recipe_course, prep_time, cook_time, total_recipe_time,
-#     recipe_description, servings, image, reviews, recipe_title)
-
-# seed_recipes()
-
-def seed_recipe_ingredients():
-
-    with open('data/recipe_ingredients.json') as f:
-        recipe_ingredients = json.loads(f.read())
-
-    pass
-
-seed_recipe_ingredients()

@@ -28,28 +28,31 @@ class User(db.Model):
 class Recipe(db.Model):
     __tablename__ = 'recipes'
 
-    cy_recipe_id = db.Column(db.Integer, 
+    create_recipe_id = db.Column(db.Integer, 
                         primary_key=True,
                         autoincrement=True, 
                         unique=True) 
-    cy_recipe_name = db.Column(db.String) 
+    create_recipe_name = db.Column(db.String) 
     recipe_course = db.Column(db.String)
     prep_time = db.Column(db.Integer)
     cook_time = db.Column(db.Integer)
     total_recipe_time = db.Column(db.Integer)
     recipe_description = db.Column(db.String)
     servings = db.Column(db.Integer)
-    image = db.Column(db.String)
-    reviews = db.Column(db.String) 
+    image = db.Column(db.String) 
+    recipe_created_at = db.Column(db.DateTime, default = datetime.utcnow)
+    user_id = db.Column(db.Integer, 
+                        db.ForeignKey('users.user_id'))
+    
+    user = db.relationship('User', backref = 'recipes')
 
-    # users  = db.relationship('User', backref = 'recipes', secondary = 'savedrecipes')
     
     def __repr__(self):
-        return f'''<recipe api id={self.cy_recipe_id} recipe_name={self.cy_recipe_name}
+        return f'''<create recipe id={self.create_recipe_id} create recipe name={self.create_recipe_name}
         recipe course={self.recipe_course} prep time ={self.prep_time}
         cook time = {self.cook_time} total recipe time = {self.total_recipe_time}
         recipe description = {self.recipe_description} servings = {self.servings}
-        image = {self.image} reviews = {self.reviews} >'''
+        image = {self.image}>'''
 
 class SavedRecipe(db.Model):
 
@@ -65,8 +68,7 @@ class SavedRecipe(db.Model):
                         db.ForeignKey('users.user_id'))
     link_to_recipe= db.Column(db.String)
     saved_at = db.Column(db.DateTime, default = datetime.utcnow)
-
-    # recipe = db.relationship('Recipe', backref = 'savedrecipes')
+ 
     user = db.relationship('User', backref = 'savedrecipes')
 
     def __repr__(self):
