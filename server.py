@@ -4,6 +4,12 @@ from flask import (Flask, render_template, request, flash, session, redirect, ur
 
 from model import connect_to_db
 
+import cloudinary 
+import cloudinary.uploader
+import cloudinary.api
+
+from werkzeug.utils import secure_filename 
+
 from jinja2 import StrictUndefined
 
 import os
@@ -18,7 +24,17 @@ app.secret_key = "dev"
 
 app.jinja_env.undefined = StrictUndefined
 
-API_KEY = os.environ["SPOONACULAR_KEY"]
+spoonacular_key = os.environ["SPOONACULAR_KEY"] 
+
+cloud_name = os.environ["cloud_name"]
+cloudinary_api_key = os.environ["cloudinary_api_key"]
+cloudinary_api_secret = os.environ["cloudinary_api_secret"]
+
+cloudinary.config( 
+  cloud_name = cloud_name, 
+  api_key = cloudinary_api_key, 
+  api_secret = cloudinary_api_secret  
+)
 
 @app.route('/')
 def homepage():
@@ -101,7 +117,7 @@ def search_results():
     payload1 = {'query': input_ingredient,
                 'maxReadyTime': input_time,
                 'number': 20,
-                'apiKey': API_KEY}
+                'apiKey': spoonacular_key}
 
     response1 = requests.get(url1 + '/complexSearch', params=payload1)
 
@@ -198,7 +214,12 @@ def recipe_submitted():
     print(recipe_description)
     servings = request.form.get('servings')
     print(servings)
-    image = request.form.get('image')
+    filename = request.files.get("image-upload")
+    print(filename)
+    if filename:
+        response = cloudinary.uploader.upload(filename)
+        print('response for cloudinary',response)
+    image = secure_filename(filename.filename)
     print(image)
     email = session['user']
     print(email)
@@ -209,7 +230,7 @@ def recipe_submitted():
     recipe_description, servings, image)
     print('creating recipe',creating_recipe)
 
-    return render_template('recipe_submitted.html', creating_recipe=creating_recipe)
+    return render_template('recipe_submitted.html', creating_recipe=creating_recipe, image=image)
 
 if __name__ == '__main__':
     connect_to_db(app)

@@ -1,6 +1,6 @@
 """Models for recipes web application."""
-from flask_sqlalchemy import SQLAlchemy 
-
+from flask_sqlalchemy import SQLAlchemy
+ 
 from datetime import datetime
 
 db = SQLAlchemy()
@@ -43,7 +43,7 @@ class Recipe(db.Model):
     recipe_created_at = db.Column(db.DateTime, default = datetime.utcnow)
     user_id = db.Column(db.Integer, 
                         db.ForeignKey('users.user_id'))
-    
+
     user = db.relationship('User', backref = 'recipes')
 
     
@@ -80,7 +80,7 @@ def connect_to_db(flask_app, db_uri='postgresql:///recipe', echo=False):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     flask_app.config['SQLALCHEMY_ECHO'] = echo
     flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+ 
     db.app = flask_app
     db.init_app(flask_app)
 

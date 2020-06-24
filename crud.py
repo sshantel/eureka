@@ -55,9 +55,11 @@ def unsave_recipe(recipe_id):
     db.session.delete(recipe)
     db.session.commit()
 
-def upload_photo():
+def upload_photo(user,create_recipe_name):
 
-    photo = Photo()
+    photo = Photo(user=user,
+                  create_recipe_name=create_recipe_name,
+                 )
     print(photo)
 
     db.session.add(photo)

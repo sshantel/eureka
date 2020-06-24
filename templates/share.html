@@ -12,7 +12,7 @@
   <h1>Thanks for your interest in sharing a recipe! </h1>
 
   <ul>
-      <form method="POST"/ action="/recipe_submitted">
+      <form method="POST"/ action="/recipe_submitted" enctype="multipart/form-data">
         <label for="create_recipe_name"> Title of Recipe </label>
         <br>
         <small class="form-text text-success"> What you'd call your recipe </small>
@@ -55,53 +55,21 @@
       </small>
       <input id="servings" class="form-control" type="text" name="servings">
 
-      <label for="image">  image </label>
+      <label for="image-upload">  image  </label>
+      <input id = "image-upload" type=file name="image-upload">
+
+
       <br>
-      <small class="form-text text-success">  Upload a photo of your recipe!
-      </small>
-      <input id="image" class="form-control" type=file name="image">
-      
-       <script type="text/javascript">  
- <button id="upload_widget" class="cloudinary-button">Upload photos</button>
-
-<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>  
-
-<script type="text/javascript">  
-var myWidget = cloudinary.createUploadWidget({
-  cloudName: 'school-project-1234', 
-  uploadPreset: 'my_preset'}, (error, result) => { 
-    if (!error && result && result.event === "success") { 
-      console.log('Done! Here is the image info: ', result.info); 
-    }
-  }
-)
-
-document.getElementById("upload_widget").addEventListener("click", function(){
-    myWidget.open();
-  }, false);
-</script>
-          
-      <input type="submit" id="upload-recipe" value="upload-recipe">
-     
-
-
-
-      <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript">  
-      </script>
-      <script type="text/javascript">  
-  $('#upload_widget_opener').cloudinary_upload_widget({ 
-    cloudName: school-project-1234, 
-    apiKey: 754584667974818,
-    cropping: true, 
-    uploadSignature: generateSignature}, (error, result) => { });
-</script>
-
-<button id="upload_widget" class="cloudinary-button">Upload files</button>
-
-<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>  
-
+      <small class="form-text text-success">  Upload a photo of your recipe!</small>     
+  
+<br>
+<input type="submit" id="upload-recipe" value="upload-recipe">
 
     </form>
   </ul>
 
+
+
 {% endblock %}
+
+ 
