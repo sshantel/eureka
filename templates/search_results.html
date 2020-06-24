@@ -28,7 +28,7 @@
     <div class="ready-in-minutes"> <b>Ready in: </b>{{ result['readyInMinutes'] }} minutes</div>
     <div class="recipe-summary"> {{ result['summary'] }} </div>
     <button class="save-recipe"id="{{ result['id'] }}">save recipe</button>  
-    <button> text recipe to phone </button>
+    <button class="text-recipe"id="{{result['id'] }}">text recipe link to phone</button>
       <br>
  </div>
 {% endfor %}

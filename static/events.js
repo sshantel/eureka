@@ -27,12 +27,25 @@ else if (btn.innerHTML === 'unsave recipe') {
 })
 })
 
-<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript">
-</script>  
- 
+const textButtons = document.querySelectorAll('.text-recipe')
 
+textButtons.forEach((button)=> {button.addEventListener('click', (evt) => {
+    const btn = evt.target;
+    const recipeText = {
+        'link_to_recipe': $(`.${evt.target.id} .title`)[0].href,
+        'recipe_name': $(`.${evt.target.id} .title`).html()
+};
+    console.log(evt.srcElement.parentNode)
+    console.log(evt)
+    console.log(evt.target) 
+    console.log(evt.target.id) 
 
-
+if (btn.innerHTML === 'text recipe link to phone') {
+    $.post('/recipe_texted', recipeText, (response) => {
+        console.log(response)
+})}
+})
+})
 
  
 

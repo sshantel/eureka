@@ -15,7 +15,9 @@ from jinja2 import StrictUndefined
 import os
 import requests
 
-import crud 
+import crud
+
+from twilio.rest import Client
 
 from pprint import pformat
 
@@ -35,6 +37,13 @@ cloudinary.config(
   api_key = cloudinary_api_key, 
   api_secret = cloudinary_api_secret  
 )
+
+twilio_api = os.environ["twilio_api"]
+twilio_auth = os.environ["twilio_auth"]
+
+account_sid = twilio_api
+auth_token = twilio_auth
+client = Client(account_sid, auth_token)
 
 @app.route('/')
 def homepage():
@@ -136,7 +145,7 @@ def search_results():
         print(f' Recipe: {recipe_title}.')
 
     payload2 = {'ids' : ','.join(list_of_recipe_ids),
-                'apiKey': API_KEY}
+                'apiKey': spoonacular_key}
 
     response2 = requests.get(url1 + '/informationBulk', params=payload2)
 
@@ -164,27 +173,18 @@ def logout():
 def saved_recipes():
 
     link_to_recipe = request.form.get('link_to_recipe')
-    print('link to recipe', link_to_recipe)
     recipe_id = request.form.get('recipe_id') 
-    email = session['user'] 
-    print(f' EMAIL* {email}.')
+    email = session['user']  
     user = crud.get_user_by_email(email) 
-    print('user', user)
     user_id = user.user_id
-    print('user id', user_id) 
     recipe_name = request.form.get('recipe_name')
-    print('recipename', recipe_name)
-    print('recipe id', recipe_id)
     crud.create_saved_recipe(recipe_name, recipe_id, user_id, user, link_to_recipe)
     return "This recipe has been saved!!"
 
 @app.route('/unsave_recipe', methods=['POST'])
-def unsave_recipe():
-    print('starting to unsave')
-    recipe_id = request.form.get('recipe_id')
-    print('recipe_id for unsave', recipe_id)
+def unsave_recipe(): 
+    recipe_id = request.form.get('recipe_id') 
     unsave_recipe = crud.unsave_recipe(recipe_id)
-    print(unsave_recipe)
     return('this recipe has been unsaved!')
 
 @app.route('/user_saved_recipes')
@@ -193,44 +193,47 @@ def user_saved_recipes():
     user = crud.get_user_by_email(email) 
     user_id = user.user_id 
     recipe_id = crud.get_recipe_ids_a_user_has_favorited(user_id)
-    print(recipe_id) 
     saved_recipes = crud.get_all_saved_recipes(user_id)
-    print('saved recipes', saved_recipes)
     return render_template('saved_recipes.html', user=user, saved_recipes=saved_recipes, recipe_id=recipe_id)
 
 @app.route('/recipe_submitted', methods=['POST'])
 def recipe_submitted():
     create_recipe_name = request.form.get('create_recipe_name')
-    print(create_recipe_name)
     recipe_course = request.form.get('recipe-course')
-    print(recipe_course)
     prep_time = request.form.get('prep-time')
-    print(prep_time)
     cook_time = request.form.get('cook-time')
-    print(cook_time)
     total_recipe_time = request.form.get('total-cook-time')
-    print(total_recipe_time)
     recipe_description = request.form.get('recipe-description')
-    print(recipe_description)
     servings = request.form.get('servings')
-    print(servings)
     filename = request.files.get("image-upload")
-    print(filename)
     if filename:
         response = cloudinary.uploader.upload(filename)
-        print('response for cloudinary',response)
     image = secure_filename(filename.filename)
-    print(image)
     email = session['user']
-    print(email)
     user = crud.get_user_by_email(email) 
     user_id = user.user_id 
-    print('user-id', user_id)
     creating_recipe = crud.create_recipe(create_recipe_name, recipe_course, prep_time, cook_time, total_recipe_time,
     recipe_description, servings, image)
-    print('creating recipe',creating_recipe)
 
     return render_template('recipe_submitted.html', creating_recipe=creating_recipe, image=image)
+
+@app.route('/recipe_texted', methods = ['POST'])
+def recipe_texted():
+    link_to_recipe = request.form.get('link_to_recipe')
+    print(link_to_recipe)
+    recipe_name = request.form.get('recipe_name')
+
+    message = client.messages \
+    .create(
+         body=link_to_recipe,
+         from_='+12054966699',
+         to='+16504559866'
+     )
+
+    print(message.sid)
+    return('recipe has been texted')
+
+
 
 if __name__ == '__main__':
     connect_to_db(app)
