@@ -5,6 +5,7 @@
               "prep_time": 10,
               "cook_time": 10,
               "total_recipe_time": 20,
+              "ingredients": "blah",
               "recipe_description" : "yum yum yum",
               "servings": 4,
               "image": "cucumber-tapas-2-22788.jpg"

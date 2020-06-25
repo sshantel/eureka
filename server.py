@@ -26,7 +26,7 @@ app.secret_key = "dev"
 
 app.jinja_env.undefined = StrictUndefined
 
-spoonacular_key = os.environ["SPOONACULAR_KEY"] 
+spoonacular_key = os.environ["spoonacular_key"] 
 
 cloud_name = os.environ["cloud_name"]
 cloudinary_api_key = os.environ["cloudinary_api_key"]
@@ -89,17 +89,22 @@ def register():
     email = request.form.get('email')
     password = request.form.get('password')
     location = request.form.get('location')
-
+    phone_number = request.form.get('phone-number')
+    print(phone_number)
     user = crud.get_user_by_email(email)
-
     print(user)
     if user:
-        flash('Cannot create an account with that email. Try again.', 'danger')
+        flash('you already have an account, please log in', 'danger')
+        return redirect('/')
     else:
-        crud.create_user(username, email, password, location)
-        flash('Account created! Please log in.', 'success')
+        crud.create_user(username, email, password, location, phone_number)
+        flash('Account created!', 'success')
 
     return render_template('search.html')
+
+@app.route('/account')
+def account():
+    return render_template('account.html')
 
 @app.route('/search')
 def search(): 
@@ -121,7 +126,6 @@ def search_results():
     input_time = request.args.get('time')
 
     url1 = 'https://api.spoonacular.com/recipes'
-
 
     payload1 = {'query': input_ingredient,
                 'maxReadyTime': input_time,
@@ -203,6 +207,7 @@ def recipe_submitted():
     prep_time = request.form.get('prep-time')
     cook_time = request.form.get('cook-time')
     total_recipe_time = request.form.get('total-cook-time')
+    ingredients = request.form.get('ingredients')
     recipe_description = request.form.get('recipe-description')
     servings = request.form.get('servings')
     filename = request.files.get("image-upload")
@@ -212,7 +217,7 @@ def recipe_submitted():
     email = session['user']
     user = crud.get_user_by_email(email) 
     user_id = user.user_id 
-    creating_recipe = crud.create_recipe(create_recipe_name, recipe_course, prep_time, cook_time, total_recipe_time,
+    creating_recipe = crud.create_recipe(create_recipe_name, recipe_course, prep_time, cook_time, total_recipe_time, ingredients, 
     recipe_description, servings, image)
 
     return render_template('recipe_submitted.html', creating_recipe=creating_recipe, image=image)
@@ -222,17 +227,20 @@ def recipe_texted():
     link_to_recipe = request.form.get('link_to_recipe')
     print(link_to_recipe)
     recipe_name = request.form.get('recipe_name')
+    email = session['user'] 
+    user = crud.get_user_by_email(email) 
+    user_id = user.user_id
+    phone_number = crud.get_phone_number_by_user_id(user_id)
 
     message = client.messages \
     .create(
          body=link_to_recipe,
          from_='+12054966699',
-         to='+16504559866'
+         to='+1' + phone_number  
      )
 
     print(message.sid)
     return('recipe has been texted')
-
 
 
 if __name__ == '__main__':

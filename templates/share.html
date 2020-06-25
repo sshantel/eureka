@@ -14,7 +14,7 @@
   <ul>
       <form method="POST"/ action="/recipe_submitted" enctype="multipart/form-data">
         <label for="create_recipe_name"> Title of Recipe </label>
-        <br>
+          <br>
         <small class="form-text text-success"> What you'd call your recipe </small>
          <input id="create_recipe_name" class="form-control" type="text" name="create_recipe_name">
     <br>
@@ -41,6 +41,12 @@
       <small class="form-text text-success">  Preparion + Cook time
       </small>
       <input id="total-cook-time" class="form-control" type="text" name="total-cook-time">
+
+      <label for="total-cook-time"> Ingredients </label>
+      <br>
+      <small class="form-text text-success">  Ingredients
+      </small>
+      <input id="ingredients" class="form-control" type="text" name="ingredients">
 
 
       <label for="recipe-description"> Recipe Description  </label>

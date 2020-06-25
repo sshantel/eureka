@@ -1,5 +1,6 @@
 """Models for recipes web application."""
 from flask_sqlalchemy import SQLAlchemy
+# from sqlalchemy_utils import PhoneNumber
  
 from datetime import datetime
 
@@ -19,11 +20,13 @@ class User(db.Model):
                     unique=True)
     password = db.Column(db.String)
     location_of_user = db.Column(db.String)
+    phone_number = db.Column(db.String(20))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
         return f'''<User user_id={self.user_id} username={self.username} email={self.email}
-        password = {self.password} location of user = {self.location_of_user} created at = {self.created_at}>'''
+        password = {self.password} location of user = {self.location_of_user} created at = {self.created_at} 
+        phone number = {self.phone_number}>'''
 
 class Recipe(db.Model):
     __tablename__ = 'recipes'
@@ -37,6 +40,7 @@ class Recipe(db.Model):
     prep_time = db.Column(db.Integer)
     cook_time = db.Column(db.Integer)
     total_recipe_time = db.Column(db.Integer)
+    ingredients = db.Column(db.String)
     recipe_description = db.Column(db.String)
     servings = db.Column(db.Integer)
     image = db.Column(db.String) 

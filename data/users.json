@@ -3,20 +3,24 @@
         "username": "chantelyip",
         "email": "chantelyip422@gmail.com",
         "password": "password",
-        "location_of_user":"San Francisco, CA"
+        "location_of_user":"San Francisco, CA",
+        "phone_number": "6504559866"
     },
 
     {
         "username" : "larrypage",
         "email": "larrypage@gmail.com",
         "password": "password",
-        "location_of_user":"Minnesota, MN"
+        "location_of_user":"Minnesota, MN",
+        "phone_number": "6504559866"
+
     },
 
     {
         "username" : "timexwatch",
         "email": "timex@gmail.com",
         "password": "password",
-        "location_of_user":"San Diego, CA"
+        "location_of_user":"San Diego, CA",
+        "phone_number": "6504559866"
     }
 ]

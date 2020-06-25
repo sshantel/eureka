@@ -22,7 +22,8 @@ def seed_users():
         email = user['email']
         password = user['password']
         location_of_user = user['location_of_user']
-        crud.create_user(username, email, password, location_of_user)
+        phone_number = user['phone_number']
+        crud.create_user(username, email, password, location_of_user, phone_number)
 
     
 seed_users()
@@ -39,10 +40,11 @@ def seed_create_recipes():
         prep_time = recipe['prep_time']
         cook_time = recipe['cook_time']
         total_recipe_time = recipe['total_recipe_time']
+        ingredients = recipe['ingredients']
         recipe_description = recipe['recipe_description']
         servings = recipe['servings']
         image = recipe['image']
-        crud.create_recipe(create_recipe_name, recipe_course, prep_time, cook_time, total_recipe_time,
+        crud.create_recipe(create_recipe_name, recipe_course, prep_time, cook_time, total_recipe_time, ingredients, 
         recipe_description, servings, image)
 
 seed_create_recipes()

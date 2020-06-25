@@ -2,20 +2,21 @@
 
 from model import connect_to_db, db, User, Recipe, SavedRecipe
 
-def create_user(username, email, password, location_of_user):
+def create_user(username, email, password, location_of_user, phone_number):
     """ Create and return a new user """
 
     user =  User(username = username,
                  email = email,
                  password=password,
-                 location_of_user=location_of_user)
+                 location_of_user=location_of_user,
+                 phone_number=phone_number)
 
     db.session.add(user)
     db.session.commit()
 
     return user 
 
-def create_recipe(create_recipe_name, recipe_course, prep_time, cook_time, total_recipe_time,
+def create_recipe(create_recipe_name, recipe_course, prep_time, cook_time, total_recipe_time, ingredients,
     recipe_description, servings, image):
 
     create_recipe = Recipe(create_recipe_name=create_recipe_name,
@@ -23,6 +24,7 @@ def create_recipe(create_recipe_name, recipe_course, prep_time, cook_time, total
                     prep_time=prep_time,
                     cook_time=cook_time,
                     total_recipe_time=total_recipe_time,
+                    ingredients=ingredients,
                     recipe_description=recipe_description,
                     servings=servings,
                     image=image)
@@ -55,17 +57,21 @@ def unsave_recipe(recipe_id):
     db.session.delete(recipe)
     db.session.commit()
 
-def upload_photo(user,create_recipe_name):
+# def upload_photo(user,create_recipe_name):
 
-    photo = Photo(user=user,
-                  create_recipe_name=create_recipe_name,
-                 )
-    print(photo)
+#     photo = Photo(user=user,
+#                   create_recipe_name=create_recipe_name,
+#                  )
+#     print(photo)
 
-    db.session.add(photo)
-    db.session.commit()
-    return photo
+#     db.session.add(photo)
+#     db.session.commit()
+#     return photo
 
+def get_phone_number_by_user_id(user_id): 
+    user = User.query.filter(User.user_id == user_id).first()
+    phone_number = user.phone_number 
+    return phone_number 
 
 def get_user_by_id(user_id):
     """Return a user by primary key."""
