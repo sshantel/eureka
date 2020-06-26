@@ -136,7 +136,7 @@ def search_results():
 
     payload1 = {'query': input_ingredient,
                 'maxReadyTime': input_time,
-                'number': 20,
+                'number': 2,
                 'apiKey': spoonacular_key}
 
     response1 = requests.get(url1 + '/complexSearch', params=payload1)

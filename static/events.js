@@ -1,6 +1,6 @@
 "use strict";
 
-const buttons = document.querySelectorAll('.save-recipe')
+{var buttons = document.querySelectorAll('.save-recipe')
 
 buttons.forEach((button)=> {button.addEventListener('click', (evt) => {
   const btn = evt.target;
@@ -27,7 +27,9 @@ else if (btn.innerHTML === 'unsave recipe') {
 })};
 });
 })
+}
 
+{
 const textButtons = document.querySelectorAll('.text-recipe')
 
 textButtons.forEach((button)=> {button.addEventListener('click', (evt) => {
@@ -47,8 +49,9 @@ if (btn.innerHTML === 'text recipe link to phone') {
 })};
 });
 })
+}
 
-
+{
 function initGeocoder() { 
     $('#location-button').on('click', (evt) => {
      navigator.geolocation.getCurrentPosition((res) => {
@@ -56,10 +59,17 @@ function initGeocoder() {
     const geocoder = new google.maps.Geocoder();
     const latlng = {lat: res.coords.latitude, lng: res.coords.longitude}
     geocoder.geocode({'location':latlng}, (res, status) => {
-        console.log(res[3].formatted_address)
     const userLocation = res[3].formatted_address
         console.log(userLocation)
+        console.log(latlng)
+    const locationInput = document.querySelector('#location')
+    const locationButton = document.querySelector('#location-button') 
+        locationInput.value = userLocation;
+        console.log(locationInput)
     })
      })
     })
-    }
+}
+}
+
+ 

@@ -57,17 +57,6 @@ def unsave_recipe(recipe_id):
     db.session.delete(recipe)
     db.session.commit()
 
-# def upload_photo(user,create_recipe_name):
-
-#     photo = Photo(user=user,
-#                   create_recipe_name=create_recipe_name,
-#                  )
-#     print(photo)
-
-#     db.session.add(photo)
-#     db.session.commit()
-#     return photo
-
 def get_phone_number_by_user_id(user_id): 
     user = User.query.filter(User.user_id == user_id).first()
     phone_number = user.phone_number 
