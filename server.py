@@ -55,6 +55,7 @@ def homepage():
 
 @app.route('/share_or_learn')
 def share_or_learn(): 
+    """Asking the user whether they want to either share or learn a recipe"""
     return render_template('share_or_learn.html')
 
 @app.route('/login', methods=['POST'])
@@ -81,25 +82,12 @@ def login():
 
 @app.route('/signup', methods=['GET'])
 def signup(): 
-
-    # g = geocoder.ip('me')
-    # city = g.address
-    # latlng = g.latlng
-    # print('g address', city)
-    # print('g latlng', latlng)
-
+    """Render user signup/registration page"""
     return render_template('signup.html')
 
 @app.route('/register', methods=['POST'])
 def register():
     """User registration form."""
-
-    # g = geocoder.ip('me')
-    # city = g.address
-    # latlng = g.latlng
-    # print('g address', city)
-    # print('g latlng', latlng)
-
     username = request.form.get('username')
     email = request.form.get('email')
     password = request.form.get('password')
@@ -120,24 +108,27 @@ def register():
 
 @app.route('/account')
 def account():
+    """Render user account details (WIP)"""
     return render_template('account.html')
 
 @app.route('/search')
 def search(): 
+    """User to input ingredient/time they want to spend"""
     return render_template('search.html')
 
 @app.route('/share', methods=['POST'])
 def share():
+    """User to share recipe"""
     return redirect('/share')
 
 @app.route('/share')
 def show_share_page():
+    """Render share recipe page"""
     return render_template('share.html')
 
 @app.route('/search_results', methods=['GET']) 
 def search_results():
-    """User searches for ingredient and amount of time they 
-    want to spend"""
+    """Returning recipe results for user"""
     input_ingredient = request.args.get('ingredient')
     input_time = request.args.get('time')
 
@@ -182,6 +173,7 @@ def search_results():
     
 @app.route('/logout')
 def logout():
+    """User logout function"""
     error=None
     if "user" in session:
         user = session['user']
@@ -191,7 +183,7 @@ def logout():
 
 @app.route('/saved_recipes', methods=['POST'])
 def saved_recipes():
-
+    """Function for user to save a recipe"""
     link_to_recipe = request.form.get('link_to_recipe')
     recipe_id = request.form.get('recipe_id') 
     email = session['user']  
@@ -203,12 +195,14 @@ def saved_recipes():
 
 @app.route('/unsave_recipe', methods=['POST'])
 def unsave_recipe(): 
+    """User to unsave a recipe"""
     recipe_id = request.form.get('recipe_id') 
     unsave_recipe = crud.unsave_recipe(recipe_id)
     return('this recipe has been unsaved!')
 
 @app.route('/user_saved_recipes')
 def user_saved_recipes():
+    """User to view all of their saved recipes"""
     email = session['user']  
     user = crud.get_user_by_email(email) 
     user_id = user.user_id 
@@ -218,6 +212,7 @@ def user_saved_recipes():
 
 @app.route('/recipe_submitted', methods=['POST'])
 def recipe_submitted():
+    """User to upload their own recipe"""
     create_recipe_name = request.form.get('create_recipe_name')
     recipe_course = request.form.get('recipe-course')
     prep_time = request.form.get('prep-time')
@@ -240,6 +235,7 @@ def recipe_submitted():
 
 @app.route('/recipe_texted', methods = ['POST'])
 def recipe_texted():
+    """Function for user to text the recipe link to their phone"""
     link_to_recipe = request.form.get('link_to_recipe')
     print(link_to_recipe)
     recipe_name = request.form.get('recipe_name')

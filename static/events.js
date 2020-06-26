@@ -56,7 +56,9 @@ function initGeocoder() {
     const geocoder = new google.maps.Geocoder();
     const latlng = {lat: res.coords.latitude, lng: res.coords.longitude}
     geocoder.geocode({'location':latlng}, (res, status) => {
-        console.log(res, status)
+        console.log(res[3].formatted_address)
+    const userLocation = res[3].formatted_address
+        console.log(userLocation)
     })
      })
     })
