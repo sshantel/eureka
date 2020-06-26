@@ -18,13 +18,14 @@ if (btn.innerHTML === 'save recipe') {
     $.post('/saved_recipes', savedRecipes, (response) => { 
         console.log(response)
         btn.innerHTML = 'unsave recipe'
-})}
+})
+}
 else if (btn.innerHTML === 'unsave recipe') {
     $.post('/unsave_recipe', savedRecipes, (response)=> {
         console.log(response)
         btn.innerHTML = 'save recipe'
-})}
-})
+})};
+});
 })
 
 const textButtons = document.querySelectorAll('.text-recipe')
@@ -43,10 +44,9 @@ textButtons.forEach((button)=> {button.addEventListener('click', (evt) => {
 if (btn.innerHTML === 'text recipe link to phone') {
     $.post('/recipe_texted', recipeText, (response) => {
         console.log(response)
-})}
-})
+})};
+});
 })
 
  
-
  

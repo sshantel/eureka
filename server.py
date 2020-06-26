@@ -21,6 +21,8 @@ from twilio.rest import Client
 
 from pprint import pformat
 
+import geocoder
+
 app = Flask(__name__)
 app.secret_key = "dev"
 
@@ -79,16 +81,29 @@ def login():
 
 @app.route('/signup', methods=['GET'])
 def signup(): 
-    return render_template('signup.html')
+    g = geocoder.ip('me')
+    city = g.address
+    latlng = g.latlng
+    print('g address', city)
+    print('g latlng', latlng)
+
+    return render_template('signup.html', city=city)
 
 @app.route('/register', methods=['POST'])
 def register():
     """User registration form."""
 
+    g = geocoder.ip('me')
+    city = g.address
+    latlng = g.latlng
+    print('g address', city)
+    print('g latlng', latlng)
+
     username = request.form.get('username')
     email = request.form.get('email')
     password = request.form.get('password')
     location = request.form.get('location')
+    print('location',location)
     phone_number = request.form.get('phone-number')
     print(phone_number)
     user = crud.get_user_by_email(email)

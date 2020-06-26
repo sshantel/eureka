@@ -51,18 +51,25 @@
         placeholder="6504559866"
         required=True
         >
+        <div>
         <small class="form-text text-info">
           Location
         </small>
-        <label> get current location </label>
           <input 
         id="location"
         class="form-control"
         type="text"
         name="location"
-        required=True
-        >
+        value="{{ city }}"
+        >   
+        <button type="button"> get current location </button>
+        </div>
+        <br>
+        <p id = "status"></p>
+        <a id = "map-link" target="_blank"></a>
         <input type="submit">
-
+        </div>
+        <script src="/static/events.js"></script>
+    </form>
 
 {% endblock %}
