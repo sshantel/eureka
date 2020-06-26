@@ -59,17 +59,15 @@
         id="location"
         class="form-control"
         type="text"
-        name="location"
-        value="{{ city }}"
+        name="location" 
         >   
-        <button type="button"> get current location </button>
+        <button type="button" id="location-button"> get current location </button>
         </div>
         <br>
-        <p id = "status"></p>
-        <a id = "map-link" target="_blank"></a>
         <input type="submit">
         </div>
-        <script src="/static/events.js"></script>
     </form>
 
+        <script src="/static/events.js"></script>
+        <script     async defer     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvxNaIsnOrt1SWWcl6k1kiz_tHwLwSVMk&callback=initGeocoder"> 
 {% endblock %}

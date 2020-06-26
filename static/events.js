@@ -48,5 +48,16 @@ if (btn.innerHTML === 'text recipe link to phone') {
 });
 })
 
- 
- 
+
+function initGeocoder() { 
+    $('#location-button').on('click', (evt) => {
+     navigator.geolocation.getCurrentPosition((res) => {
+        console.log(res);
+    const geocoder = new google.maps.Geocoder();
+    const latlng = {lat: res.coords.latitude, lng: res.coords.longitude}
+    geocoder.geocode({'location':latlng}, (res, status) => {
+        console.log(res, status)
+    })
+     })
+    })
+    }

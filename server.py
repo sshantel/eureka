@@ -81,23 +81,24 @@ def login():
 
 @app.route('/signup', methods=['GET'])
 def signup(): 
-    g = geocoder.ip('me')
-    city = g.address
-    latlng = g.latlng
-    print('g address', city)
-    print('g latlng', latlng)
 
-    return render_template('signup.html', city=city)
+    # g = geocoder.ip('me')
+    # city = g.address
+    # latlng = g.latlng
+    # print('g address', city)
+    # print('g latlng', latlng)
+
+    return render_template('signup.html')
 
 @app.route('/register', methods=['POST'])
 def register():
     """User registration form."""
 
-    g = geocoder.ip('me')
-    city = g.address
-    latlng = g.latlng
-    print('g address', city)
-    print('g latlng', latlng)
+    # g = geocoder.ip('me')
+    # city = g.address
+    # latlng = g.latlng
+    # print('g address', city)
+    # print('g latlng', latlng)
 
     username = request.form.get('username')
     email = request.form.get('email')
