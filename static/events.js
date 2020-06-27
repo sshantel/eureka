@@ -51,7 +51,7 @@ if (btn.innerHTML === 'text recipe link to phone') {
 })
 }
 
-{
+
 function initGeocoder() { 
     $('#location-button').on('click', (evt) => {
      navigator.geolocation.getCurrentPosition((res) => {
@@ -70,6 +70,7 @@ function initGeocoder() {
      })
     })
 }
-}
 
+
+ 
  

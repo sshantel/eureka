@@ -254,6 +254,9 @@ def recipe_texted():
     print(message.sid)
     return('recipe has been texted')
 
+@app.route('/map')
+def map():
+    return render_template('map.html')
 
 if __name__ == '__main__':
     connect_to_db(app)
