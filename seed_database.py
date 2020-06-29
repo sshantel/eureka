@@ -44,9 +44,11 @@ def seed_create_recipes():
         ingredients = recipe['ingredients']
         recipe_description = recipe['recipe_description']
         servings = recipe['servings']
+        directions = recipe['directions']
         image = recipe['image']
+        user_id = recipe['user_id']
         crud.create_recipe(create_recipe_name, source_url, recipe_course, prep_time, cook_time, total_recipe_time, ingredients, 
-        recipe_description, servings, image)
+        recipe_description, servings, directions, image, user_id)
 
 seed_create_recipes()
 

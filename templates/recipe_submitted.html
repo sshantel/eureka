@@ -4,16 +4,14 @@
 
 {% block content %}
 
-<li> <a href="#">My Account </a></li>
 <li> <a href="/user_saved_recipes">Saved Recipes</a></li>
-<li> <a href="/all_submitted_recipes"> All of my submitted recipes </a>
+<li> <a href="/uploaded_recipes"> All of my submitted recipes </a>
 <li> <a href="/logout">Log Out </a></li>
 <div> 
   <h1>Thanks for sharing your recipe   </h1>
  <b> your submission: </b>
 
-{{ creating_recipe }}
-
+{{ creating_recipe.create_recipe_name }}
 {{ creating_recipe.image }}
 
 <img src="{{ image }}"> 

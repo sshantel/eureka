@@ -17,7 +17,7 @@ def create_user(username, email, password, location_of_user, phone_number):
     return user 
 
 def create_recipe(create_recipe_name, source_url, recipe_course, prep_time, cook_time, total_recipe_time, ingredients,
-    recipe_description, servings, image):
+    recipe_description, servings, directions, image, user_id):
 
     create_recipe = Recipe(create_recipe_name=create_recipe_name,
                     source_url=source_url, 
@@ -28,7 +28,9 @@ def create_recipe(create_recipe_name, source_url, recipe_course, prep_time, cook
                     ingredients=ingredients,
                     recipe_description=recipe_description,
                     servings=servings,
-                    image=image)
+                    directions=directions,
+                    image=image,
+                    user_id=user_id)
 
     db.session.add(create_recipe)
     db.session.commit()
@@ -48,6 +50,11 @@ def create_saved_recipe(recipe_name, recipe_id, user_id, user, link_to_recipe):
     db.session.commit()
 
     return create_saved_recipe
+
+def all_uploaded_recipes(user_id):
+    """Returns all of a user's uploaded recipes"""
+    uploaded_recipes = Recipe.query.filter(Recipe.user_id == user_id).all()
+    return uploaded_recipes
 
 def unsave_recipe(recipe_id):
     print(SavedRecipe.recipe_id)

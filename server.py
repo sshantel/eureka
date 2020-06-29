@@ -8,8 +8,6 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
-from werkzeug.utils import secure_filename 
-
 from jinja2 import StrictUndefined
 
 import os
@@ -20,8 +18,6 @@ import crud
 from twilio.rest import Client
 
 from pprint import pformat
-
-import geocoder
 
 app = Flask(__name__)
 app.secret_key = "dev"
@@ -136,7 +132,7 @@ def search_results():
 
     payload1 = {'query': input_ingredient,
                 'maxReadyTime': input_time,
-                'number': 2,
+                'number': 10,
                 'apiKey': spoonacular_key}
 
     response1 = requests.get(url1 + '/complexSearch', params=payload1)
@@ -185,9 +181,13 @@ def logout():
 def saved_recipes():
     """Function for user to save a recipe"""
     link_to_recipe = request.form.get('link_to_recipe')
+    print(link_to_recipe)
     recipe_id = request.form.get('recipe_id') 
+    print(recipe_id)
     email = session['user']  
+    print(email)
     user = crud.get_user_by_email(email) 
+    print(user)
     user_id = user.user_id
     recipe_name = request.form.get('recipe_name')
     crud.create_saved_recipe(recipe_name, recipe_id, user_id, user, link_to_recipe)
@@ -222,6 +222,7 @@ def recipe_submitted():
     ingredients = request.form.get('ingredients')
     recipe_description = request.form.get('recipe-description')
     servings = request.form.get('servings')
+    directions = request.form.get('directions')
     filename = request.files.get('image-upload')
     if filename:
         response = cloudinary.uploader.upload(filename)
@@ -232,7 +233,7 @@ def recipe_submitted():
     user = crud.get_user_by_email(email) 
     user_id = user.user_id 
     creating_recipe = crud.create_recipe(create_recipe_name, source_url, recipe_course, prep_time, cook_time, total_recipe_time, ingredients, 
-    recipe_description, servings, image)
+    recipe_description, servings, directions, image, user_id)
 
     return render_template('recipe_submitted.html', creating_recipe=creating_recipe, image=image)
 
@@ -259,7 +260,9 @@ def recipe_texted():
 
 @app.route('/uploaded_recipes')
 def uploaded_recipes():
-    return render_template('users_uploaded_recipes.html')
+    uploaded_recipes = crud.all_uploaded_recipes
+    print(uploaded_recipes)
+    return render_template('users_uploaded_recipes.html', uploaded_recipes=uploaded_recipes)
 
 @app.route('/map')
 def map():

@@ -1,14 +1,32 @@
 [
           {
-              "create_recipe_name": "Wonton noodle soup with BBQ Pork", 
+              "create_recipe_name": "Cantonese Style BBQ Pork Recipe", 
               "source_url": "https://www.youtube.com/watch?v=_UyNTAz0hK8",
               "recipe_course": "main course", 
               "prep_time": 10,
               "cook_time": 10,
               "total_recipe_time": 20,
-              "ingredients": ["blah", "water", "soy sauce"],
+              "ingredients": ["1 pound pork butt", "2 tablespoons honey", " 2 tablespoons water", "2 pieces fermented red bean curd", "1 tablespoon oyster sauce", "1 tablespoon soy sauce", "1 tablespoon dark soy sauce", "1 tablespoon Shaoxing wine", "2 tablespoons honey", "4 tablespoons sugar", "pinch of five spice powder", "pinch of white pepper", "1 clove minced garlic"],
               "recipe_description" : "Char siu is a popular way to flavor and prepare barbecued pork in Cantonese cuisine. It is classified as a type of siu mei, Cantonese roasted meat.",
               "servings": 2,
-              "image": "cucumber-tapas-2-22788.jpg"
+              "directions": "In a bowl, add 2 pieces of Chinese fermented red bean curd, 1 tablespoon of oyster sauce, 1 tablespoon of soy sauce, 1 tablespoon of dark soy sauce, 1 tablespoon of Shaoxing wine, 2 tablespoons of honey, 4 tablespoons of sugar, a pinch of five-spice powder, a pinch of white pepper, 1 clove of minced garlic. Mix well. In a big zip lock bag, add 1 pound of pork butt and the sauce. Marinate overnight in the fridge.  Preheat oven to 400 degrees. Pour the marinade sauce into a bowl. Place the pork on a wire rack and bake for 25 minutes. Then remove from oven, brush the remaining sauce over both sides. Place it back into the oven and bake for another 25 minutes. Take them out and brush honey water on it and bake for another 10 minutes.",
+              "image": "/static/images/char_siu.jpg",
+              "user_id": 1
+          }
+]
+[
+          {
+              "create_recipe_name": "Wonton noodle soup recipe", 
+              "source_url": "https://tasteasianfood.com/wonton-soup-recipe/",
+              "recipe_course": "main course", 
+              "prep_time": 30,
+              "cook_time": 180,
+              "total_recipe_time": 210,
+              "ingredients": ["400g pork", "400g shrimp", "half stalk leek", "1 teaspoon flounder powder", "1 teaspoon dry shrimps", "1 teaspoon ground white pepper", "1 tablespoon cornflour", "1/3 egg", "2 teaspoons salt", "10g sugar", "4 teaspoons light soy sauce", "1 packet wonton wrapper"],
+              "recipe_description" : "Char siu is a popular way to flavor and prepare barbecued pork in Cantonese cuisine. It is classified as a type of siu mei, Cantonese roasted meat.",
+              "servings": 2,
+              "directions": "Remove the shrimp shell and deveined. Add a teaspoon of salt and 1/2 teaspoon of baking soda to the shrimps, soak for 15 minutes. Clean the shrimps under running water until the water becomes clear. Drain off the excess water and keep it dry by leaving it on a piece of kitchen paper. Mince the pork coarsely. Combine all the ingredients until it becomes sticky. Keep it refrigerated for fifteen minutes before wrapping the wonton. Place the filling at the center of the wonton skin. Fold the two opposite corners of the skin together. Squeeze the wonton very lightly to let the skin adhere to the filling, leaving part of the wonton skin hanging freely.",
+              "image": "/static/images/wonton.jpg",
+              "user_id": 1
           }
 ]

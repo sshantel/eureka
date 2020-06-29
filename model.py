@@ -1,7 +1,6 @@
 """Models for recipes web application."""
 from flask_sqlalchemy import SQLAlchemy
-# from sqlalchemy_utils import PhoneNumber
- 
+from sqlalchemy.dialects.postgresql import ARRAY
 from datetime import datetime
 
 db = SQLAlchemy()
@@ -41,9 +40,10 @@ class Recipe(db.Model):
     prep_time = db.Column(db.Integer)
     cook_time = db.Column(db.Integer)
     total_recipe_time = db.Column(db.Integer)
-    ingredients = db.Column(db.ARRAY(db.String))
+    ingredients = db.Column(db.String)
     recipe_description = db.Column(db.String)
     servings = db.Column(db.Integer)
+    directions = db.Column(db.Text)
     image = db.Column(db.String) 
     recipe_created_at = db.Column(db.DateTime, default = datetime.utcnow)
     user_id = db.Column(db.Integer, 
