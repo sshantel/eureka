@@ -36,11 +36,12 @@ class Recipe(db.Model):
                         autoincrement=True, 
                         unique=True) 
     create_recipe_name = db.Column(db.String) 
+    source_url = db.Column(db.String)
     recipe_course = db.Column(db.String)
     prep_time = db.Column(db.Integer)
     cook_time = db.Column(db.Integer)
     total_recipe_time = db.Column(db.Integer)
-    ingredients = db.Column(db.String)
+    ingredients = db.Column(db.ARRAY(db.String))
     recipe_description = db.Column(db.String)
     servings = db.Column(db.Integer)
     image = db.Column(db.String) 

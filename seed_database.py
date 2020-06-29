@@ -36,6 +36,7 @@ def seed_create_recipes():
 
     for recipe in create_recipes:
         create_recipe_name = recipe['create_recipe_name']
+        source_url = recipe['source_url']
         recipe_course = recipe['recipe_course']
         prep_time = recipe['prep_time']
         cook_time = recipe['cook_time']
@@ -44,7 +45,7 @@ def seed_create_recipes():
         recipe_description = recipe['recipe_description']
         servings = recipe['servings']
         image = recipe['image']
-        crud.create_recipe(create_recipe_name, recipe_course, prep_time, cook_time, total_recipe_time, ingredients, 
+        crud.create_recipe(create_recipe_name, source_url, recipe_course, prep_time, cook_time, total_recipe_time, ingredients, 
         recipe_description, servings, image)
 
 seed_create_recipes()

@@ -1,13 +1,14 @@
 [
           {
               "create_recipe_name": "Wonton noodle soup with BBQ Pork", 
-              "recipe_course": "Appetizer",
+              "source_url": "https://www.youtube.com/watch?v=_UyNTAz0hK8",
+              "recipe_course": "main course", 
               "prep_time": 10,
               "cook_time": 10,
               "total_recipe_time": 20,
-              "ingredients": "blah",
-              "recipe_description" : "yum yum yum",
-              "servings": 4,
+              "ingredients": ["blah", "water", "soy sauce"],
+              "recipe_description" : "Char siu is a popular way to flavor and prepare barbecued pork in Cantonese cuisine. It is classified as a type of siu mei, Cantonese roasted meat.",
+              "servings": 2,
               "image": "cucumber-tapas-2-22788.jpg"
           }
 ]

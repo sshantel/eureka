@@ -16,10 +16,11 @@ def create_user(username, email, password, location_of_user, phone_number):
 
     return user 
 
-def create_recipe(create_recipe_name, recipe_course, prep_time, cook_time, total_recipe_time, ingredients,
+def create_recipe(create_recipe_name, source_url, recipe_course, prep_time, cook_time, total_recipe_time, ingredients,
     recipe_description, servings, image):
 
     create_recipe = Recipe(create_recipe_name=create_recipe_name,
+                    source_url=source_url, 
                     recipe_course=recipe_course,
                     prep_time=prep_time,
                     cook_time=cook_time,

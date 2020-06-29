@@ -214,6 +214,7 @@ def user_saved_recipes():
 def recipe_submitted():
     """User to upload their own recipe"""
     create_recipe_name = request.form.get('create_recipe_name')
+    source_url = request.form.get('source-url')
     recipe_course = request.form.get('recipe-course')
     prep_time = request.form.get('prep-time')
     cook_time = request.form.get('cook-time')
@@ -221,14 +222,16 @@ def recipe_submitted():
     ingredients = request.form.get('ingredients')
     recipe_description = request.form.get('recipe-description')
     servings = request.form.get('servings')
-    filename = request.files.get("image-upload")
+    filename = request.files.get('image-upload')
     if filename:
         response = cloudinary.uploader.upload(filename)
-    image = secure_filename(filename.filename)
+        print(response)
+        image = response['secure_url']
+    print(image)
     email = session['user']
     user = crud.get_user_by_email(email) 
     user_id = user.user_id 
-    creating_recipe = crud.create_recipe(create_recipe_name, recipe_course, prep_time, cook_time, total_recipe_time, ingredients, 
+    creating_recipe = crud.create_recipe(create_recipe_name, source_url, recipe_course, prep_time, cook_time, total_recipe_time, ingredients, 
     recipe_description, servings, image)
 
     return render_template('recipe_submitted.html', creating_recipe=creating_recipe, image=image)
@@ -253,6 +256,10 @@ def recipe_texted():
 
     print(message.sid)
     return('recipe has been texted')
+
+@app.route('/uploaded_recipes')
+def uploaded_recipes():
+    return render_template('users_uploaded_recipes.html')
 
 @app.route('/map')
 def map():
