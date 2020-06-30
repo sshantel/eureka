@@ -260,7 +260,10 @@ def recipe_texted():
 
 @app.route('/uploaded_recipes')
 def uploaded_recipes():
-    uploaded_recipes = crud.all_uploaded_recipes
+    email = session['user'] 
+    user = crud.get_user_by_email(email) 
+    user_id = user.user_id
+    uploaded_recipes = crud.all_uploaded_recipes(user_id) 
     print(uploaded_recipes)
     return render_template('users_uploaded_recipes.html', uploaded_recipes=uploaded_recipes)
 

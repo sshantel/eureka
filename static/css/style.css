@@ -1,0 +1,16 @@
+#map {
+  height: 100%;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  background-color: lightblue;
+  height: 30px;
+  text-align: right;
+  right: 40px;
+  position: fixed;
+}

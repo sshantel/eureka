@@ -6,13 +6,14 @@
  
 
 <li> <a href="/account">My Account </a></li>
+<li> <a href="/uploaded_recipes"> Uploaded Recipes </a> </li>
 <li> <a href="/user_saved_recipes">Saved Recipes</a></li>
 <li> <a href="/logout">Log Out </a></li>
 <li> <a href="/search">Find another recipe </a></li>
 <li> <a href="/share"> Share a recipe </a></li>
-
-  {# <pre>{{ pformat(data1) }}</pre> #}
-{#   <pre>{{ pformat(br) }}</pre> #}
+{# 
+  <pre>{{ pformat(data1) }}</pre> #}
+  <pre>{{ pformat(br) }}</pre>
 
 <i> so you'd like to cook with {{ input_ingredient }} in under {{ input_time }} minutes </i>
 
@@ -28,6 +29,7 @@
     <div class="servings"> <b> Servings: </b> {{ result['servings'] }} </div>
     <div class="ready-in-minutes"> <b>Ready in: </b>{{ result['readyInMinutes'] }} minutes</div>
     <div class="recipe-summary"> {{ result['summary'] }} </div>
+    <div class="instructions"> <b> instructions: </b> {{result['instructions']}} </div>
     <button class="save-recipe"id="{{ result['id'] }}">save recipe</button>  
     <button class="text-recipe"id="{{result['id'] }}">text recipe link to phone</button>
       <br>
