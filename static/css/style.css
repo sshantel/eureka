@@ -6,13 +6,27 @@ html, body {
   margin-top: 100px;
   padding-top: 100px;
   height: 100%; 
-  margin-top: 50px;
+  margin-top: 30px;
   padding: 0;
 }
  
-.img-fluid {
-    height: 70%;
-    width: 70%;
+.img-fluid{
+    height: 100%;
+    width: 100%;
     display: table-cell;
     vertical-align: middle;
+}
+
+.top-left {
+  position: absolute;
+  top: 80px;
+  left: 15px;
+  color:white;
+  font-size: 40px;
+}
+
+ 
+ 
+.imgButton{
+    text-align:center;
 }
