@@ -11,11 +11,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
     <div class="container">
         <a class="navbar-brand" href="/">Eureka</a>
-        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
-            &#9776;
-        </button>
-        <div class="collapse navbar-collapse" id="exCollapsingNavbar">
-            <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav"> 
+                <li class="nav-item"><a href="/share" class="nav-link">Share a recipe</a></li>                
                 <li class="nav-item"><a href="/user_saved_recipes" class="nav-link">Saved Recipes</a></li>
                 <li class="nav-item"><a href="/uploaded_recipes" class="nav-link">Uploaded Recipes</a></li>
                 <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li> 
@@ -24,28 +21,36 @@
     </div>
 </nav>
  
+ 
 
-  <ul>
+<div class="form-group">
+<form method="GET"/ action="/search_results">
+    <small class="form-text text-success"> What ingredient(s) would you like to cook with today? </small>
+    <input type="search-ingredient" name="ingredient" class="form-control" id="search-ingredient" aria-describedby="search-ingredient" placeholder="Enter ingredient(s) here">
+   <small class="form-text text-success"> How much time(max) in minutes would you like to spend? </small>
+    <input type="input-time" name="time" class="form-control" id="time" aria-describedby="search-ingredient" placeholder="Enter time in minutes here">  
+    <br>
+    <button type="submit" class="btn btn-primary" value="Look for recipes!">Look for recipes!</button>
+</form>
+</div>
+ 
+
+{#   <ul>
     <form method="GET"/ action="/search_results">
-      <div class="form-group">
-        <label for="search-ingredient"> Ingredient </label>
-        <br>
+      <div class="form-group"> 
         <small class="form-text text-success">
           What ingredient(s) would you like to cook with today? </small>
          <input id="search-ingredient" class="form-control" type="text" name="ingredient"> 
     </div>
     <br>
 
-    <div class="form-group">
-      <label for="search-time">Time</label>
+    <div class="form-group"> 
       <br>
       <small class="form-text text-success">
       How much time(max) in minutes would you like to spend? </small>
       <input id="search-time" class="form-control" type="text" name="time">
       <button type="submit" class="btn btn-primary" value="Look for recipes!">Look for recipes!</button>
-
-
     </form>
-  </ul>
+  </ul> #}
 
 {% endblock %}

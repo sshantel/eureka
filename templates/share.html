@@ -20,6 +20,19 @@
         </div>
     </div>
 </nav>
+
+
+
+<form method="POST"/ action="/recipe_submitted" enctype="multipart/form-data">
+    <small class="form-text text-success"> What ingredient(s) would you like to cook with today? </small>
+    <input type="search-ingredient" name="ingredient" class="form-control" id="search-ingredient" aria-describedby="search-ingredient" placeholder="Enter ingredient(s) here">
+   <small class="form-text text-success"> How much time(max) in minutes would you like to spend? </small>
+    <input type="input-time" name="time" class="form-control" id="time" aria-describedby="search-ingredient" placeholder="Enter time in minutes here">  
+    <br>
+    <button type="submit" class="btn btn-primary" value="Look for recipes!">Look for recipes!</button>
+</form>
+</div>
+
  
       <form method="POST"/ action="/recipe_submitted" enctype="multipart/form-data">
         <label for="create_recipe_name"> Title of Recipe </label>

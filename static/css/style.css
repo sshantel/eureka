@@ -24,9 +24,11 @@ html, body {
   color:white;
   font-size: 40px;
 }
-
- 
  
 .imgButton{
     text-align:center;
+}
+
+.imgContainer{
+    display: inline-block;
 }
