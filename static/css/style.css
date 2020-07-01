@@ -1,16 +1,18 @@
 #map {
   height: 100%;
 }
+
 html, body {
-  height: 100%;
-  margin: 0;
+  margin-top: 100px;
+  padding-top: 100px;
+  height: 100%; 
+  margin-top: 50px;
   padding: 0;
 }
-
-.nav-item {
-  background-color: lightblue;
-  height: 30px;
-  text-align: right;
-  right: 40px;
-  position: fixed;
+ 
+.img-fluid {
+    height: 70%;
+    width: 70%;
+    display: table-cell;
+    vertical-align: middle;
 }

@@ -4,8 +4,16 @@
 
 {% block content %}
 
+{% for recipe in uploaded_recipes %}
 
-{{ uploaded_recipes }} 
+{{ recipe.create_recipe_name }} 
+{{ recipe.image }}
 
+<div class="row">
+<div class="col-md-4">
+<img src="{{ recipe.image }}" class="img-rounded" alt="{{ recipe.create_recipe_name }}">
+</div>
+</div>
 
+{% endfor %}
 {% endblock %}
