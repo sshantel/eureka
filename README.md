@@ -1,5 +1,3 @@
-# hb-project
-
 Eureka is a full stack web app built during my time at Hackbright Academy. Eureka allows a user to search for a recipe by ingredient(s) and how much time
 (maximum) they want to spend. From there, the results will show, where a user can see the name of the recipe and the link to the recipe. The user can then
 save the recipe or text the link of the recipe to their phone. Users can also upload their own recipe to the database.
@@ -24,7 +22,7 @@ Running Eureka on your computer:
 
 Clone or fork repository:
 
-$ git clone https://github.com/chantelyip/hb-project
+$ git clone https://github.com/chantelyip/eureka
 
 Create and activate a virtual environment inside your hb-project directory:
 
