@@ -1,3 +1,9 @@
+ 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500i,900,900i');
+
 #map {
   height: 100%;
 }
@@ -7,7 +13,8 @@ html, body {
   padding-top: 100px;
   height: 100%; 
   margin-top: 30px;
-  padding: 0;
+  padding: 0; 
+
 }
  
 .img-fluid{
@@ -32,3 +39,20 @@ html, body {
 .imgContainer{
     display: inline-block;
 }
+
+.card-deck {
+  width: 18rem;
+  text-align: center;
+  display: flex;
+}
+ 
+body {
+ font-family: 'Arvo', serif;
+ font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+ font-family: 'Lato', sans-serif;
+ font-size: 16px;
+}
+  

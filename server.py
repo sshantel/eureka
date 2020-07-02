@@ -132,7 +132,7 @@ def search_results():
 
     payload1 = {'query': input_ingredient,
                 'maxReadyTime': input_time,
-                'number': 10,
+                'number': 25,
                 'apiKey': spoonacular_key}
 
     response1 = requests.get(url1 + '/complexSearch', params=payload1)
@@ -181,7 +181,7 @@ def logout():
 def saved_recipes():
     """Function for user to save a recipe"""
     link_to_recipe = request.form.get('link_to_recipe')
-    print(link_to_recipe)
+    print('link to recipe', link_to_recipe)
     recipe_id = request.form.get('recipe_id') 
     print(recipe_id)
     email = session['user']  
