@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Welcome to your uploaded recipes {% endblock %}
+{% block title %} {% endblock %}
 
 {% block content %}
 
@@ -21,15 +21,19 @@
 
 
 {% for recipe in uploaded_recipes %}
+ <div class="card" style="width: 18rem; text-align:center; display: inline-flex">
 
-{{ recipe.create_recipe_name }} 
-{{ recipe.image }}
-
-<div class="row">
-<div class="col-md-4">
-<img src="{{ recipe.image }}" class="img-rounded" alt="{{ recipe.create_recipe_name }}">
+<span class="border border-warning"> 
+<img class="card-img-top" src="{{ recipe.image }}" alt="Card image cap">
+<div class="card-body">
+<h5 class="recipe-name">{{ recipe.create_recipe_name }} 
+</h5> 
+<p class="card-text">  <p class="font-weight-bold">  </p>{{ recipe.recipe_description }}   </p>
+<a href="{{ recipe.source_url }}" class="recipe-link"> Link to Recipe</a> 
 </div>
 </div>
+</span>
+
 
 {% endfor %}
 {% endblock %}

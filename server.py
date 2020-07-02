@@ -243,6 +243,7 @@ def recipe_texted():
     link_to_recipe = request.form.get('link_to_recipe')
     print(link_to_recipe)
     recipe_name = request.form.get('recipe_name')
+    print(recipe_name)
     email = session['user'] 
     user = crud.get_user_by_email(email) 
     user_id = user.user_id
@@ -250,7 +251,7 @@ def recipe_texted():
 
     message = client.messages \
     .create(
-         body=link_to_recipe,
+         body= recipe_name + ' ' + link_to_recipe,
          from_='+12054966699',
          to='+1' + phone_number  
      )

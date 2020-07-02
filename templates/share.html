@@ -21,6 +21,7 @@
 
 
 
+<div class="container-form-share"> 
 <form method="POST"/ action="/recipe_submitted" enctype="multipart/form-data">
     <small class="form-text text-success"> Title of Recipe </small>
     <input type="create_recipe_name" name="ingredient" class="form-control" id="create_recipe_name" aria-describedby="search-ingredient" placeholder="">
@@ -48,84 +49,6 @@
 <br>  
 </form>
 </div>
-
- 
-     {#  <form method="POST"/ action="/recipe_submitted" enctype="multipart/form-data">
-        <label for="create_recipe_name"> Title of Recipe </label>
-          <br>
-        <small class="form-text text-success"> What you'd call your recipe </small>
-         <input id="create_recipe_name" class="form-control" type="text" name="create_recipe_name">
-
-    <br>
-    <label for="source-url">Source URL</label> #}
-      {# <br>
-      <small class="form-text text-success"> Link to recipe
-      </small>
-      <input id="source-url" class="form-control" type="text" name="source-url">
-    <br> #}
-    {#   <label for="recipe-course">Recipe Course </label>
-      <br>
-      <small class="form-text text-success"> Appetizer? Lunch? Dinner? 
-      </small>
-      <input id="recipe-course" class="form-control" type="text" name="recipe-course"> #}
-{# 
-      <label for="prep-time"> Estimated prep time </label>
-      <br>
-      <small class="form-text text-success">  Prep time
-      </small>
-      <input id="prep-time" class="form-control" type="text" name="prep-time"> #}
-
-      {# <label for="cook-time"> Estimated prep time </label>
-      <br>
-      <small class="form-text text-success">  Cook time
-      </small>
-      <input id="cook-time" class="form-control" type="text" name="cook-time"> #}
-
-   {#    <label for="total-cook-time"> Estimated total cook time  </label>
-      <br>
-      <small class="form-text text-success">  Preparion + Cook time
-      </small>
-      <input id="total-cook-time" class="form-control" type="text" name="total-cook-time"> #}
-{# 
-      <label for="total-cook-time"> Ingredients </label>
-      <br>
-      <small class="form-text text-success">  Ingredients
-      </small>
-      <input id="ingredients" class="form-control" type="text" name="ingredients"> #}
-
-
-  {#     <label for="recipe-description"> Recipe Description  </label>
-      <br>
-      <small class="form-text text-success">  Share a line or two about the recipe! 
-      </small>
-      <input id="recipe-description" class="form-control" type="text" name="recipe-description">
-
-        <label for="servings">  Serving Size </label>
-      <br>
-      <small class="form-text text-success">  Serving size
-      </small>
-      <input id="servings" class="form-control" type="text" name="servings"> #}
-
-     {#  <label for="directions">  Directions </label>
-      <br>
-      <small class="form-text text-success">  Important steps to make this recipe
-      </small>
-      <input id="servings" class="form-control" type="text" name="directions"> #}
-
-      {# <label for="image-upload">  image  </label>
-      <input id = "image-upload" type=file name="image-upload">
-
-
-      <br>
-      <small class="form-text text-success">  Upload a photo of your recipe!</small>
-
-   <button type="submit" class="btn btn-primary" value="Upload recipe">Upload recipe</button>
-<br>
-<input type="submit" id="upload-recipe" value="upload-recipe">
-
-    </form>  #}
-
-
 
 {% endblock %}
 

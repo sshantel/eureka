@@ -12,9 +12,7 @@
               "directions": "In a bowl, add 2 pieces of Chinese fermented red bean curd, 1 tablespoon of oyster sauce, 1 tablespoon of soy sauce, 1 tablespoon of dark soy sauce, 1 tablespoon of Shaoxing wine, 2 tablespoons of honey, 4 tablespoons of sugar, a pinch of five-spice powder, a pinch of white pepper, 1 clove of minced garlic. Mix well. In a big zip lock bag, add 1 pound of pork butt and the sauce. Marinate overnight in the fridge.  Preheat oven to 400 degrees. Pour the marinade sauce into a bowl. Place the pork on a wire rack and bake for 25 minutes. Then remove from oven, brush the remaining sauce over both sides. Place it back into the oven and bake for another 25 minutes. Take them out and brush honey water on it and bake for another 10 minutes.",
               "image": "/static/images/char_siu.jpg",
               "user_id": 1
-          }
-]
-[
+          },
           {
               "create_recipe_name": "Wonton noodle soup recipe", 
               "source_url": "https://tasteasianfood.com/wonton-soup-recipe/",
@@ -26,7 +24,21 @@
               "recipe_description" : "Char siu is a popular way to flavor and prepare barbecued pork in Cantonese cuisine. It is classified as a type of siu mei, Cantonese roasted meat.",
               "servings": 2,
               "directions": "Remove the shrimp shell and deveined. Add a teaspoon of salt and 1/2 teaspoon of baking soda to the shrimps, soak for 15 minutes. Clean the shrimps under running water until the water becomes clear. Drain off the excess water and keep it dry by leaving it on a piece of kitchen paper. Mince the pork coarsely. Combine all the ingredients until it becomes sticky. Keep it refrigerated for fifteen minutes before wrapping the wonton. Place the filling at the center of the wonton skin. Fold the two opposite corners of the skin together. Squeeze the wonton very lightly to let the skin adhere to the filling, leaving part of the wonton skin hanging freely.",
-              "image": "/static/images/wonton.jpg",
+              "image": "/static/images/wt2.jpg",
+              "user_id": 1
+          },
+          {
+           "create_recipe_name": "Heirloom Tomato Pico de Gallo", 
+              "source_url": "https://weelicious.com/heirloom-tomato-pico-de-gallo/",
+              "recipe_course": "appetizer", 
+              "prep_time": 10,
+              "cook_time": 0,
+              "total_recipe_time": 10,
+              "ingredients": ["2 cups heirloom tomatoes", "1 small red onion", "1 chili pepper", "1/4 cup cilantro", "juice of 2 limes", "1/2 teaspoon kosher salt"],
+              "recipe_description" : "From purple to yellow to brown to green, each heirloom has its own unique flavor and texture. Their flavor is far superior to the bland grocery store tomatoes I grew up with. When made into this fresh Heirloom Tomato Salsa Fresca, their natural sweetness shines.",
+              "servings": 4,
+              "directions": "Combine all of the ingredients in a bowl. Allow to sit for 30 minutes so flavors combine and serve as a dip with tortilla chips or on top of grilled chicken or fish.",
+              "image": "/static/images/pdg.jpg",
               "user_id": 1
           }
 ]

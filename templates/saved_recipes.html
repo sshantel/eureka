@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %}Welcome to your saved recipes{% endblock %}
+{% block title %}{% endblock %}
 
 {% block content %}
 <div>  
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
-     <a class="navbar-brand" href="/" style="max-width: 10%;">
+     <a class="navbar-brand" href="/" style="max-width: 10%;"> 
     <img src="static/images/favicon.ico" class="img-fluid">
  </a>
     <div class="container">
@@ -18,13 +18,13 @@
             </ul>
     </div>
 </nav>
-
+<h1> Welcome to your saved recipes!  </h1>
 {% for recipe in saved_recipes %}
-<ul> 
-<li> <img src="https://spoonacular.com/recipeImages/{{ recipe.recipe_id }}-636x393.jpg"> <a href="{{ recipe.link_to_recipe }}"> {{ recipe.recipe_name }} </a>
-
+  <div class="card" style="width: 18rem; text-align:center; display: inline-flex">
+<span class="border border-warning"> 
+  <img class="card-img-top" src="https://spoonacular.com/recipeImages/{{ recipe.recipe_id }}-636x393.jpg"> <a href="{{ recipe.link_to_recipe }}"> {{ recipe.recipe_name }} </a>
 </div>
-
-</ul>
+</span>
+ 
 {% endfor %}
 {% endblock %}

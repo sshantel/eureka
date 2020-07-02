@@ -51,7 +51,6 @@ def seed_create_recipes():
         recipe_description, servings, directions, image, user_id)
 
 seed_create_recipes()
-
 model.db.session.commit()
 
 

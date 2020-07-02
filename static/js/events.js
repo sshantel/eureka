@@ -5,14 +5,15 @@
 buttons.forEach((button)=> {button.addEventListener('click', (evt) => {
   const btn = evt.target;
   const savedRecipes = {
-    'link_to_recipe': $(`.${evt.target.id} .title`)[0].href,
-    'recipe_name': $(`.${evt.target.id} .title`).html(),
+    'link_to_recipe': btn.previousElementSibling.href,
+    'recipe_name': $(`.${evt.target.id}, .recipe-name`).html(),
     'recipe_id': btn.id
   };  
         console.log(evt.srcElement.parentNode)
         console.log(evt)
         console.log(evt.target) 
         console.log(evt.target.id) 
+        console.log(savedRecipes)
 
 if (btn.innerHTML === 'save recipe') {
     $.post('/saved_recipes', savedRecipes, (response) => { 
@@ -35,13 +36,14 @@ const textButtons = document.querySelectorAll('.text-recipe')
 textButtons.forEach((button)=> {button.addEventListener('click', (evt) => {
     const btn = evt.target;
     const recipeText = {
-        'link_to_recipe': $(`.${evt.target.id} .title`)[0].href,
-        'recipe_name': $(`.${evt.target.id} .title`).html()
+        'link_to_recipe': btn.parentNode.children[0].href,
+        'recipe_name': $(`.${evt.target.id}, .recipe-name`).html(),
 };
     console.log(evt.srcElement.parentNode)
     console.log(evt)
     console.log(evt.target) 
     console.log(evt.target.id) 
+    console.log(recipeText)
 
 if (btn.innerHTML === 'text recipe link to phone') {
     $.post('/recipe_texted', recipeText, (response) => {
@@ -71,8 +73,5 @@ function initGeocoder() {
     })
 }
 
-$(document).ready(function(){
-  $(".dropdown-toggle").dropdown();
-});
  
  

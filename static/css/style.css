@@ -1,9 +1,4 @@
  
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
-@import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500i,900,900i');
-
 #map {
   height: 100%;
 }
@@ -21,7 +16,9 @@ html, body {
     height: 100%;
     width: 100%;
     display: table-cell;
+    margin-left: 50px;
     vertical-align: middle;
+    border:0;
 }
 
 .top-left {
@@ -45,14 +42,63 @@ html, body {
   text-align: center;
   display: flex;
 }
+
+.container-form-signup{
+  display: inline-block;
+}
+
+.container-form-search{
+  display: inline-block;
+}
+
+.container-form-share{
+  display: inline-block;
+}
+
+.form-group {
+}
  
 body {
  font-family: 'Arvo', serif;
  font-size: 16px;
+ text-align: center;
+ font-color:yellow;
 }
 
 h1, h2, h3, h4, h5, h6 {
  font-family: 'Lato', sans-serif;
  font-size: 16px;
 }
-  
+
+.text-success {
+  color: #77dd77 !important;
+}
+
+.btn-primary {
+    background-color: #F0E68C !important;
+    font-color: white;
+    border: yellow;
+}
+
+.navbar-brand {
+  color:#ffffbf !important; 
+  left: 100; 
+
+}
+
+.no-padding {
+   padding-left: 0;
+   padding-right: 0;
+}
+
+.home-image{
+  background: url(/static/images/eureka2.jpeg) no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+div.container.homepage {
+  padding-left: 0;
+  margin-left:0;
+ }
