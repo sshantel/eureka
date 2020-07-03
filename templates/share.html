@@ -4,12 +4,14 @@
 
 {% block content %}
 
+<div class="container-fluid share-image">
+</div>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
      <a class="navbar-brand" href="/" style="max-width: 10%;">
-    <img src="static/images/favicon.ico" class="img-fluid">
- </a>
-    <div class="container">
+        <img src="static/images/lemon.svg" width="30px">
+  </a>
+    <div class="container brand">
         <a class="navbar-brand" href="/">Eureka</a>
             <ul class="nav navbar-nav">
                 <li class="nav-item"><a href="/user_saved_recipes" class="nav-link">Saved Recipes</a></li>
@@ -17,38 +19,38 @@
                 <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li> 
             </ul>
     </div>
-</nav>
-
+</nav> 
 
 
 <div class="container-form-share"> 
 <form method="POST"/ action="/recipe_submitted" enctype="multipart/form-data">
     <small class="form-text text-success"> Title of Recipe </small>
-    <input type="create_recipe_name" name="ingredient" class="form-control" id="create_recipe_name" aria-describedby="search-ingredient" placeholder="">
+    <input type="create_recipe_name" name="ingredient" class="form-control" id="create_recipe_name" aria-describedby="search-ingredient" placeholder="Title of recipe">
    <small class="form-text text-success"> Source URL </small>
-    <input type="text" name="source-url" class="form-control" id="source-url" aria-describedby="source-url" placeholder=""> 
+    <input type="text" name="source-url" class="form-control" id="source-url" aria-describedby="source-url" placeholder="Source URL"> 
     <small class="form-text text-success"> Recipe Course</small>
-    <input type="text" name="recipe-course" class="form-control" id="recipe-course" aria-describedby="source-url" placeholder="">
+    <input type="text" name="recipe-course" class="form-control" id="recipe-course" aria-describedby="source-url" placeholder="Breakfast? Lunch? Dinner?">
     <small class="form-text text-success"> Prep time </small>
-    <input type="text" name="prep-time" class="form-control" id="prep-time" aria-describedby="source-url" placeholder=" ">    
+    <input type="text" name="prep-time" class="form-control" id="prep-time" aria-describedby="source-url" placeholder="Prep time in minutes">    
     <small class="form-text text-success"> Cook time </small>
-    <input type="text" name="cook-time" class="form-control" id="cook-time" aria-describedby="source-url" placeholder="">      
+    <input type="text" name="cook-time" class="form-control" id="cook-time" aria-describedby="source-url" placeholder="Cook time in minutes">      
     <small class="form-text text-success"> Total Cook time </small>
-    <input type="text" name="total-cook-time" class="form-control" id="total-cook-time" aria-describedby="source-url" placeholder="">
+    <input type="text" name="total-cook-time" class="form-control" id="total-cook-time" aria-describedby="source-url" placeholder="Total cook time">
     <small class="form-text text-success"> Ingredients </small>
-    <input type="text" name="ingredients" class="form-control" id="ingredients" aria-describedby="source-url" placeholder="">  
+    <input type="text" name="ingredients" class="form-control-large" id="ingredients" aria-describedby="source-url" placeholder="Ingredients">  
      <small class="form-text text-success"> Recipe Description </small>
-    <input type="text" name="recipe-description" class="form-control" id="recipe-description" aria-describedby="source-url" placeholder="">  
+    <input type="text" name="recipe-description" class="form-control" id="recipe-description" aria-describedby="source-url" placeholder="Recipe description">  
     <small class="form-text text-success"> Servings </small>
-    <input type="text" name="servings" class="form-control" id="servings" aria-describedby="source-url" placeholder="">  
+    <input type="text" name="servings" class="form-control" id="servings" aria-describedby="source-url" placeholder="Servings">
      <small class="form-text text-success"> Directions </small>
-    <input type="text" name="directions" class="form-control" id="directions" aria-describedby="source-url" placeholder=""> 
+    <input type="text" name="directions" class="form-control-large" id="directions" aria-describedby="source-url" placeholder="Directions"> 
      <small class="form-text text-success"> Image </small>
-    <input type=file name="image-upload" class="form-control" id="image-upload" aria-describedby="source-url" placeholder="">
+    <input type=file name="image-upload" class="form-control" id="image-upload" aria-describedby="source-url" placeholder="Image">
    <button type="submit" id="upload-recipe" class="btn btn-primary" value="Upload recipe">Upload recipe</button>
 <br>  
 </form>
 </div>
+
 
 {% endblock %}
 

@@ -40,5 +40,19 @@
               "directions": "Combine all of the ingredients in a bowl. Allow to sit for 30 minutes so flavors combine and serve as a dip with tortilla chips or on top of grilled chicken or fish.",
               "image": "/static/images/pdg.jpg",
               "user_id": 1
-          }
+          },
+          {
+              "create_recipe_name": "Rainbow Salad", 
+              "source_url": "",
+              "recipe_course": "appetizer", 
+              "prep_time": 15,
+              "cook_time": 0,
+              "total_recipe_time": 15,
+              "ingredients": ["1 red onion diced", "1 tomato diced", "1 little gem diced", "2 oz mushrooms seared", "1 handful of almonds", "1 oz strawberries diced", "1 pinch pine nuts", "1 pinch cranberries", "2 oz spinach"],
+              "recipe_description" : "Chantel's deliious salad!",
+              "servings": 3,
+              "directions": "Combine all of the ingredients in a bowl and toss.",
+              "image": "/static/images/chantel-rainbow-salad.jpg",
+              "user_id": 1
+            }
 ]

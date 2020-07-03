@@ -1,5 +1,4 @@
- 
-#map {
+ #map {
   height: 100%;
 }
 
@@ -9,7 +8,6 @@ html, body {
   height: 100%; 
   margin-top: 30px;
   padding: 0; 
-
 }
  
 .img-fluid{
@@ -33,8 +31,8 @@ html, body {
     text-align:center;
 }
 
-.imgContainer{
-    display: inline-block;
+.imgContainer{ 
+    justify-content: center;
 }
 
 .card-deck {
@@ -49,13 +47,12 @@ html, body {
 
 .container-form-search{
   display: inline-block;
+  position: relative;
 }
 
 .container-form-share{
   display: inline-block;
-}
-
-.form-group {
+  position: relative;
 }
  
 body {
@@ -71,11 +68,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text-success {
-  color: #77dd77 !important;
+  color: #9ACD32 !important;
+  font-size: bold;
+}
+
+.form-text{
+  margin-top:7rem;
+}
+
+.small, small {
+    font-size: 100%;
+    font-weight: 800;
 }
 
 .btn-primary {
-    background-color: #F0E68C !important;
+    background-color: #9ACD32 !important;
     font-color: white;
     border: yellow;
 }
@@ -83,7 +90,14 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-brand {
   color:#ffffbf !important; 
   left: 100; 
+  font-size: 2.25rem;
+}
 
+.navbar {
+  padding-top: 2rem;
+  padding-right: 3rem;
+  padding-bottom: 2rem;
+  padding-left: 3rem;
 }
 
 .no-padding {
@@ -92,13 +106,36 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .home-image{
-  background: url(/static/images/eureka2.jpeg) no-repeat center center fixed;
+  background: url(/static/images/farmersmarket.jpg) no-repeat center center fixed;
   background-size: cover;
   height: 100%;
   width: 100%;
 }
 
-div.container.homepage {
+.search-image{ 
+  background: url(/static/images/cooking.jpg) no-repeat center center fixed;
+  height: 120%;
+  width: 100%;
+  background-size: cover;
+  position: absolute;
+ }
+
+ .share-image{ 
+  background: url(/static/images/cooking2.jpg) no-repeat center center fixed;
+  height: 20%;
+  width: 100%;
+  background-size: cover;
+  position: absolute;
+ }
+
+div.container.brand {
   padding-left: 0;
   margin-left:0;
  }
+
+
+.form-control-large {
+  line-height: 100px!important;
+   width:400px;
+}
+ 
