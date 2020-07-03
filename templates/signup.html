@@ -6,6 +6,10 @@
 
 <h1> Registration Form </h1>
 
+
+<div class="container-fluid signup-image">
+</div>
+
 <div class="navbar-header">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
     <div class="container">
@@ -19,27 +23,28 @@
 </nav>
 </div>
  
-<div class ="container-form-signup">
 <form method="POST"/ action="/register">
+<div class ="container-form-signup"> 
   <div class="form-group">
     <label for="username">Username</label>
     <input type="username" name="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter username">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted"></small> 
+    {# <small id="emailHelp" class="form-text text-muted"></small>  #}
     <label for="exampleInputPassword1">Password</label>
     <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  <label for="phone-number">Phone Number</label>
+    <label for="phone-number">Phone Number</label>
     <input type="phone-number" name="phone-number" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Phone Number">
-  <label for="location">Location</label>
+    <label for="location">Location</label>
     <input type="phone number" name="location" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Location">
     <button type="button" id="location-button"> get current location </button>
+    <br>
+    <br>
+    <br>
+     <button type="submit" class="btn btn-primary">Submit</button>
+ </div>
 </div>
-<br> 
-<br>
-  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-</div>
     
         <script src="/static/js/events.js"></script>
         <script     async defer     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvxNaIsnOrt1SWWcl6k1kiz_tHwLwSVMk&callback=initGeocoder">  

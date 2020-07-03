@@ -41,8 +41,9 @@ html, body {
   display: flex;
 }
 
-.container-form-signup{
+.container-form-signup {
   display: inline-block;
+  position: relative;
 }
 
 .container-form-search{
@@ -128,6 +129,14 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
  }
 
+.signup-image{ 
+  background: url(/static/images/berries.jpg) no-repeat center center fixed;
+  height: 100%;
+  width: 100%;
+  background-size: cover; 
+  position: absolute;
+ }
+
 div.container.brand {
   padding-left: 0;
   margin-left:0;
@@ -139,3 +148,6 @@ div.container.brand {
    width:400px;
 }
  
+div.form-group {
+  margin-top: 4rem;
+}
