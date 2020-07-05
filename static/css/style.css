@@ -123,7 +123,7 @@ h1, h2, h3, h4, h5, h6 {
 
  .share-image{ 
   background: url(/static/images/cooking2.jpg) no-repeat center center fixed;
-  height: 20%;
+  height: 100%;
   width: 100%;
   background-size: cover;
   position: absolute;
@@ -139,7 +139,7 @@ h1, h2, h3, h4, h5, h6 {
 
 div.container.brand {
   padding-left: 0;
-  margin-left:0;
+  margin-left:0; 
  }
 
 
@@ -147,7 +147,57 @@ div.container.brand {
   line-height: 100px!important;
    width:400px;
 }
- 
-div.form-group {
-  margin-top: 4rem;
+
+.dropdown-menu {
+  min-width: 15rem;
+}
+
+.share-or-learn {
+  display: flex;
+  align-items: center;
+  margin-top: 100px;
+}
+/* Container needed to position the button. Adjust the width as needed */
+.share-or-learn__image-container {
+  position: relative;
+  width: 50%;
+}
+
+/* Make the image responsive */
+.share-or-learn__image-container img {
+  width: auto;
+  height: 800px;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.share-or-learn__image-container button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.share-or-learn__image-container button:hover {
+  background-color: black;
+}
+
+.login__text {
+  font-size:50px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.button-saverecipe-class {
+  background-color: yellow!important;
 }

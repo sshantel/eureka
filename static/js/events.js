@@ -5,8 +5,8 @@
 buttons.forEach((button)=> {button.addEventListener('click', (evt) => {
   const btn = evt.target;
   const savedRecipes = {
-    'link_to_recipe': btn.previousElementSibling.href,
-    'recipe_name': $(`.${evt.target.id}, .recipe-name`).html(),
+    'link_to_recipe': evt.toElement.previousSibling.previousElementSibling.previousElementSibling.href,
+    'recipe_name': $(`.${evt.target.id}.recipe-name`).html(),
     'recipe_id': btn.id
   };  
         console.log(evt.srcElement.parentNode)
@@ -14,21 +14,28 @@ buttons.forEach((button)=> {button.addEventListener('click', (evt) => {
         console.log(evt.target) 
         console.log(evt.target.id) 
         console.log(savedRecipes)
+        console.log(btn.classList)
+        console.log(evt.toElement.previousSibling.previousElementSibling.previousElementSibling.href) 
+
 
 if (btn.innerHTML === 'save recipe') {
     $.post('/saved_recipes', savedRecipes, (response) => { 
         console.log(response)
         btn.innerHTML = 'unsave recipe'
+        btn.classList.add("button-saverecipe-class")
+
 })
 }
 else if (btn.innerHTML === 'unsave recipe') {
     $.post('/unsave_recipe', savedRecipes, (response)=> {
         console.log(response)
         btn.innerHTML = 'save recipe'
+        btn.classList.remove("button-saverecipe-class")
 })};
 });
 })
 }
+
 
 {
 const textButtons = document.querySelectorAll('.text-recipe')

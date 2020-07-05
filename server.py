@@ -160,12 +160,14 @@ def search_results():
 
     information_bulk_results = br
 
+
     return render_template('search_results.html',
                           pformat=pformat,
                           input_ingredient=input_ingredient,
                           input_time=input_time,
                           data1=data1,
                           br=br)
+
     
 @app.route('/logout')
 def logout():
@@ -190,6 +192,7 @@ def saved_recipes():
     print(user)
     user_id = user.user_id
     recipe_name = request.form.get('recipe_name')
+    print(recipe_name)
     crud.create_saved_recipe(recipe_name, recipe_id, user_id, user, link_to_recipe)
     return "This recipe has been saved!!"
 

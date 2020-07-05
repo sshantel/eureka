@@ -7,21 +7,28 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
  <a class="navbar-brand" href="/" style="max-width: 10%;">
         <img src="static/images/lemon.svg" width="30px">
-  </a>
-    <div class="container brand">
-        <a class="navbar-brand" href="/">Eureka</a>
-                    <ul class="nav navbar-nav">     
-                <li class="nav-item"><a href="/user_saved_recipes" class="nav-link">Saved Recipes</a></li>
-                <li class="nav-item"><a href="/uploaded_recipes" class="nav-link">Uploaded Recipes</a></li>
-                <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li> 
-            </ul>
-        </div>
-    </div>
+ </a> 
+    <a class="navbar-brand" href="/">Eureka</a>
+    <ul class="nav navbar-nav flex-row justify-content-between ml-auto">   
+          <li class="nav-item"><a href="/user_saved_recipes" class="nav-link">Saved Recipes</a></li>
+          <li class="nav-item"><a href="/uploaded_recipes" class="nav-link">Uploaded Recipes</a></li>
+          <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li> 
+    </ul> 
 </nav>
+
+<div class="share-or-learn"> 
+  <div class="share-or-learn__image-container">
+    <img src="/static/images/cook.jpeg">
+    <a href="/search"> <button>I want to find a recipe </button>
+  </div>
+  <div class="share-or-learn__image-container">
+    <img src="/static/images/share.jpg"> 
+    <a href="/share"><button> I want to share a recipe </button>
+  </div>
+</div>
  
-  
-<table>
-    <tr>
+   
+{#     <tr>
         <td>
 <div style="display:block;">
   <div class="imgContainer"> 
@@ -35,13 +42,13 @@
             <div class="imgButton">
               <a href="/share" class="btn btn-primary" role="button">  I'd love to share a recipe!  </a>
         </td>
-    </tr>
-</table>
-</div>
+    </tr> 
+</div> #}
+
+
+
 <script type="text/javascript" src="/static/js/events.js"></script>
 
   
-
- 
 
 {% endblock %}

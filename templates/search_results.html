@@ -8,18 +8,16 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
  <a class="navbar-brand" href="/" style="max-width: 10%;">
         <img src="static/images/lemon.svg" width="30px">
-  </a>
-    <div class="container brand">
+  </a> 
 
         <a class="navbar-brand" href="/">Eureka</a>
-                    <ul class="nav navbar-nav">
+                   <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
                 <li class="nav-item"><a href="/search" class="nav-link">Find another recipe</a></li>  
                 <li class="nav-item"><a href="/share" class="nav-link">Share a recipe</a></li>                
                 <li class="nav-item"><a href="/user_saved_recipes" class="nav-link">Saved Recipes</a></li>
                 <li class="nav-item"><a href="/uploaded_recipes" class="nav-link">Uploaded Recipes</a></li>
                 <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li> 
-            </ul>
-        </div>
+            </ul> 
     </div>
 </nav>   
 {% for result in br %} 
@@ -34,10 +32,14 @@
   </div>
   <ul class="list-group list-group-flush"> 
     <li class="list-group-item"> <b> Servings </b> {{ result['servings'] }}</li>
-    <li class="list-group-item"> <b> Vegetarian: </b> {{  result['vegetarian'] }}</li>
+{% if result['vegetarian'] == True %}
+    <li class="list-group-item">  🥕</li>
+{% else %}
+    <li class="list-group-item"> 🥩 </li>
+{% endif %}
   </ul>
   <div class="card-body">
-    <a href="{{ result['sourceUrl'] }}" class="recipe-link">{{ result['sourceUrl'] }}</a> 
+    <a href="{{ result['sourceUrl'] }}" class="recipe-link"> Link to recipe</a> 
     <br> 
     <button type="button" id="{{ result['id'] }}" class="btn btn-primary save-recipe">save recipe</button>
     <br> 
