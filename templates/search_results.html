@@ -4,6 +4,9 @@
 
 {% block content %}
 
+<div class="search-results-background">
+</div>
+<div class="header-fix">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
  <a class="navbar-brand" href="/" style="max-width: 10%;">
@@ -20,34 +23,38 @@
             </ul> 
     </div>
 </nav>   
-{% for result in br %} 
  
-  <div class="card" style="width: 18rem; text-align:center; display: inline-flex">
-  
+
+{% for result in br %} 
+<div class="card" style="width: 18rem; text-align:center; display: inline-flex"> 
 <span class="border border-warning"> 
   <img class="card-img-top" src="https://spoonacular.com/recipeImages/{{ result['id'] }}-636x393.jpg" alt="Card image cap">
   <div class="card-body">
-    <h5 class="{{result['id']}} recipe-name">{{ result['title'] }}</h5>
-    <p class="card-text">  <p class="font-weight-bold"> Ready in: </p>{{ result['readyInMinutes'] }} minutes  </p>
+    <h4 class="{{result['id']}} recipe-name"> {{ result['title'] }} 
+      {% if result['vegetarian'] == True %}
+       🥕
+      {% else %}
+      🥩 
+      {% endif %}
+    </h4>
   </div>
   <ul class="list-group list-group-flush"> 
-    <li class="list-group-item"> <b> Servings </b> {{ result['servings'] }}</li>
-{% if result['vegetarian'] == True %}
-    <li class="list-group-item">  🥕</li>
-{% else %}
-    <li class="list-group-item"> 🥩 </li>
-{% endif %}
+    <li class="list-group-item"> Serves {{ result['servings'] }} </li>
+    <li class="list-group-item"> <p class="card-text"> Ready in {{ result['readyInMinutes'] }} minutes </p> </li>
   </ul>
   <div class="card-body">
-    <a href="{{ result['sourceUrl'] }}" class="recipe-link"> Link to recipe</a> 
-    <br> 
-    <button type="button" id="{{ result['id'] }}" class="btn btn-primary save-recipe">save recipe</button>
+    <a href="{{ result['sourceUrl'] }}" target="_blank" class="recipe-link"> Link to recipe</a> 
     <br> 
     <br>
-    <button type="button" id="{{ result['id'] }}" class="btn btn-primary text-recipe">text recipe link to phone</button>
+    <button type="button" id="{{ result['id'] }}" class="btn btn-primary save-recipe">Save recipe</button>
+    <br> 
+    <br>
+    <button type="button" id="{{ result['id'] }}" class="btn btn-primary text-recipe">Text recipe link to phone</button>
   </div>
 </div>
 </span>
+ 
+</div>
 
 {% endfor %}
 {% endblock %} 

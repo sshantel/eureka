@@ -3,24 +3,32 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-<div>  
+
+<div class="container-fluid search-results-image">
+</div>
+
+<div class="header-saved-recipes-upload-fix">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
    <a class="navbar-brand" href="/" style="max-width: 10%;">
-        <img src="static/images/lemon.svg" width="30px">
-  </a> 
+    <img src="static/images/lemon.svg" width="30px"> </a> 
         <a class="navbar-brand" href="/">Eureka</a>
-             <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
-                <li class="nav-item"><a href="/search" class="nav-link">Find a recipe</a></li>
-                <li class="nav-item"><a href="/uploaded_recipes" class="nav-link">Uploaded Recipes</a></li>
-                <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li> 
-            </ul> 
+        <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
+        <li class="nav-item"><a href="/search" class="nav-link">Find a recipe</a></li>
+        <li class="nav-item"><a href="/share" class="nav-link">Share a recipe</a></li> 
+        <li class="nav-item"><a href="/uploaded_recipes" class="nav-link">Uploaded Recipes</a></li>
+        <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li> 
+        </ul> 
 </nav>
-<h1> Welcome to your saved recipes!  </h1>
+
+
 {% for recipe in saved_recipes %}
-  <div class="card" style="width: 18rem; text-align:center; display: inline-flex">
+<div class="card" style="width: 18rem; text-align:center; display: inline-flex">
 <span class="border border-warning"> 
-  <img class="card-img-top" src="https://spoonacular.com/recipeImages/{{ recipe.recipe_id }}-636x393.jpg"> <a href="{{ recipe.link_to_recipe }}"> {{ recipe.recipe_name }} </a> 
+  <img class="card-img-top" src="https://spoonacular.com/recipeImages/{{ recipe.recipe_id }}-636x393.jpg"> 
+  <div class="card-body">
+  <a href="{{ recipe.link_to_recipe }}"> {{ recipe.recipe_name }} </a> 
+  </div>
 </div>
 </span>
  

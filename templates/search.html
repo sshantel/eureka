@@ -11,40 +11,36 @@
 <div class="container-form-search"> 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
   <a class="navbar-brand" href="/" style="max-width: 10%;">
-        <img src="static/images/lemon.svg" width="30px">
-  </a> 
+      <img src="static/images/lemon.svg" width="30px"> </a> 
         <a class="navbar-brand" href="/">Eureka</a>
-              <ul class="nav navbar-nav flex-row justify-content-between ml-auto"> 
-                <li class="nav-item"><a href="/share" class="nav-link">Share a recipe</a></li>               
-                <li class="nav-item"><a href="/user_saved_recipes" class="nav-link">Saved Recipes</a></li>
-                <li class="nav-item"><a href="/uploaded_recipes" class="nav-link">Uploaded Recipes</a></li>
-                <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li> 
-            </ul> 
-    </div>
-  </nav>
+  <ul class="nav navbar-nav flex-row justify-content-between ml-auto">      <li class="nav-item"><a href="/share" class="nav-link">Share a recipe</a></li>               
+        <li class="nav-item"><a href="/user_saved_recipes" class="nav-link">Saved Recipes</a></li>
+        <li class="nav-item"><a href="/uploaded_recipes" class="nav-link">Uploaded Recipes</a></li>
+        <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li> 
+  </ul>  
+</nav>
 </div>
-</nav> 
 
- <br>
-   <br>
-   <br>
+<br>
+<br>
+<br>
 
 <div class="container-form-search" >
-<form method="GET"/ action="/search_results">
-    <small class="form-text text-success"> What ingredient(s) would you like to cook with today? </small>
-    <div class="col-xs-2">
-    <input type="search-ingredient" name="ingredient" class="form-control" id="search-ingredient" aria-describedby="search-ingredient" placeholder="Enter ingredient(s) here">
-    <br>
+<form method="GET"/ action="/search_results" autocomplete="off">
+    <p class="h1"> What ingredient(s) would you like to cook with today? </p>
+    <div class="col-xs-4">
+    <input type="search-ingredient" name="ingredient" class="form-control-input-sm" id="search-ingredient" aria-describedby="search-ingredient" placeholder="Enter ingredient(s)">
+    </div>
    <br>
    <br>
-   <small class="form-text text-success"> How much time(max) in minutes would you like to spend? </small>
-   </div>
-    <input type="input-time" name="time" class="form-control" id="time" aria-describedby="search-ingredient" placeholder="Enter time in minutes here">  
+   <br>
+   <p class="h1"> How much time(max) in minutes would you like to spend? </p> 
+   <div class="col-lg-12 col-lg-offset-8">
+    <input type="input-time" name="time" class="form-control-input" id="inputsm" aria-describedby="search-time" placeholder="Minutes"> 
+   </div>  
     <br>
-    <button type="submit" class="btn btn-primary" value="Look for recipes!">Look for recipes!</button>
+  <input type="submit" class="btn btn-primary searching-recipe" id="toggle" onclick="func()" value="Look for recipes!"></button>
 </form>
-</div>
-</div>
-</div> 
+</div>  
 
 {% endblock %}

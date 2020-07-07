@@ -18,24 +18,23 @@ buttons.forEach((button)=> {button.addEventListener('click', (evt) => {
         console.log(evt.toElement.previousSibling.previousElementSibling.previousElementSibling.href) 
 
 
-if (btn.innerHTML === 'save recipe') {
+if (btn.innerHTML === 'Save recipe') {
     $.post('/saved_recipes', savedRecipes, (response) => { 
         console.log(response)
-        btn.innerHTML = 'unsave recipe'
+        btn.innerHTML = 'Unsave recipe'
         btn.classList.add("button-saverecipe-class")
 
 })
 }
-else if (btn.innerHTML === 'unsave recipe') {
+else if (btn.innerHTML === 'Unsave recipe') {
     $.post('/unsave_recipe', savedRecipes, (response)=> {
         console.log(response)
-        btn.innerHTML = 'save recipe'
+        btn.innerHTML = 'Save recipe'
         btn.classList.remove("button-saverecipe-class")
 })};
 });
 })
 }
-
 
 {
 const textButtons = document.querySelectorAll('.text-recipe')
@@ -51,14 +50,45 @@ textButtons.forEach((button)=> {button.addEventListener('click', (evt) => {
     console.log(evt.target) 
     console.log(evt.target.id) 
     console.log(recipeText)
-
-if (btn.innerHTML === 'text recipe link to phone') {
+if (btn.innerHTML === 'Text recipe link to phone') {
+    $.post('/recipe_texted', recipeText, (response) => { 
+        console.log(response)
+        btn.innerHTML = 'Recipe texted!' 
+        btn.classList.add("button-saverecipe-class")
+})
+}
+else if (btn.innerHTML === 'Recipe texted!') {
     $.post('/recipe_texted', recipeText, (response) => {
         console.log(response)
+        btn.innerHTML = 'Text recipe link to phone'
+        btn.classList.add("button-saverecipe-class")
 })};
 });
 })
 }
+ 
+function func() {
+    document.getElementById('toggle').value  = 'Searching for recipes!';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function initGeocoder() { 

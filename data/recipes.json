@@ -21,10 +21,10 @@
               "cook_time": 180,
               "total_recipe_time": 210,
               "ingredients": ["400g pork", "400g shrimp", "half stalk leek", "1 teaspoon flounder powder", "1 teaspoon dry shrimps", "1 teaspoon ground white pepper", "1 tablespoon cornflour", "1/3 egg", "2 teaspoons salt", "10g sugar", "4 teaspoons light soy sauce", "1 packet wonton wrapper"],
-              "recipe_description" : "Char siu is a popular way to flavor and prepare barbecued pork in Cantonese cuisine. It is classified as a type of siu mei, Cantonese roasted meat.",
+              "recipe_description" : "A wonton is a type of Chinese dumpling commonly found across regional styles of Chinese. Wontons were introduced to the area after World War II as street food and later indoor eateries.",
               "servings": 2,
-              "directions": "Remove the shrimp shell and deveined. Add a teaspoon of salt and 1/2 teaspoon of baking soda to the shrimps, soak for 15 minutes. Clean the shrimps under running water until the water becomes clear. Drain off the excess water and keep it dry by leaving it on a piece of kitchen paper. Mince the pork coarsely. Combine all the ingredients until it becomes sticky. Keep it refrigerated for fifteen minutes before wrapping the wonton. Place the filling at the center of the wonton skin. Fold the two opposite corners of the skin together. Squeeze the wonton very lightly to let the skin adhere to the filling, leaving part of the wonton skin hanging freely.",
-              "image": "/static/images/wt2.jpg",
+              "directions": "Remove the shrimp shell and deveined. Add a teaspoon of salt and 1/2 teaspoon of baking soda to the shrimps, soak for 15 minutes. Clean the shrimps under running water until the water becomes clear. Drain off the excess water and keep it dry by leaving it on a piece of kitchen paper. Mince the pork coarsely. Combine all the ingredients until it becomes sticky. Keep it refrigerated for fifteen minutes before wrapping the wonton. Place the filling at the center of the wonton skin. Fold the two opposite corners of the skin together. Squeeze the wonton very lightly to let the skin adhere to the filling, leaving part of the wonton skin hanging freely. Serve into bowls and garnish with green onions.There are two ways to serve the wontons, with or without the soup.",
+              "image": "/static/images/yundun.jpg",
               "user_id": 1
           },
           {
@@ -35,7 +35,7 @@
               "cook_time": 0,
               "total_recipe_time": 10,
               "ingredients": ["2 cups heirloom tomatoes", "1 small red onion", "1 chili pepper", "1/4 cup cilantro", "juice of 2 limes", "1/2 teaspoon kosher salt"],
-              "recipe_description" : "From purple to yellow to brown to green, each heirloom has its own unique flavor and texture. Their flavor is far superior to the bland grocery store tomatoes I grew up with. When made into this fresh Heirloom Tomato Salsa Fresca, their natural sweetness shines.",
+              "recipe_description" : "From purple to yellow to brown to green, each heirloom has its own unique flavor and texture. Their flavor is far superior to the bland grocery store tomatoes.",
               "servings": 4,
               "directions": "Combine all of the ingredients in a bowl. Allow to sit for 30 minutes so flavors combine and serve as a dip with tortilla chips or on top of grilled chicken or fish.",
               "image": "/static/images/pdg.jpg",
@@ -49,9 +49,9 @@
               "cook_time": 0,
               "total_recipe_time": 15,
               "ingredients": ["1 red onion diced", "1 tomato diced", "1 little gem diced", "2 oz mushrooms seared", "1 handful of almonds", "1 oz strawberries diced", "1 pinch pine nuts", "1 pinch cranberries", "2 oz spinach"],
-              "recipe_description" : "Chantel's deliious salad!",
+              "recipe_description" : "Delicious summer salad! This salad is the ultimate summer picnic food or party dish any time of year – they’re great to make ahead, they can double as a side and a main dish",
               "servings": 3,
-              "directions": "Combine all of the ingredients in a bowl and toss.",
+              "directions": "Combine all of the ingredients in a bowl and toss. ",
               "image": "/static/images/chantel-rainbow-salad.jpg",
               "user_id": 1
             }
