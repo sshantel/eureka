@@ -62,10 +62,10 @@ $ createdb recipe
 
 <h5> Register  </h5>
 
-<details>
+<<!-- details>
   <summary>Some summary</summary>
   <img alt="Description" src="static/images/register.png">
-</details>
+</details> -->
 
 ![](static/images/register.png "register.png")
 
@@ -81,6 +81,7 @@ $ createdb recipe
 <h5> Save/Unsave recipe, text recipe to phone</h5>
 
 ![](static/images/results.png "results.png")
+![](static/images/save/text.png "save/text.png")
 
 <h5> Upload a custom recipe </h5>
 
