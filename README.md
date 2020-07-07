@@ -43,7 +43,13 @@ $ source env/bin/activate
 ```
 $ pip install -r requirements.txt
 ```
-3. Create a secrets.sh file and add your API keys and secret keys.
+3. Create a secrets.sh file and add your API keys and secret keys. Example below.
+
+<p>
+    <img src="/static/images/secrets.png" width="220" height="240" />
+</p>
+
+![GitHub Logo](/static/images/secrets.png)
 
 4. Add variables to your virtual environment:
 ```
@@ -54,6 +60,10 @@ $ source secrets.sh
 ```
 $ createdb recipe
 ```
+
+<h4> Features </h4>
+
+
  
 
  
