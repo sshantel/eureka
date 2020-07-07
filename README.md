@@ -62,7 +62,13 @@ $ createdb recipe
 
 <h5> Register  </h5>
 
+<details>
+  <summary>Some summary</summary>
+  <img alt="Description" src="static/images/register.png">
+</details>
+
 ![](static/images/register.png "register.png")
+
 
 <h5> Login </h5>
 
