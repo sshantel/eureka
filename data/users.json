@@ -4,7 +4,7 @@
         "email": "chantelyip422@gmail.com",
         "password": "password",
         "location_of_user":"San Francisco, CA",
-        "phone_number": "6504559866"
+        "phone_number": "123456789"
     },
 
     {
@@ -12,7 +12,7 @@
         "email": "larrypage@gmail.com",
         "password": "password",
         "location_of_user":"Minnesota, MN",
-        "phone_number": "6504559866"
+        "phone_number": "123456789"
 
     },
 
@@ -21,6 +21,6 @@
         "email": "timex@gmail.com",
         "password": "password",
         "location_of_user":"San Diego, CA",
-        "phone_number": "6504559866"
+        "phone_number": "123456789"
     }
 ]
